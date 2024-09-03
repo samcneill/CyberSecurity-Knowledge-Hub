@@ -23,16 +23,11 @@ a:focus{
 
 .navbar {
   background-color: #2F356D;
-  margin-top: 5px;
-  margin-bottom: 5px;
   font-size: 24px;
   font-weight: bold;
   border-radius: 10px;
   height: 50px;
   width: 100%;
-  margin-left: 1px;
-  margin-right: 1px;
-  padding: 10px;
   color: #FFFFFF;
   text-align: center;
   justify-content: center;
@@ -46,16 +41,11 @@ a.navbar {
 
 .funcbar {
   background-color: #2F356D;
-  margin-top: 3px;
-  margin-bottom: 3px;
   font-size: 32px;
   font-weight: bold;
   border-radius: 10px;
   height: 70px;
   width: 90%;
-  margin-left: 3px;
-  margin-right: 3px;
-  padding: 5px;
   color: #FFFFFF;
   text-align: center;
   justify-content: center;
