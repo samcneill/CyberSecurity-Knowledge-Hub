@@ -1,0 +1,71 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 100vh;
+  font-family: Hack, monospace;
+}
+
+.info {
+  color: #727272;
+  text-align: center;
+  margin: 3rem;
+}
+
+#mainWord {
+  margin: 16px;
+  font-size: 96px;
+  color: #ccc;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: all 1s ease-in-out;
+  position: relative;
+  background: -webkit-linear-gradient(rgb(116, 113, 241), rgb(241, 130, 130));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* typing effect  */
+.auto_typed {
+  font-size: 30px;
+  color: #ccc;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: all 1s ease-in-out;
+  position: absolute;
+  bottom: 10%;
+  background: -webkit-linear-gradient(rgb(194, 233, 19), rgb(240, 14, 14));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* * Button Styling Start */
+
+button {
+  color: #8f8f8f;
+  font-size: 24px;
+  padding: 10px 50px;
+  border: none;
+}
+
+button::first-letter{
+  text-decoration: underline;
+}
+
+button:focus-visible{
+  outline: -webkit-focus-ring-color auto 5px;
+}
+
+/* ! Button Styling End */
+
+.button-outline{
+  outline: -webkit-focus-ring-color auto 5px;
+}
