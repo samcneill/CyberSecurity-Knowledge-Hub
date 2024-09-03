@@ -69,23 +69,6 @@ Please adhere to this project's `code of conduct`.
 Learnt how to make the content for Cybersecurity accessible for those who might have poor to limited knowledge of English, due to disabilities. 
 For example, Auslan stands for Australian Sign Language and not everyone who signs that learns English is able to get the grammar correctly or understand. 
 
-<!--- 
-## Repository to run locally
-
-Clone the project 
-```bash
-  git clone https://github.com/Cyber-Quantum-Accessible/Cybersecurity-Knowledge-Hub-Easy-Read-and-Plain-English.git
-```
-
-Go to the project directory
-```bash
-  cd Cyber-Quantum-Accessible
-```
-
-Start code editor
-```bash
-  code .
-```
 
 ## Screenshots
 
