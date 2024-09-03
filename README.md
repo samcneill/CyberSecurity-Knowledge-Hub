@@ -72,10 +72,6 @@ For example, Auslan stands for Australian Sign Language and not everyone who sig
 
 ## Screenshots
 
-![App Screenshot](./preview.webp)
-
---->
-
 ## Feedback and Support
 
 For any support or contribution questions, email daisymcneill020@gmail.com
