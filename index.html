@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility</title>
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+    <div class="info">[Windows : Alt + Accesskey]<br><br><br>[Mac : ctrl + Opt + Accesskey]<br><br><br>[Press the underlined character]</div>
+    <p id="mainWord">Accessibility</p>
+
+    <section>
+        <div class="info">Note : "Tab" functionality removed</div>
+        <nav>
+            <ul class="menuItems">
+                <li>
+                    <span id="home" accesskey="h" class="tooltip" tabindex="0">Home
+                        <audio id="home1">
+                            <source src="./Audio_Files/Home.mp3" type="audio/mpeg"> Your browser does not support the
+                            audio element.
+                        </audio>
+                        <span class="tooltiptext">Accesskey = h</span>
+                    </span>
+                </li>
+                <li>
+                    <span id="about" accesskey="a" class="tooltip" tabindex="0">About
+                        <audio id="about1">
+                            <source src="./Audio_Files/About.mp3" type="audio/mpeg"> Your browser does not support the
+                            audio element.
+                        </audio>
+                        <span class="tooltiptext">Accesskey = a</span>
+                    </span>
+                </li>
+                <li>
+                    <span id="project" accesskey="p" class="tooltip" tabindex="0">Projects
+                        <audio id="project1">
+                            <source src="./Audio_Files/Projects.mp3" type="audio/mpeg"> Your browser does not support
+                            the audio element.
+                        </audio>
+                        <span class="tooltiptext">Accesskey = p</span>
+                    </span>
+                </li>
+                <li>
+                    <span id="blog" accesskey="b" class="tooltip" tabindex="0">Blog
+                        <audio id="blog1">
+                            <source src="./Audio_Files/Blog.mp3" type="audio/mpeg"> Your browser does not support the
+                            audio element.
+                        </audio>
+                        <span class="tooltiptext">Accesskey = b</span>
+                    </span>
+                </li>
+                <li>
+                    <span id="contact" accesskey="c" class="tooltip" tabindex="0">Contact
+                        <audio id="contact1">
+                            <source src="./Audio_Files/Contact.mp3" type="audio/mpeg"> Your browser does not support the
+                            audio element.
+                        </audio>
+                        <span class="tooltiptext">Accesskey = c</span>
+                    </span>
+                </li>
+            </ul>
+        </nav>
+    </section>
+    <span id="text" class="auto_typed"></span>
+
+    <script src="./script.js"></script>
+
+</body>
+
+</html>
