@@ -29,7 +29,10 @@ a:focus{
   font-weight: bold;
   border-radius: 10px;
   height: 50px;
-  width: 900%;
+  width: 90%;
+  margin-left: 1px;
+  margin-right: 1px;
+  padding: 10px;
   color: #FFFFFF;
   text-align: center;
   justify-content: center;
@@ -50,6 +53,9 @@ a.navbar {
   border-radius: 10px;
   height: 70px;
   width: 80%;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding: 5px;
   color: #FFFFFF;
   text-align: center;
   justify-content: center;
