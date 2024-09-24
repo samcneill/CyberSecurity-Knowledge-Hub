@@ -51,7 +51,7 @@ jobs:
         uses: actions/deploy-pages@v4
 
         #node.js
-        - name: Setup Node.js environment
+         name: Setup Node.js environment
 
         uses: actions/setup-node@v4.0.3
         with:
