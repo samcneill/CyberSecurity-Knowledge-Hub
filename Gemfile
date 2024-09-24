@@ -3,5 +3,8 @@
 source "https://rubygems.org"
 
 # gem "rails"
+gem 'rails', '~> 7.2', '>= 7.2.1'
 
-gem "wdm", "~> 0.1.1", :install_if => Gem.win_platform?
+gem 'magnifierjs-rails', '~> 0.2.3'
+
+gem 'wdm' if Gem.win_platform?
