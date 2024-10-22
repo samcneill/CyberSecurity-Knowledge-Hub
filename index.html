@@ -1,72 +1,56 @@
 <!DOCTYPE html>
-<html lang="en-US">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./CSS/style.css">
-    <link rel="stylesheet" href="./CSS/responsive.css">
-    <link rel="icon" href="./Images/favicon.ico" type="image/x-icon">
-    <title>Cybersecurity Knowledge Hub</title>
-    <style>
-        *, *::before, *::after { 
-            box-sizing: border-box; 
-        }
-
-        body {
-            margin: 0;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-        }
-
-        .container {
-            width: 800px;
-            border: 5px solid rgb(250, 12, 12);
-            height: 200px;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Cybersecurity</title>
 </head>
-
 <body>
     <main>
         <h1 id="mainWord">Accessible Cybersecurity</h1>
-        
-        <div class="funcbar">
-            <a href="Cyber Security Knowledge Hub/EasyEnglish/index.html">Easy English</a>
-            <a href="Cyber Security Knowledge Hub/PlainEnglish/index.html">Plain English</a>
-            <img src="Icons/sunicon.png" alt="Sun Icon">
-            <img src="Icons/moonicon.png" alt="Moon Icon">
-            <span>Large Text</span>
-            <img src="Icons/tritIcon.png" alt="Trit Icon">
-            <img src="Icons/searchicon.png" alt="Search Icon">
-        </div>
-        
-        <br>
-        
-        <nav class="navbar">
-            <a href="main_files/home.html">Home</a>
-            <a href="main_files/about-us.html">About Us</a>
-            <a href="main_files/cybersecurity-knowledge-hub.html">Cybersecurity Hub</a>
-            <a href="main_files/australian-newzealand-laws.html">AU/NZ Laws</a>
-            <a href="main_files/resources.html">Resources</a>
-            <a href="main_files/newsletter.html">Newsletter</a>
-            <a href="main_files/contact-form.html">Contact Us</a>
+
+        <nav class="funcbar" aria-label="Accessibility Options">
+            <a href="Cyber%20Security%20Knowledge%20Hub/EasyEnglish/index.html">Easy English</a>
+            <a href="Cyber%20Security%20Knowledge%20Hub/PlainEnglish/index.html">Plain English</a>
+            <button aria-label="Toggle Light Mode">
+                <img src="Icons/sunicon.png" alt="Sun Icon">
+            </button>
+            <button aria-label="Toggle Dark Mode">
+                <img src="Icons/moonicon.png" alt="Moon Icon">
+            </button>
+            <button aria-label="Toggle Large Text">Large Text</button>
+            <button aria-label="Toggle High Contrast">
+                <img src="Icons/tritIcon.png" alt="High Contrast Icon">
+            </button>
+            <button aria-label="Open Search">
+                <img src="Icons/searchicon.png" alt="Search Icon">
+            </button>
         </nav>
-        
-        <img src="https://i.imgur.com/rVlMF8D.png" alt="Six individuals are in the midst of a discussion with the text 'Cyber Quantum' above them with an electrified border." style="width:600px; height:498px;">
-        
-        <div class="info">
+
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="main_files/home.html">Home</a></li>
+                <li><a href="main_files/about-us.html">About Us</a></li>
+                <li><a href="main_files/cybersecurity-knowledge-hub.html">Cybersecurity Hub</a></li>
+                <li><a href="main_files/australian-newzealand-laws.html">AU/NZ Laws</a></li>
+                <li><a href="main_files/resources.html">Resources</a></li>
+                <li><a href="main_files/newsletter.html">Newsletter</a></li>
+                <li><a href="main_files/contact-form.html">Contact Us</a></li>
+            </ul>
+        </nav>
+
+        <img 
+            src="https://i.imgur.com/rVlMF8D.png" 
+            alt="Six individuals are in the midst of a discussion with the text 'Cyber Quantum' above them with an electrified border"
+            width="600"
+            height="498"
+        >
+
+        <section aria-label="Accessibility Options">
             <h2>Audio Braille</h2>
-        </div>
-        
-        <span id="text" class="auto_typed"></span>
-        
-        <p>Hello</p>
-    
+        </section>
+
+        <div id="text" class="auto_typed">Hello</div>
     </main>
-    
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <script src="https://unpkg.com/tippy.js@6"></script>
-    <script src="Javascript/index.js"></script>
 </body>
-        </html>
+</html>
