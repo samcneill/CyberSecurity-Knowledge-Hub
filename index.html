@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./CSS/style.css">
-    <link rel="stylesheet" href="./CSS/responsive.css">
-    <link rel="icon" href="./Images/favicon.ico" type ="image/x-icon"/>
-    <title> Accessible Cybersecurity Knowledge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/responsive.css">
+    <link rel="icon" href="Icons/favicon.ico" type="image/x-icon">
+    <title>Accessible Cybersecurity Knowledge</title>
     <style>
         *, *:before, *:after { 
             box-sizing: inherit; 
         }
-
         body {
             margin: 0;
             height: 100vh;
         }
-
         .container {
             width: 800px;
             border: 5px solid rgb(250, 12, 12);
@@ -25,43 +22,47 @@
         }
     </style>
 </head>
-
 <body>
-
-
     <main>
-        <h1 id ="mainWord">Accessible Cybersecurity </h1>
-            <div class="funcbar">
-                <a href="main_files/index-ee.html">Easy English</a>&nbsp;
-                <a href="main_files/index-pe.html">Plain English</a>&nbsp;
-                <img src="Icons/sunicon.png"/>&nbsp;
-                <img src="Icons/moonicon.png"/>&nbsp;
-                Large Text&nbsp;
-                <img src="Icons/TritIcon.png"/>&nbsp;
-                <img src="Icons/searchicon.png"/>&nbsp;
-            </div>
+        <h1 id="mainWord">Accessible Cybersecurity</h1>
+        <nav class="funcbar" aria-label="Accessibility Options">
+            <a href="main_files/index-ee.html" aria-label="Easy English">Easy English</a>
+            <a href="main_files/index-pe.html" aria-label="Plain English">Plain English</a>
+            <button aria-label="Toggle Light Mode">
+                <img src="Icons/sunicon.png" alt="Sun Icon">
+            </button>
+            <button aria-label="Toggle Dark Mode">
+                <img src="Icons/moonicon.png" alt="Moon Icon">
+            </button>
+            <button aria-label="Toggle Large Text">Large Text</button>
+            <button aria-label="Toggle High Contrast">
+                <img src="Icons/tritIcon.png" alt="High Contrast Icon">
+            </button>
+            <button aria-label="Open Search">
+                <img src="Icons/searchicon.png" alt="Search Icon">
+            </button>
+            <button type="button" data-accessibility="font" aria-label="Increase Font Size">+A</button>
+            <button type="button" data-accessibility="contrast" aria-label="Add Contrast">Add Contrast</button>
+        </nav>
         <br>
-            <div class="navbar">
-                <a href="main_files/home.html">Home</a>&nbsp;
-                <a href="main_files/about-us.html">About Us</a>&nbsp;
-                <a href="main_files/cybersecurity-knowledge-hub.html">Cybersecurity Hub</a>&nbsp;
-                <a href="main_files/australian-newzealand-laws.html">AU/NZ Laws</a>&nbsp;
-                <a href="main_files/resources.html">Resources</a>&nbsp;
-                <a href="main_files/newsletter.html">Newsletter</a>&nbsp;
-                <a href="main_files/contact-form.html">Contact Us</a>&nbsp;
-            </div>
-        <img src="https://i.imgur.com/rVlMF8D.png" alt="Six individuals are in the midst of a discussion with the text 'Cyber Quantum' above them with an electrified border." style="width:600px;height:498px;">
-        <div class="info"><pre><h2>Audio     Braille</h2></pre>
+        <nav class="navbar">
+            <a href="main_files/home.html">Home</a>
+            <a href="main_files/about-us.html">About Us</a>
+            <a href="main_files/cybersecurity-knowledge-hub.html">Cybersecurity Hub</a>
+            <a href="main_files/australian-newzealand-laws.html">AU/NZ Laws</a>
+            <a href="main_files/resources.html">Resources</a>
+            <a href="main_files/newsletter.html">Newsletter</a>
+            <a href="main_files/contact-form.html">Contact Us</a>
+        </nav>
+        <img src="https://i.imgur.com/rVlMF8D.png" alt="Six individuals are in the midst of a discussion with the text 'Cyber Quantum' above them with an electrified border" style="width:600px;height:498px;">
+        <div class="info">
+            <h2>Audio Braille</h2>
         </div>
-
         <span id="text" class="auto_typed"></span>
-
-        <p> Hello </p>
+        <p>Hello</p>
     </main>
-
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
     <script src="Javascript/index.js"></script>
-
 </body>
 </html>
