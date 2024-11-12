@@ -141,6 +141,7 @@ body {
   justify-content: center;
   align-items: center;
   font-family: Hack, monospace;
+  font-size: 16px;
   color: var(--main-text-color);
   background-color: var(--main-background-color);
 }
@@ -160,6 +161,10 @@ body {
   .high-contrast {
             background-color: #C3EBF7;
             color: #6F112D;
+  }
+
+  .large-text {
+              font-size: 32px;
   }
 
 /* Styling for TTS Instructions */
