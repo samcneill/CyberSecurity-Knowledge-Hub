@@ -37,7 +37,7 @@
                 <a href="home-pe.html">Plain English</a>&nbsp;
                 <button onclick="lightMode()"><img id="DarkModeButton" src="Icons/sunicon.png"/></button>&nbsp;
                 <button onclick="darkMode()"><img id="LightModeButton" src="Icons/moonicon.png"/></button>&nbsp;
-                Large Text&nbsp;
+                <button onclick="largeText()"><img id="LargeTextButoon" src="Icons/largetext.png"/></button>&nbsp;
                 <button onclick="highContrast()"><img id="HighContrastButton" src="Icons/TritIcon.png"/></button>&nbsp;
                 <img src="Icons/searchicon.png"/>&nbsp;
             </div>
@@ -76,6 +76,11 @@ function highContrast() {
         let element = document.body;
         let content = document.getElementById("HighContrastButton");
         element.className = "high-contrast";
+}
+function largeText() {
+        let element = document.body;
+        let content = document.getElementById("LargeTextButton");
+        element.className = "large-text";
 }
 </script>
 <script src="https://unpkg.com/@popperjs/core@2"></script>
