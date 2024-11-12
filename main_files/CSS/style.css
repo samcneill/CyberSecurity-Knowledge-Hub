@@ -104,54 +104,6 @@ h3 {
   --button-border-color: black;
 }
 
-/* Color Menu Styling */
-
-.color-menu {
-    font-family: sans-serif;
-    background: #d3d3d3;
-    padding: 5px;;
-    width: 75px;
-    border: true;
-    border-style: groove;
-    z-index: 100;
-    position: fixed;
-    bottom: 50px;
-    right: 15px;
-  }
-
-.color-menu a, 
-.color-menu h3 {
-    font-size: 0.9em;
-    display: block;
-    color: black;
-  }
-
-/* Color Menu Root Changes */
-
-.tritBody{
-  background-color: #FEE1E6;
-}
-
-.tritButton{
-  background-color: #6584A3;
-}
-
-.deutBody{
-  background-color: #E6E596;
-}
-
-.deutButton{
-  background-color: #0031A2;
-}
-
-.monoBody{
-  background-color: #CDDCD9;
-}
-
-.monoButton{
-  background-color: #142225;
-}
-
 /* Footer Styling */
 
 .footer {
@@ -192,6 +144,23 @@ body {
   color: var(--main-text-color);
   background-color: var(--main-background-color);
 }
+
+/* Colour Mode Styling */
+
+  .dark-mode {
+            background-color: #271441;
+            color: white;
+  }
+
+  .light-mode {
+            background-color: #C9C5EB;
+            color: black;
+  }
+
+  .high-contrast {
+            background-color: #C3EBF7;
+            color: #6F112D;
+  }
 
 /* Styling for TTS Instructions */
 
