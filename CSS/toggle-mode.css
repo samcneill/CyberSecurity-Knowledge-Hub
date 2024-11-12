@@ -1,0 +1,17 @@
+/* Light Mode */
+body.light-mode {
+    background-color: white;
+    color: black;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+/* High Contrast */
+body.high-contrast {
+    background-color: yellow;
+    color: black;
+}
