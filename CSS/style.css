@@ -172,13 +172,4 @@ a:visited {
 }
 
 a:hover { 
-  text-decoration: underline; /* Underline on hover for better accessibility */
-} 
-
-a:active { 
-  text-decoration: none; 
-}
-
-/* Body Styling */
-body {
- [_{{{CITATION{{{_1{](https://github.com/KevinMP532/trabajo-prog/tree/5d4e28d8fab39f85d47b66e8ed85376c801ee92b/agenda-covid%2Ffrontend%2Fborrar%2Fborrar.php)[_{{{CITATION{{{_2{](https://github.com/FemiFatokun03/secure-quiz-webapp/tree/773b7b27df7eff92becae3a36d07c40694c5c5d5/login.php)[_{{{CITATION{{{_3{](https://github.com/VallienneDiane/API-Rick-Morty/tree/11833e71f47b9ac87560015465ff7eed94ed0c54/location.php)[_{{{CITATION{{{_4{](https://github.com/VallienneDiane/Portfolio/tree/fbbb4ee55f11466a68f051865cc0a10c69002c62/index.php)[_{{{CITATION{{{_5{](https://github.com/VallienneDiane/Portfolio/tree/fbbb4ee55f11466a68f051865cc0a10c69002c62/contact.php)
+  text-decoration: underline; /* Underlines
