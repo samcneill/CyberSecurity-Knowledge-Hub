@@ -172,4 +172,14 @@ a:visited {
 }
 
 a:hover { 
-  text-decoration: underline; /* Underlines
+  text-decoration: underline; /* Underlines*/
+  
+/* Body Styling */
+body {
+  justify-content: center;
+  align-items: center;
+  font-family: Hack, monospace;
+  font-size: 16px;
+  color: var(--main-text-color);
+  background-color: var(--main-background-color);
+}
