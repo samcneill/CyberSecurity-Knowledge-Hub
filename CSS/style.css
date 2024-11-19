@@ -1,7 +1,7 @@
 /* Styling for All */
-  html { 
-    box-sizing: border-box; 
-  }
+html { 
+  box-sizing: border-box; 
+}
 *, *:before, *:after { 
   box-sizing: inherit; 
 }
@@ -9,18 +9,15 @@ img {
   box-sizing: content-box; 
 }
 
-a:focus{
-  outline:thin dotted;
-  }
+a:focus {
+  outline: thin dotted;
+}
 
-  .component {
-    /* designed to work in default box-sizing */
-    /* in your page, you could reset it to normal */
-    box-sizing: content-box;
-  }
+.component {
+  box-sizing: content-box;
+}
 
 /* Nav Bar Styling */
-
 .navbar {
   background-color: #2F356D;
   margin-top: 5px;
@@ -64,119 +61,118 @@ a.navbar {
 }
 
 /* Header Styling */
-  
-
 h1 { 
-    display: block;
-    font-size: 2em;
-    margin-top: 0.67em;
-    margin-bottom: 0;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
+  display: block;
+  font-size: 3em;
+  margin-top: 0.67em;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  color: #4A2F83; /* Dark purple heading color for contrast */
 }
 h2 {
-    display: block;
-    font-size: 1.5em;
-    margin-top: 0.83em;
-    margin-bottom: 0.83em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
+  display: block;
+  font-size: 2em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  color: #4A2F83; /* Dark purple heading color for contrast */
 }
 h3 { 
-    display: block;
-    font-size: 1.17em;
-    margin-top: 0;
-    margin-bottom: 1em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
+  display: block;
+  font-size: 1.5em;
+  margin-top: 0;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  color: #4A2F83; /* Dark purple heading color for contrast */
 }
 
 /* Root Elements */
-
 :root {
-  --main-text-color: black;
-  --main-background-color: #C9C5EB;
-  --link-text-color: white;
+  --main-text-color: #333;  /* Dark gray text */
+  --main-background-color: #D6C9F1;  /* Light purple background */
+  --link-text-color: #FFD700; /* Gold link text color */
   --button-body-color: #484297;
   --button-border-color: black;
 }
 
 /* Color Menu Styling */
-
 .color-menu {
-    font-family: sans-serif;
-    background: #d3d3d3;
-    padding: 5px;;
-    width: 75px;
-    border: true;
-    border-style: groove;
-    z-index: 100;
-    position: fixed;
-    bottom: 50px;
-    right: 15px;
-  }
+  font-family: sans-serif;
+  background: #d3d3d3;
+  padding: 5px;
+  width: 75px;
+  border: true;
+  border-style: groove;
+  z-index: 100;
+  position: fixed;
+  bottom: 50px;
+  right: 15px;
+}
 
 .color-menu a, 
 .color-menu h3 {
-    font-size: 0.9em;
-    display: block;
-    color: black;
-  }
+  font-size: 0.9em;
+  display: block;
+  color: black;
+}
 
 /* Color Menu Root Changes */
-
-.tritBody{
+.tritBody {
   background-color: #FEE1E6;
 }
 
-.tritButton{
+.tritButton {
   background-color: #6584A3;
 }
 
-.deutBody{
+.deutBody {
   background-color: #E6E596;
 }
 
-.deutButton{
+.deutButton {
   background-color: #0031A2;
 }
 
-.monoBody{
+.monoBody {
   background-color: #CDDCD9;
 }
 
-.monoButton{
+.monoButton {
   background-color: #142225;
 }
 
 /* Footer Styling */
-
 .footer {
-  position:fixed;
-  left:0px;
-  bottom:0px;
-  height:30px;
-  width:100%;
-  background:#999;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 30px;
+  width: 100%;
+  background: #2F356D;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 10px;
 }
 
 /* Link Styling */
-
 a:link {
   color: var(--link-text-color);
   text-decoration: none; 
 }
 
 a:visited {
-  color: white;
+  color: var(--link-text-color);
   text-decoration: none; 
 }
 
 a:hover { 
-  text-decoration: none; 
+  text-decoration: underline; /* Underline on hover for better accessibility */
 } 
 
 a:active { 
@@ -184,19 +180,5 @@ a:active {
 }
 
 /* Body Styling */
-
 body {
-  justify-content: center;
-  align-items: center;
-  font-family: Hack, monospace;
-  color: var(--main-text-color);
-  background-color: var(--main-background-color);
-}
-
-/* Styling for TTS Instructions */
-
-.info {
-  color: #727272;
-  text-align: center;
-  margin: 3rem;
-}
+ [_{{{CITATION{{{_1{](https://github.com/KevinMP532/trabajo-prog/tree/5d4e28d8fab39f85d47b66e8ed85376c801ee92b/agenda-covid%2Ffrontend%2Fborrar%2Fborrar.php)[_{{{CITATION{{{_2{](https://github.com/FemiFatokun03/secure-quiz-webapp/tree/773b7b27df7eff92becae3a36d07c40694c5c5d5/login.php)[_{{{CITATION{{{_3{](https://github.com/VallienneDiane/API-Rick-Morty/tree/11833e71f47b9ac87560015465ff7eed94ed0c54/location.php)[_{{{CITATION{{{_4{](https://github.com/VallienneDiane/Portfolio/tree/fbbb4ee55f11466a68f051865cc0a10c69002c62/index.php)[_{{{CITATION{{{_5{](https://github.com/VallienneDiane/Portfolio/tree/fbbb4ee55f11466a68f051865cc0a10c69002c62/contact.php)
