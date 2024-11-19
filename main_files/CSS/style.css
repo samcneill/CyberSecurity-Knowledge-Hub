@@ -1,7 +1,7 @@
 /* Styling for All */
-  html { 
-    box-sizing: border-box; 
-  }
+html { 
+  box-sizing: border-box; 
+}
 *, *:before, *:after { 
   box-sizing: inherit; 
 }
@@ -67,39 +67,42 @@ a.navbar {
   
 
 h1 { 
-    display: block;
-    font-size: 2em;
-    margin-top: 0.67em;
-    margin-bottom: 0;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
+  display: block;
+  font-size: 3em;
+  margin-top: 0.67em;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  color: #4A2F83; /* Dark purple heading color for contrast */
 }
 h2 {
-    display: block;
-    font-size: 1.5em;
-    margin-top: 0.83em;
-    margin-bottom: 0.83em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
+  display: block;
+  font-size: 2em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  color: #4A2F83; /* Dark purple heading color for contrast */
 }
 h3 { 
-    display: block;
-    font-size: 1.17em;
-    margin-top: 0;
-    margin-bottom: 1em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
+  display: block;
+  font-size: 1.5em;
+  margin-top: 0;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  color: #4A2F83; /* Dark purple heading color for contrast */
 }
 
 /* Root Elements */
 
 :root {
-  --main-text-color: black;
-  --main-background-color: #C9C5EB;
-  --link-text-color: white;
+  --main-text-color: #333;  /* Dark gray text */
+  --main-background-color: #D6C9F1;  /* Light purple background */
+  --link-text-color: #FFD700; /* Gold link text color */
   --button-body-color: #484297;
   --button-border-color: black;
 }
@@ -107,12 +110,15 @@ h3 {
 /* Footer Styling */
 
 .footer {
-  position:fixed;
-  left:0px;
-  bottom:0px;
-  height:30px;
-  width:100%;
-  background:#999;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 30px;
+  width: 100%;
+  background: #2F356D;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 10px;
 }
 
 /* Link Styling */
