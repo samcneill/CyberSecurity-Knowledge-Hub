@@ -119,32 +119,6 @@
         <p>Copyright Melbourne, Australia</p>
     </footer>
 
-    <script>
-        // JavaScript to toggle light and dark mode
-        document.getElementById('lightMode').addEventListener('click', function () {
-            document.body.style.backgroundColor = '#FFFFFF';
-            document.body.style.color = '#333';
-        });
-
-        document.getElementById('darkMode').addEventListener('click', function () {
-            document.body.style.backgroundColor = '#333';
-            document.body.style.color = '#FFFFFF';
-        });
-
-        // JavaScript to increase font size
-        document.getElementById('largeTextButton').addEventListener('click', function () {
-            document.body.style.fontSize = 'larger';
-        });
-
-        // JavaScript to toggle high contrast mode
-        let highContrastEnabled = false;
-        document.getElementById('highContrast').addEventListener('click', function () {
-            if (highContrastEnabled) {
-                document.body.style.backgroundColor = '#D6C9F1'; // Reset to light purple background
-                document.body.style.color = '#333';
-            } else {
-                document.body.style.backgroundColor = '#000';
-                document.body.style.color = '#FFD700';
-            }
-            highContrastEnabled = !highContrastEnabled;
-        });
+    <script src="Javascript/index.js"></script>
+</body>
+</html>

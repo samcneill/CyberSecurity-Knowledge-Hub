@@ -101,6 +101,10 @@ h3 {
   --button-border-color: black;
 }
 
+.large-text {
+  font-size: 1.5em; /* Adjust as necessary */
+}
+
 /* Color Menu Styling */
 .color-menu {
   font-family: sans-serif;
