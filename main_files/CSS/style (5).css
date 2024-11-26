@@ -1,0 +1,125 @@
+/* Styling for All */
+html { 
+  box-sizing: border-box; 
+}
+*, *:before, *:after { 
+  box-sizing: inherit; 
+}
+img { 
+  box-sizing: content-box; 
+}
+
+a:focus {
+  outline: thin dotted;
+}
+
+.component {
+  box-sizing: content-box;
+}
+
+/* Nav Bar Styling */
+.navbar {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 10px;
+  height: 50px;
+  width: 80%;
+  margin-left: 1px;
+  margin-right: 1px;
+  text-align: center;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  background-color: #4A2F83; /* Dark purple background */
+  color: white; /* White text color for accessibility */
+}
+
+a.navbar {
+  color: #FFD700; /* Gold text color */
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.funcbar {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  font-size: 34px;
+  font-weight: bold;
+  border-radius: 10px;
+  height: 70px;
+  width: 75%;
+  margin-left: 3px;
+  margin-right: 3px;
+  text-align: center;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  background-color: #4A2F83; /* Dark purple background */
+  color: white; /* White text color for accessibility */
+}
+
+a.funcbar {
+  color: #FFD700; /* Gold text color */
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.funcbar img, .navbar img {
+  width: 20px;
+  height: 20px;
+}
+
+.info {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Header Styling */
+h1 { 
+  display: block;
+  font-size: 3em;
+  margin-top: 0.67em;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  color: #4A2F83; /* Dark purple heading color for contrast */
+}
+h2 {
+  font-size: 2em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  color: #4A2F83; /* Dark purple heading color for contrast */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Space between text */
+}
+h3 { 
+  display: block;
+  font-size: 1.5em;
+  margin-top: 0;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  color: #4A2F83; /* Dark purple heading color for contrast */
+}
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 5px solid rgb(250, 12, 12);
+  height: 200px;
+  padding: 20px;
+  background-color: #FFF; 
+  /* White background for[_{{{CITATION{{{_1{](https://github.com/panthayanjames/phpoops/tree/1b884742334e2c75911c4f0162a5feaa83bc0ec1/edit_records.php)[_{{{CITATION{{{_2{](https://github.com/aanchalmalviya22/BANKING-SYSTEM/tree/90ec89ab053b4cdf40631f1a38e9ac7b94af8bff/index.php)
