@@ -10,9 +10,15 @@ document.getElementById('darkMode').addEventListener('click', function () {
     document.body.style.color = '#FFFFFF';
 });
 
-// Function to increase font size
+// Function to toggle large text
+let largeTextEnabled = false;
 document.getElementById('largeTextButton').addEventListener('click', function () {
-    document.body.classList.toggle('large-text');
+    if (largeTextEnabled) {
+        document.body.style.fontSize = '16px'; // Reset to default font size
+    } else {
+        document.body.style.fontSize = '1.5em'; // Increase font size
+    }
+    largeTextEnabled = !largeTextEnabled;
 });
 
 // Function to toggle high contrast mode
@@ -27,6 +33,3 @@ document.getElementById('highContrast').addEventListener('click', function () {
     }
     highContrastEnabled = !highContrastEnabled;
 });
-
-// Optional: Add styles for large text mode using CSS class
-document.body.classList.add('large-text');
