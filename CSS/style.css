@@ -19,7 +19,6 @@ a:focus {
 
 /* Nav Bar Styling */
 .navbar {
-  background-color: #2F356D;
   margin-top: 5px;
   margin-bottom: 5px;
   font-size: 24px;
@@ -28,21 +27,24 @@ a:focus {
   height: 50px;
   width: 80%;
   margin-left: 1px;
-  margin-right: 1px;
-  padding: 10px;
-  color: #FFFFFF;
+  margin-right: 1px;;
   text-align: center;
-  justify-content: center;
-  align-items: center;
   position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  background-color: #4A2F83; /* Dark purple background */
+  color: white; /* White text color for accessibility */
 }
 
 a.navbar {
-  color: #FFFFFF;
+  color: #FFD700; /* Gold text color */
+  text-decoration: none;
+  margin: 0 5px;
 }
 
 .funcbar {
-  background-color: #2F356D;
   margin-top: 3px;
   margin-bottom: 3px;
   font-size: 34px;
@@ -52,12 +54,29 @@ a.navbar {
   width: 75%;
   margin-left: 3px;
   margin-right: 3px;
-  padding: 5px;
-  color: #FFFFFF;
   text-align: center;
-  justify-content: center;
-  align-items: center;
   position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  background-color: #4A2F83; /* Dark purple background */
+  color: white; /* White text color for accessibility */
+}
+
+a.funcbar {
+  color: #FFD700; /* Gold text color */
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.funcbar img, .navbar img {
+  width: 20px;
+  height: 20px;
+}
+.info {
+  text-align: center;
+  margin-top: 20px;
 }
 
 /* Header Styling */
@@ -72,7 +91,6 @@ h1 {
   color: #4A2F83; /* Dark purple heading color for contrast */
 }
 h2 {
-  display: block;
   font-size: 2em;
   margin-top: 0.83em;
   margin-bottom: 0.83em;
@@ -80,6 +98,10 @@ h2 {
   margin-right: 0;
   font-weight: bold;
   color: #4A2F83; /* Dark purple heading color for contrast */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ap: 10px; /* Space between text */
 }
 h3 { 
   display: block;
@@ -91,6 +113,17 @@ h3 {
   font-weight: bold;
   color: #4A2F83; /* Dark purple heading color for contrast */
 }
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 5px solid rgb(250, 12, 12);
+  height: 200px;
+  padding: 20px;
+  background-color: #FFF; /* White background for content */
+  color: #000; /* Black text for readability in container */
+}
+
 
 /* Root Elements */
 :root {
@@ -153,15 +186,16 @@ h3 {
 
 /* Footer Styling */
 .footer {
-  position: fixed;
   left: 0;
   bottom: 0;
   height: 30px;
-  width: 100%;
-  background: #2F356D;
-  color: #FFFFFF;
+  background-color: #4A2F83; /* Match the background color */
+  color: white;
   text-align: center;
   padding: 10px;
+  position: relative;
+  width: 100%;
+  bottom: 0;
 }
 
 /* Link Styling */
@@ -184,6 +218,11 @@ body {
   align-items: center;
   font-family: Hack, monospace;
   font-size: 16px;
-  color: var(--main-text-color);
-  background-color: var(--main-background-color);
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #D6C9F1; /* Light purple background */
+  font-family: Arial, sans-serif;
+  color: #333; /* Dark gray text for better readability */
 }
