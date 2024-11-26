@@ -101,6 +101,7 @@ h3 {
   --button-border-color: black;
 }
 
+/* Large Text Mode */
 .large-text {
   font-size: 1.5em; /* Adjust as necessary */
 }

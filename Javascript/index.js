@@ -14,9 +14,9 @@ document.getElementById('darkMode').addEventListener('click', function () {
 let largeTextEnabled = false;
 document.getElementById('largeTextButton').addEventListener('click', function () {
     if (largeTextEnabled) {
-        document.body.style.fontSize = '16px'; // Reset to default font size
+        document.body.classList.remove('large-text'); // Reset to default font size
     } else {
-        document.body.style.fontSize = '1.5em'; // Increase font size
+        document.body.classList.add('large-text'); // Increase font size
     }
     largeTextEnabled = !largeTextEnabled;
 });
