@@ -9,32 +9,71 @@
     <link rel="shortcut icon" href="Icons/favicon.ico">
     <script src="Javascript/toggles.js"></script>
     <title>Home</title>
-    <style>
-        * {
-            box-sizing: border-box;
+  <style>
+        *, *::before, *::after { 
+            box-sizing: inherit; 
         }
         body {
             margin: 0;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
-        }
-        main {
-            flex: 1;
-            padding: 20px;
-        }
-        footer {
-            background-color: #C9C5EB; /* Match the background color */
-            color: black;
-            text-align: center;
-            padding: 10px;
-            margin-top: auto;
+            background-color: #D6C9F1; /* Light purple background */
+            font-family: Arial, sans-serif;
+            color: #333; /* Dark gray text for better readability */
+            font-size: 16px; /* Default font size */
         }
         h1 {
-            font-size: 3em; /* Increase h1 size */
+            font-size: 3rem; /* Large heading */
+            color: #4A2F83; /* Dark purple heading color for contrast */
         }
-        .info h2 span {
-            display: inline-block;
+        h2 {
+            font-size: 2rem; /* Medium heading */
+            color: #4A2F83; /* Dark purple heading color for contrast */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* Space between text */
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 5px solid rgb(250, 12, 12);
+            height: 200px;
+            padding: 20px;
+            background-color: #FFF; /* White background for content */
+            color: #000; /* Black text for readability in container */
+        }
+        .funcbar, .navbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px;
+            background-color: #4A2F83; /* Dark purple background */
+            color: white; /* White text color for accessibility */
+        }
+        .funcbar a, .navbar a {
+            color: #FFD700; /* Gold text color */
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .funcbar img, .navbar img {
+            width: 20px;
+            height: 20px;
+        }
+        .info {
+            text-align: center;
+            margin-top: 20px;
+        }
+        footer {
+            background-color: #4A2F83; /* Match the background color */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            width: 100%;
+            bottom: 0;
         }
     </style>
 </head>
