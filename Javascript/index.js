@@ -33,3 +33,12 @@ document.getElementById('highContrast').addEventListener('click', function () {
     }
     highContrastEnabled = !highContrastEnabled;
 });
+
+// Function to handle search button click
+document.getElementById('searchIcon').addEventListener('click', function () {
+    alert('Search functionality coming soon!'); // You can replace this with actual search functionality
+});
+
+document.getElementById('searchIcon2').addEventListener('click', function () {
+    alert('Search functionality coming soon!'); // You can replace this with actual search functionality
+});
