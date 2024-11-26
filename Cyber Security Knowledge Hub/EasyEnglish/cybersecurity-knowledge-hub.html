@@ -1,19 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./CSS/style.css">
-    <link rel="stylesheet" href="./CSS/responsive.css">
-    <link rel="shortcut icon" href="./Images/favicon.ico">
-    <title>CyberSecurity Knowledge Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/responsive.css">
+    <link rel="icon" href="Icons/favicon.ico" type="image/x-icon">
+    <title>Accessible Cybersecurity Knowledge</title>
     <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
+        *, *::before, *::after { 
+            box-sizing: inherit; 
         }
-
         body {
             margin: 0;
             min-height: 100vh;
@@ -22,13 +19,12 @@
             background-color: #D6C9F1; /* Light purple background */
             font-family: Arial, sans-serif;
             color: #333; /* Dark gray text for better readability */
+            font-size: 16px; /* Default font size */
         }
-
         h1 {
             font-size: 3rem; /* Large heading */
             color: #4A2F83; /* Dark purple heading color for contrast */
         }
-
         h2 {
             font-size: 2rem; /* Medium heading */
             color: #4A2F83; /* Dark purple heading color for contrast */
@@ -37,7 +33,6 @@
             align-items: center;
             gap: 10px; /* Space between text */
         }
-
         .container {
             width: 100%;
             max-width: 800px;
@@ -48,7 +43,6 @@
             background-color: #FFF; /* White background for content */
             color: #000; /* Black text for readability in container */
         }
-
         .funcbar, .navbar {
             display: flex;
             justify-content: space-around;
@@ -57,23 +51,19 @@
             background-color: #4A2F83; /* Dark purple background */
             color: white; /* White text color for accessibility */
         }
-
         .funcbar a, .navbar a {
             color: #FFD700; /* Gold text color */
             text-decoration: none;
             margin: 0 5px;
         }
-
         .funcbar img, .navbar img {
             width: 20px;
             height: 20px;
         }
-
         .info {
             text-align: center;
             margin-top: 20px;
         }
-
         footer {
             background-color: #4A2F83; /* Match the background color */
             color: white;
@@ -85,40 +75,42 @@
         }
     </style>
 </head>
-
 <body>
     <main>
-        <div class="funcbar">
-            <a href="cybersecurity-knowledge-hub-ee.html">Easy English</a>
-            <a href="cybersecurity-knowledge-hub-pe.html">Plain English</a>
-            <img src="Icons/sunicon.png" alt="Sun Icon" id="lightMode">
-            <img src="Icons/moonicon.png" alt="Moon Icon" id="darkMode">
-            <span id="largeTextButton">Large Text</span>
-            <img src="Icons/TritIcon.png" alt="Trit Icon" id="highContrast">
-            <img src="Icons/searchicon.png" alt="Search Icon">
-        </div>
-        
-        <br>
-        
-        <nav class="navbar">
-            <a href="home.html">Home</a>
-            <a href="about-us.html">About Us</a>
-            <a href="cybersecurity-knowledge-hub.html">Cybersecurity Hub</a>
-            <a href="australian-newzealand-laws.html">AU/NZ Laws</a>
-            <a href="resources.html">Resources</a>
-            <a href="newsletter.html">Newsletter</a>
-            <a href="contact-form.html">Contact Us</a>
+        <h1 id="mainWord">Accessible Cybersecurity</h1>
+        <nav class="funcbar" aria-label="Accessibility Options">
+            <a href="main_files/index-ee.html" aria-label="Easy English">Easy English</a>
+            <a href="main_files/index-pe.html" aria-label="Plain English">Plain English</a>
+            <button aria-label="Toggle Light Mode" id="lightMode">
+                <img src="Icons/sunicon.png" alt="Sun Icon">
+            </button>
+            <button aria-label="Toggle Dark Mode" id="darkMode">
+                <img src="Icons/moonicon.png" alt="Moon Icon">
+            </button>
+            <button aria-label="Toggle Large Text" id="largeTextButton">Large Text</button>
+            <button aria-label="Toggle High Contrast" id="highContrast">
+                <img src="Icons/tritIcon.png" alt="High Contrast Icon">
+            </button>
+            <button aria-label="Open Search">
+                <img src="Icons/searchicon.png" alt="Search Icon">
+            </button>
         </nav>
-        
-        <img src="https://i.imgur.com/rVlMF8D.png" alt="Six individuals are in the midst of a discussion with the text 'Cyber Quantum' above them with an electrified border." style="width:600px; height:498px;">
-        
+        <br>
+        <nav class="navbar">
+            <a href="main_files/home.html">Home</a>
+            <a href="main_files/about-us.html">About Us</a>
+            <a href="main_files/cybersecurity-knowledge-hub.html">Cybersecurity Hub</a>
+            <a href="main_files/australian-newzealand-laws.html">AU/NZ Laws</a>
+            <a href="main_files/resources.html">Resources</a>
+            <a href="main_files/newsletter.html">Newsletter</a>
+            <a href="main_files/contact-form.html">Contact Us</a>
+        </nav>
+        <img src="https://i.imgur.com/rVlMF8D.png" alt="Six individuals are in the midst of a discussion with the text 'Cyber Quantum' above them with an electrified border" style="width:600px;height:498px;">
         <div class="info">
-            <h2><span>Audio</span><span>Braille</span></h2>
+            <h2>Audio Braille</h2>
         </div>
-        
         <h1>New Section 1</h1>
         <h1>New Section 2</h1>
-        
         <p>Hello</p>
     </main>
 
@@ -126,28 +118,6 @@
         <p>Copyright Melbourne, Australia</p>
     </footer>
 
-    <script>
-        // JavaScript to toggle light and dark mode
-        document.getElementById('lightMode').addEventListener('click', function () {
-            document.body.style.backgroundColor = '#FFFFFF';
-            document.body.style.color = '#333';
-        });
-
-        document.getElementById('darkMode').addEventListener('click', function () {
-            document.body.style.backgroundColor = '#333';
-            document.body.style.color = '#FFFFFF';
-        });
-
-        // JavaScript to increase font size
-        document.getElementById('largeTextButton').addEventListener('click', function () {
-            document.body.style.fontSize = 'larger';
-        });
-
-        // JavaScript to toggle high contrast mode
-        document.getElementById('highContrast').addEventListener('click', function () {
-            document.body.style.backgroundColor = '#000';
-            document.body.style.color = '#FFD700';
-        });
-    </script>
+    <script src="Javascript/index.js"></script>
 </body>
 </html>
