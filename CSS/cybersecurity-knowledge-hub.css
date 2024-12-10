@@ -1,24 +1,24 @@
 /* Styling for All */
 html { 
     box-sizing: border-box; 
-  }
-  *, *:before, *:after { 
+}
+*, *:before, *:after { 
     box-sizing: inherit; 
-  }
-  img { 
+}
+img { 
     box-sizing: content-box; 
-  }
-  
-  a:focus {
+}
+
+a:focus {
     outline: thin dotted;
-  }
-  
-  .component {
+}
+
+.component {
     box-sizing: content-box;
-  }
-  
-  /* Nav Bar Styling */
-  .navbar {
+}
+
+/* Nav Bar Styling */
+.navbar {
     margin-top: 5px;
     margin-bottom: 5px;
     font-size: 24px;
@@ -36,20 +36,20 @@ html {
     padding: 10px;
     background-color: #4A2F83; /* Dark purple background */
     color: white; /* White text color for accessibility */
-  }
-  
-  a.navbar {
+}
+
+a.navbar {
     color: #FFD700; /* Gold text color */
     text-decoration: none;
     margin: 0 5px;
-  }
-  
-  /* Large Text Mode */
-  .large-text {
+}
+
+/* Large Text Mode */
+.large-text {
     font-size: 1.5em; /* Adjust as necessary */
-  }
-  
-  .funcbar {
+}
+
+.funcbar {
     margin-top: 3px;
     margin-bottom: 3px;
     font-size: 34px;
@@ -67,26 +67,26 @@ html {
     padding: 10px;
     background-color: #4A2F83; /* Dark purple background */
     color: white; /* White text color for accessibility */
-  }
-  
-  a.funcbar {
+}
+
+a.funcbar {
     color: #FFD700; /* Gold text color */
     text-decoration: none;
     margin: 0 5px;
-  }
-  
-  .funcbar img, .navbar img {
+}
+
+.funcbar img, .navbar img {
     width: 20px;
     height: 20px;
-  }
-  
-  .info {
+}
+
+.info {
     text-align: center;
     margin-top: 20px;
-  }
-  
-  /* Header Styling */
-  h1 { 
+}
+
+/* Header Styling */
+h1 { 
     display: block;
     font-size: 3em;
     margin-top: 0.67em;
@@ -95,8 +95,8 @@ html {
     margin-right: 0;
     font-weight: bold;
     color: #4A2F83; /* Dark purple heading color for contrast */
-  }
-  h2 {
+}
+h2 {
     font-size: 2em;
     margin-top: 0.83em;
     margin-bottom: 0.83em;
@@ -108,8 +108,8 @@ html {
     justify-content: center;
     align-items: center;
     gap: 10px; /* Space between text */
-  }
-  h3 { 
+}
+h3 { 
     display: block;
     font-size: 1.5em;
     margin-top: 0;
@@ -118,8 +118,9 @@ html {
     margin-right: 0;
     font-weight: bold;
     color: #4A2F83; /* Dark purple heading color for contrast */
-  }
-  .container {
+}
+.container {
     width: 100%;
     max-width: 800px;
-    margin[_{{{CITATION{{{_1{](https://github.com/ProsperousHeart/TrainingUsingJupyter/tree/50401c47f3d835065a240ceeea0385b99623c323/JavaScript%2F02_JS_Basics.MD)[_{{{CITATION{{{_2{](https://github.com/panthayanjames/phpoops/tree/1b884742334e2c75911c4f0162a5feaa83bc0ec1/edit_records.php)[_{{{CITATION{{{_3{](https://github.com/aanchalmalviya22/BANKING-SYSTEM/tree/90ec89ab053b4cdf40631f1a38e9ac7b94af8bff/index.php)
+    margin: 0 auto;
+    border: 5px solid rgb(250, 12,[_{{{CITATION{{{_1{](https://github.com/ProsperousHeart/TrainingUsingJupyter/tree/50401c47f3d835065a240ceeea0385b99623c323/JavaScript%2F02_JS_Basics.MD)[_{{{CITATION{{{_2{](https://github.com/panthayanjames/phpoops/tree/1b884742334e2c75911c4f0162a5feaa83bc0ec1/edit_records.php)[_{{{CITATION{{{_3{](https://github.com/aanchalmalviya22/BANKING-SYSTEM/tree/90ec89ab053b4cdf40631f1a38e9ac7b94af8bff/index.php)
