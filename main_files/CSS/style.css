@@ -31,13 +31,17 @@ body {
 
 /* Nav Bar Styling */
 .navbar {
-  margin: 5px 1px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   font-size: 24px;
   font-weight: bold;
   border-radius: 10px;
   height: 50px;
   width: 80%;
+  margin-left: 1px;
+  margin-right: 1px;
   text-align: center;
+  position: relative;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -53,13 +57,17 @@ a.navbar {
 }
 
 .funcbar {
-  margin: 3px 3px;
+  margin-top: 3px;
+  margin-bottom: 3px;
   font-size: 34px;
   font-weight: bold;
   border-radius: 10px;
   height: 70px;
   width: 75%;
+  margin-left: 3px;
+  margin-right: 3px;
   text-align: center;
+  position: relative;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -88,13 +96,19 @@ a.funcbar {
 h1 { 
   display: block;
   font-size: 3em;
-  margin: 0.67em 0 0;
+  margin-top: 0.67em;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
   font-weight: bold;
   color: #4A2F83; /* Dark purple heading color for contrast */
 }
 h2 {
   font-size: 2em;
-  margin: 0.83em 0;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
   font-weight: bold;
   color: #4A2F83; /* Dark purple heading color for contrast */
   display: flex;
@@ -105,18 +119,22 @@ h2 {
 h3 { 
   display: block;
   font-size: 1.5em;
-  margin: 0 0 1em;
+  margin-top: 0;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
   font-weight: bold;
   color: #4A2F83; /* Dark purple heading color for contrast */
 }
 
 .container {
+  width: 100%;
   max-width: 800px;
   margin: 0 auto;
   border: 5px solid rgb(250, 12, 12);
   height: 200px; /* Consider using min-height */
   padding: 20px;
-  background-color: #FFF; 
+  background-color: #FFF; /* White background for content */
 }
 
 /* Dark mode styles */
