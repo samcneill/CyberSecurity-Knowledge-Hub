@@ -2,16 +2,14 @@
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/responsive.css">
     <link rel="icon" href="Icons/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/accessibility@1.1.2/dist/accessibility.min.js"></script>
+    <script src="Javascript/toggles.js"></script>
     <title>Accessible Cybersecurity Knowledge</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="toggles.js"></script>
-    
     <style>
         *, *::before, *::after { 
             box-sizing: inherit; 
@@ -96,12 +94,32 @@
             <button aria-label="Toggle High Contrast" id="HighContrastButton" onclick="highContrast()">
                 <img src="Icons/tritIcon.png" alt="High Contrast Icon">
             </button>
-            <button aria-label="Open Search" id="searchIcon1">
-                <i class="fas fa-search"></i>
-            </button>
+            <form class="search-bar" action="https://www.google.com/search" method="get" target="_blank" style="display: flex; align-items: center; gap: 5px;">
+                <label for="searchInput" style="position: absolute; left: -9999px;">Search</label>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    name="q" 
+                    placeholder="Search" 
+                    aria-label="Enter search query" 
+                    required 
+                    style="padding: 5px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;"
+                />
+                <button 
+                    type="submit" 
+                    id="searchIcon" 
+                    aria-label="Search"
+                    style="background: none; border: none; cursor: pointer;"
+                >
+                    <i class="fas fa-search" style="font-size: 20px;"></i>
+                </button>
+            </form>
+            
         </nav>
         <br>
         <nav class="navbar">
+            <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a> 
+            <a href="#"><i class="fa fa-fw fa-search"></i> Search</a> 
             <a href="main_files/home.html">Home</a>
             <a href="main_files/about-us.html">About Us</a>
             <a href="main_files/cybersecurity-knowledge-hub.html">Cybersecurity Hub</a>
@@ -115,6 +133,7 @@
             <h2>Click here for <u>Audio</u> or <u>Braille</u> or <u>Auslan</u></h2>
         </div>
         <h1>New Section 1</h1>
+        <h1>New Section 2</h1>
         <p>Hello</p>
     </main>
 
@@ -122,6 +141,6 @@
         <p>Copyright Melbourne, Australia</p>
     </footer>
 
-    <script src="Javascript/index.js"></script>
+    <script src="Javascript/toggles.js"></script>
 </body>
 </html>
