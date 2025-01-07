@@ -116,6 +116,7 @@
             </form>
             
         </nav>
+
         <br>
         <nav class="navbar">
             <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a> 
@@ -142,5 +143,30 @@
     </footer>
 
     <script src="Javascript/toggles.js"></script>
+
+    <script>
+        function lightMode() {
+            document.body.style.backgroundColor = "#ffffff";
+            document.body.style.color = "#000000";
+        }
+
+        function darkMode() {
+            document.body.style.backgroundColor = "#000000";
+            document.body.style.color = "#ffffff";
+        }
+
+        function largeText() {
+            document.body.style.fontSize = "2rem";
+        }
+
+        function highContrast() {
+            document.body.style.backgroundColor = "#000000";
+            document.body.style.color = "#ffff00";
+            document.querySelectorAll("a").forEach(link => {
+                link.style.color = "#00ffff";
+            });
+        }
+    </script>
+
 </body>
 </html>
