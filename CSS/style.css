@@ -17,6 +17,17 @@ a:focus {
   box-sizing: content-box;
 }
 
+/* Button Styling */
+
+.button {
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: #D6C9F1;
+  color: white;
+}
+
 /* Nav Bar Styling */
 .navbar {
   margin-top: 5px;
