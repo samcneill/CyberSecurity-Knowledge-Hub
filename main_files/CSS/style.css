@@ -19,17 +19,13 @@ a:focus {
 
 /* Nav Bar Styling */
 .navbar {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin: 5px 1px;
   font-size: 24px;
   font-weight: bold;
   border-radius: 10px;
   height: 50px;
   width: 80%;
-  margin-left: 1px;
-  margin-right: 1px;
   text-align: center;
-  position: relative;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -45,17 +41,13 @@ a.navbar {
 }
 
 .funcbar {
-  margin-top: 3px;
-  margin-bottom: 3px;
+  margin: 3px 3px;
   font-size: 34px;
   font-weight: bold;
   border-radius: 10px;
   height: 70px;
   width: 75%;
-  margin-left: 3px;
-  margin-right: 3px;
   text-align: center;
-  position: relative;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -84,19 +76,13 @@ a.funcbar {
 h1 { 
   display: block;
   font-size: 3em;
-  margin-top: 0.67em;
-  margin-bottom: 0;
-  margin-left: 0;
-  margin-right: 0;
+  margin: 0.67em 0 0;
   font-weight: bold;
   color: #4A2F83; /* Dark purple heading color for contrast */
 }
 h2 {
   font-size: 2em;
-  margin-top: 0.83em;
-  margin-bottom: 0.83em;
-  margin-left: 0;
-  margin-right: 0;
+  margin: 0.83em 0;
   font-weight: bold;
   color: #4A2F83; /* Dark purple heading color for contrast */
   display: flex;
@@ -107,19 +93,44 @@ h2 {
 h3 { 
   display: block;
   font-size: 1.5em;
-  margin-top: 0;
-  margin-bottom: 1em;
-  margin-left: 0;
-  margin-right: 0;
+  margin: 0 0 1em;
   font-weight: bold;
   color: #4A2F83; /* Dark purple heading color for contrast */
 }
+
 .container {
-  width: 100%;
   max-width: 800px;
   margin: 0 auto;
   border: 5px solid rgb(250, 12, 12);
-  height: 200px;
+  height: 200px; /* Consider using min-height */
   padding: 20px;
   background-color: #FFF; 
-  /* White background for[_{{{CITATION{{{_1{](https://github.com/panthayanjames/phpoops/tree/1b884742334e2c75911c4f0162a5feaa83bc0ec1/edit_records.php)[_{{{CITATION{{{_2{](https://github.com/aanchalmalviya22/BANKING-SYSTEM/tree/90ec89ab053b4cdf40631f1a38e9ac7b94af8bff/index.php)
+}
+
+/* Default styles */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Dark mode styles */
+.dark-mode {
+  background-color: #121212;
+  color: #FFFFFF;
+}
+
+/* Light mode styles */
+.light-mode {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+/* High contrast mode styles */
+.high-contrast {
+  background-color: #000000;
+  color: #FFFF00;
+}
+
+/* Large text mode styles */
+.large-text {
+  font-size: 2em;
+}
