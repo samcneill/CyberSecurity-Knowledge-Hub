@@ -26,17 +26,28 @@
             font-size: 16px; /* Base font size */
         }
 
-
-
-        nav.funcbar {
+        header.funcbar {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
-            padding: 10px;
+            padding: 10px 20px;
             background-color: #4A2F83; /* Dark purple */
             color: white;
         }
-        nav.funcbar button {
+        header.funcbar .logo {
+            display: flex;
+            align-items: center;
+        }
+        header.funcbar .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        header.funcbar .accessibility-options {
+            display: flex;
+            gap: 10px;
+        }
+        header.funcbar button {
             background: #FFD700; /* Gold */
             border: none;
             padding: 10px 20px;
@@ -44,17 +55,9 @@
             font-size: 1rem;
             border-radius: 5px;
         }
-        nav.funcbar button:hover {
+        header.funcbar button:hover {
             background: #FFA500; /* Orange for hover */
         }
-
-        .funcbar img, .navbar img {
-            width: 20px;
-            height: 20px;
-        }
-        .info {
-            text-align: center;
-            margin-top: 20px;
         main {
             padding: 20px;
             text-align: center;
@@ -75,10 +78,8 @@
         }
         .high-contrast {
             background-color: #000000;
-            color: #FFD700; /* Gold text
-            */
+            color: #FFD700; /* Gold text */
         }
-
         footer {
             background-color: #4A2F83;
             color: white;
@@ -91,31 +92,24 @@
     </style>
 </head>
 <body>
-    <nav class="funcbar">
-        <button id="LightModeButton" aria-label="Toggle Light Mode">Light Mode</button>
-        <button id="DarkModeButton" aria-label="Toggle Dark Mode">Dark Mode</button>
-        <button id="LargeTextButton" aria-label="Toggle Large Text">Large Text</button>
-        <button id="HighContrastButton" aria-label="Toggle High Contrast">High Contrast</button>
-    </nav>
+    <header class="funcbar">
+        <div class="logo">
+            <img src="Icons/favicon.ico" alt="Site Logo">
+            <h1>Accessible Cybersecurity</h1>
+        </div>
+        <div class="accessibility-options">
+            <button id="LightModeButton" aria-label="Toggle Light Mode">Light Mode</button>
+            <button id="DarkModeButton" aria-label="Toggle Dark Mode">Dark Mode</button>
+            <button id="LargeTextButton" aria-label="Toggle Large Text">Large Text</button>
+            <button id="HighContrastButton" aria-label="Toggle High Contrast">High Contrast</button>
+        </div>
+    </header>
 
     <main>
-        <h1>Accessible Cybersecurity</h1>
         <p>Explore accessibility features to enhance user experience.</p>
-
-        <h1 id="mainWord">Accessible Cybersecurity</h1>
         <nav class="funcbar" aria-label="Accessibility Options">
             <a href="main_files/index-ee.html" aria-label="Easy English">Easy English</a>
             <a href="main_files/index-pe.html" aria-label="Plain English">Plain English</a>
-            <button aria-label="Toggle Light Mode" id="LightModeButton" onclick="lightMode()">
-                <img src="Icons/sunicon.png" alt="Sun Icon">
-            </button>
-            <button aria-label="Toggle Dark Mode" id="DarkModeButton" onclick="darkMode()">
-                <img src="Icons/moonicon.png" alt="Moon Icon">
-            </button>
-            <button aria-label="Toggle Large Text" id="LargeTextButton" onclick="largeText()">Large Text</button>
-            <button aria-label="Toggle High Contrast" id="HighContrastButton" onclick="highContrast()">
-                <img src="Icons/tritIcon.png" alt="High Contrast Icon">
-            </button>
             <form class="search-bar" action="https://www.google.com/search" method="get" target="_blank" style="display: flex; align-items: center; gap: 5px;">
                 <label for="searchInput" style="position: absolute; left: -9999px;">Search</label>
                 <input 
@@ -137,7 +131,6 @@
                 </button>
             </form>
         </nav>
-        <br>
         <nav class="navbar">
             <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
             <a href="#"><i class="fa fa-fw fa-search"></i> Search</a>
@@ -167,13 +160,13 @@
         // Light Mode Button
         document.getElementById('LightModeButton').addEventListener('click', () => {
             clearModes();
-            document.body.classList.toggle('light-mode');
+            document.body.classList.add('light-mode');
         });
 
         // Dark Mode Button
         document.getElementById('DarkModeButton').addEventListener('click', () => {
             clearModes();
-            document.body.classList.toggle('dark-mode');
+            document.body.classList.add('dark-mode');
         });
 
         // Large Text Button
@@ -184,7 +177,7 @@
         // High Contrast Button
         document.getElementById('HighContrastButton').addEventListener('click', () => {
             clearModes();
-            document.body.classList.toggle('high-contrast');
+            document.body.classList.add('high-contrast');
         });
     </script>
 </body>
