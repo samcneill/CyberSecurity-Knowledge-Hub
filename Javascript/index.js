@@ -10,9 +10,10 @@ document.getElementById('darkMode').addEventListener('click', function () {
     document.body.style.color = '#FFFFFF';
 });
 
+
 // Function to toggle large text
 let largeTextEnabled = false;
-document.getElementById('largeTextButton').addEventListener('click', function () {
+document.getElementById('LargeTextButton').addEventListener('click', function () {
     if (largeTextEnabled) {
         document.body.classList.remove('large-text'); // Reset to default font size
     } else {
@@ -20,6 +21,7 @@ document.getElementById('largeTextButton').addEventListener('click', function ()
     }
     largeTextEnabled = !largeTextEnabled;
 });
+
 
 // Function to toggle high contrast mode
 let highContrastEnabled = false;

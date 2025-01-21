@@ -155,7 +155,7 @@ h3 {
   color: #FFFF00;
 }
 
-/* Large text mode styles */
+/* Add this to your CSS */
 .large-text {
-  font-size: 2em;
+  font-size: 2rem !important; /* Override all font sizes */
 }
