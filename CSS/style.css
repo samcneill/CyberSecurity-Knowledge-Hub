@@ -44,6 +44,15 @@ a.navbar {
   margin: 0 5px;
 }
 
+.button {
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: #purple; /* Green */
+  color: white;
+}
+
 /* Large Text Mode */
 .large-text {
   font-size: 1.5em; /* Adjust as necessary */
