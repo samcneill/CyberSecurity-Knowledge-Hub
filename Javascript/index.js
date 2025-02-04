@@ -7,6 +7,7 @@ body.appendChild(header);
 
 const accessibilityOptions = document.createElement('div');
 accessibilityOptions.className = 'accessibility-options';
+accessibilityOptions.style.float = 'right'; // Move to the right side
 accessibilityOptions.role = 'group'; // Add role attribute for accessibility
 header.appendChild(accessibilityOptions);
 
@@ -43,7 +44,7 @@ const searchInput = document.createElement('input');
 searchInput.type = 'text';
 searchInput.id = 'searchInput';
 searchInput.name = 'q';
-searchInput.placeholder = 'Search';
+searchInput.placeholder = 'Search this website';
 searchInput.ariaLabel = 'Search input'; // Add aria-label attribute for accessibility
 searchBar.appendChild(searchInput);
 
@@ -77,12 +78,6 @@ homeLink.href = '#';
 homeLink.innerHTML = '<i class="fa fa-fw fa-home"></i> Home';
 homeLink.ariaLabel = 'Home link'; // Add aria-label attribute for accessibility
 nav.appendChild(homeLink);
-
-const searchLink = document.createElement('a');
-searchLink.href = '#';
-searchLink.innerHTML = '<i class="fa fa-fw fa-search"></i> Search';
-searchLink.ariaLabel = 'Search link'; // Add aria-label attribute for accessibility
-nav.appendChild(searchLink);
 
 const aboutUsLink = document.createElement('a');
 aboutUsLink.href = 'main_files/about-us.html';
@@ -194,26 +189,15 @@ style.textContent = `
         color: white;
         position: relative;
     }
-    header.funcbar::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 30%; /* Adjust as needed */
-        height: 100%;
-        background-color: #FFD700; /* Gold */
-        z-index: 0;
-    }
     header.funcbar .accessibility-options {
         display: flex;
         align-items: center;
         gap: 10px;
         position: relative;
-        z-index: 1;
     }
     header.funcbar button,
     header.funcbar .search-bar {
-        background: #FFD700; /* Gold */
+        background: #4A2F83; /* Dark purple */
         border: none;
         padding: 10px 20px;
         cursor: pointer;
@@ -222,7 +206,7 @@ style.textContent = `
     }
     header.funcbar button:hover,
     header.funcbar .search-bar button:hover {
-        background: #FFA500; /* Orange for hover */
+        background: #3B255F; /* Darker purple for hover */
     }
     header.funcbar .search-bar {
         display: flex;
