@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/accessibility@1.1.2/dist/accessibility.min.js"></script>
     <script src="Javascript/toggles.js"></script>
+    <script src="index.js"></script>
     <title>Accessible Cybersecurity Knowledge</title>
     
     <style>
@@ -33,11 +34,24 @@
             padding: 10px 20px;
             background-color: #4A2F83; /* Dark purple */
             color: white;
+            position: relative;
+        }
+        header.funcbar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30%; /* Adjust as needed */
+            height: 100%;
+            background-color: #FFD700; /* Gold */
+            z-index: 0;
         }
         header.funcbar .accessibility-options {
             display: flex;
             align-items: center;
             gap: 10px;
+            position: relative;
+            z-index: 1;
         }
         header.funcbar button,
         header.funcbar .search-bar {
@@ -133,7 +147,6 @@
         <nav class="navbar">
             <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
             <a href="#"><i class="fa fa-fw fa-search"></i> Search</a>
-            <a href="main_files/home.html">Home</a>
             <a href="main_files/about-us.html">About Us</a>
             <a href="main_files/cybersecurity-knowledge-hub.html">Cybersecurity Hub</a>
             <a href="main_files/australian-newzealand-laws.html">AU/NZ Laws</a>
