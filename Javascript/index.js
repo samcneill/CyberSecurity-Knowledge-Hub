@@ -13,25 +13,37 @@ header.appendChild(accessibilityOptions);
 
 const lightModeButton = document.createElement('button');
 lightModeButton.id = 'LightModeButton';
-lightModeButton.innerHTML = '<img src="Icons/sunicon.png" alt="Sun Icon">';
+lightModeButton.textContent = 'Toggle Light Mode'; // Use text instead of image
 lightModeButton.ariaLabel = 'Toggle Light Mode'; // Add aria-label attribute for accessibility
 accessibilityOptions.appendChild(lightModeButton);
 
 const darkModeButton = document.createElement('button');
 darkModeButton.id = 'DarkModeButton';
-darkModeButton.innerHTML = '<img src="Icons/moonicon.png" alt="Moon Icon">';
+darkModeButton.textContent = 'Toggle Dark Mode'; // Use text instead of image
 darkModeButton.ariaLabel = 'Toggle Dark Mode'; // Add aria-label attribute for accessibility
 accessibilityOptions.appendChild(darkModeButton);
 
-const largeTextButton = document.createElement('button');
-largeTextButton.id = 'LargeTextButton';
-largeTextButton.textContent = 'Large Text';
-largeTextButton.ariaLabel = 'Toggle Large Text'; // Add aria-label attribute for accessibility
-accessibilityOptions.appendChild(largeTextButton);
+const textSizeContainer = document.createElement('div');
+textSizeContainer.style.display = 'flex';
+textSizeContainer.style.alignItems = 'center';
+textSizeContainer.style.gap = '10px';
+accessibilityOptions.appendChild(textSizeContainer);
+
+const decreaseTextSizeButton = document.createElement('button');
+decreaseTextSizeButton.id = 'DecreaseTextSizeButton';
+decreaseTextSizeButton.textContent = 'Decrease Text Size'; // Use text instead of image
+decreaseTextSizeButton.ariaLabel = 'Decrease Text Size'; // Add aria-label attribute for accessibility
+textSizeContainer.appendChild(decreaseTextSizeButton);
+
+const increaseTextSizeButton = document.createElement('button');
+increaseTextSizeButton.id = 'IncreaseTextSizeButton';
+increaseTextSizeButton.textContent = 'Increase Text Size'; // Use text instead of image
+increaseTextSizeButton.ariaLabel = 'Increase Text Size'; // Add aria-label attribute for accessibility
+textSizeContainer.appendChild(increaseTextSizeButton);
 
 const highContrastButton = document.createElement('button');
 highContrastButton.id = 'HighContrastButton';
-highContrastButton.innerHTML = '<img src="Icons/tritIcon.png" alt="High Contrast Icon">';
+highContrastButton.textContent = 'Toggle High Contrast'; // Use text instead of image
 highContrastButton.ariaLabel = 'Toggle High Contrast'; // Add aria-label attribute for accessibility
 accessibilityOptions.appendChild(highContrastButton);
 
@@ -51,7 +63,7 @@ searchBar.appendChild(searchInput);
 const searchIcon = document.createElement('button');
 searchIcon.type = 'submit';
 searchIcon.id = 'searchIcon';
-searchIcon.innerHTML = '<i class="fas fa-search"></i>';
+searchIcon.textContent = 'Search'; // Use text instead of image
 searchIcon.ariaLabel = 'Search'; // Add aria-label attribute for accessibility
 searchBar.appendChild(searchIcon);
 
@@ -75,7 +87,7 @@ main.appendChild(nav);
 const homeLink = document.createElement('a');
 homeLink.className = 'active';
 homeLink.href = '#';
-homeLink.innerHTML = '<i class="fa fa-fw fa-home"></i> Home';
+homeLink.textContent = 'Home'; // Use text instead of image
 homeLink.ariaLabel = 'Home link'; // Add aria-label attribute for accessibility
 nav.appendChild(homeLink);
 
@@ -142,25 +154,38 @@ footer.appendChild(copyright);
 document.getElementById('LightModeButton').addEventListener('click', () => {
     clearModes();
     document.body.classList.add('light-mode');
+    document.getElementById('LightModeButton').focus(); // Move focus to the button
 });
 
 document.getElementById('DarkModeButton').addEventListener('click', () => {
     clearModes();
     document.body.classList.add('dark-mode');
+    document.getElementById('DarkModeButton').focus(); // Move focus to the button
 });
 
-document.getElementById('LargeTextButton').addEventListener('click', () => {
-    document.body.classList.toggle('large-text');
+document.getElementById('IncreaseTextSizeButton').addEventListener('click', () => {
+    const currentFontSize = parseInt(document.body.style.fontSize) || 16;
+    document.body.style.fontSize = `${currentFontSize + 2}px`;
+    document.getElementById('IncreaseTextSizeButton').focus(); // Move focus to the button
+});
+
+document.getElementById('DecreaseTextSizeButton').addEventListener('click', () => {
+    const currentFontSize = parseInt(document.body.style.fontSize) || 16;
+    if (currentFontSize > 10) {
+        document.body.style.fontSize = `${currentFontSize - 2}px`;
+    }
+    document.getElementById('DecreaseTextSizeButton').focus(); // Move focus to the button
 });
 
 document.getElementById('HighContrastButton').addEventListener('click', () => {
     clearModes();
     document.body.classList.add('high-contrast');
+    document.getElementById('HighContrastButton').focus(); // Move focus to the button
 });
 
 // Function to clear all active modes
 function clearModes() {
-    document.body.classList.remove('light-mode', 'dark-mode', 'large-text', 'high-contrast');
+    document.body.classList.remove('light-mode', 'dark-mode', 'high-contrast');
 }
 
 // Add styles
@@ -222,9 +247,6 @@ style.textContent = `
     main {
         padding: 20px;
         text-align: center;
-    }
-    .large-text {
-        font-size: 1.5rem; /* Larger text size */
     }
     .light-mode {
         background-color: #FFFFFF;
