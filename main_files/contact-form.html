@@ -120,7 +120,7 @@
 	}
 
 	input[type=text], select, textarea {
-		width: 100%;
+		width: 85%;
 	 	padding: 12px;
   		border: 1px solid #ccc;
   		border-radius: 4px;
@@ -137,6 +137,7 @@
 	  color: white;
 	  padding: 12px 20px;
 	  border: none;
+	margin-left: 10px
 	  border-radius: 4px;
 	  cursor: pointer;
 	}
@@ -207,10 +208,10 @@
 <main>
 <div class="contactcontainer">
   <form action="/action_page.php">
-    <label for="fname"> Name </label>
+    <label for="fname"> Name </label><br>
     <input type="text" id="fname" name="firstname" placeholder="Your name..">
 
-    <label for="enquiry"> Enquiry Type </label>
+    <label for="enquiry"> Enquiry Type </label><br>
 	<select id="enquiry" name="enquiry">
 		<option value="complaint">Suggestions/Improvements</option>
 		<option value="feedback"> Other Feedback</option>
@@ -218,7 +219,7 @@
 		<option value="issues"> Other issues </option>
 		</select>
 
-		<label for="country">Country</label>
+		<label for="country">Country</label><br>
 		<select id="country" name="country" class="form-control">
 			<option value="selected disabled">Select a country</option>
 			<option value="Afghanistan">Afghanistan</option>
@@ -468,7 +469,7 @@
 			<option value="Zimbabwe">Zimbabwe</option>
 			</select>
 
-    <label for="subject">Subject</label>
+    <label for="subject">Subject</label><br>
     <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
 
     <input type="submit" value="Submit">
