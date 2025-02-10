@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title> Audio Page</title>
-    
+    <title>Audio</title>
     <style>
+        /* Add the same styles as the index.html page */
         *, *::before, *::after {
             box-sizing: border-box;
         }
@@ -67,8 +67,8 @@
             text-align: center;
         }
         .light-mode {
-            background-color: #FFFFFF;
-            color: #333333;
+            background-color: #e6d897;
+            color: #070336;
         }
         .dark-mode {
             background-color: #333333;
@@ -187,18 +187,12 @@
     </header>
 
     <main>
-        <h1 style="font-size: 36px;">Audio Page</h1>
-        <p>Welcome to the audio page.</p>
-        <audio controls>
-            <source src="audio.mp3" type="audio/mp3">
-            Your browser does not support the audio element.
-        </audio>
-        <button id="playButton" aria-label="Play Audio">Play</button>
-        <button id="pauseButton" aria-label="Pause Audio">Pause</button>
-        <button id="stopButton" aria-label="Stop Audio">Stop</button>
+        <h1 style="font-size: 36px;">Auslan Page</h1>
+        <p>Welcome to the Auslan page.</p>
     </main>
 
     <script>
+        // Add the same script as the index.html page
         let currentFontSize = 16;
         const minFontSize = 12;
         const maxFontSize = 24;
@@ -257,24 +251,6 @@
             } else {
                 console.log(`Did not find ${searchQuery} in the page content`);
             }
-        });
-
-        const audioElement = document.querySelector('audio');
-        const playButton = document.getElementById('playButton');
-        const pauseButton = document.getElementById('pauseButton');
-        const stopButton = document.getElementById('stopButton');
-
-        playButton.addEventListener('click', () => {
-            audioElement.play();
-        });
-
-        pauseButton.addEventListener('click', () => {
-            audioElement.pause();
-        });
-
-        stopButton.addEventListener('click', () => {
-            audioElement.currentTime = 0;
-            audioElement.pause();
         });
     </script>
     <footer>
