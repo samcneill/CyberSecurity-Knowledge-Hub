@@ -190,6 +190,7 @@
         <h1 style="font-size: 36px;">Braille Page</h1>
         <p>Welcome to the braille page.</p>
         <p>This page is designed for users who prefer braille.</p>
+        <button id="brailleButton" aria-label="Braille Button">Braille Button</button>
     </main>
 
     <script>
@@ -251,6 +252,11 @@
             } else {
                 console.log(`Did not find ${searchQuery} in the page content`);
             }
+        });
+
+        const brailleButton = document.getElementById('brailleButton');
+        brailleButton.addEventListener('click', () => {
+            // Add functionality for braille button
         });
     </script>
     <footer>

@@ -193,6 +193,9 @@
             <source src="audio.mp3" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>
+        <button id="playButton" aria-label="Play Audio">Play</button>
+        <button id="pauseButton" aria-label="Pause Audio">Pause</button>
+        <button id="stopButton" aria-label="Stop Audio">Stop</button>
     </main>
 
     <script>
@@ -254,6 +257,24 @@
             } else {
                 console.log(`Did not find ${searchQuery} in the page content`);
             }
+        });
+
+        const audioElement = document.querySelector('audio');
+        const playButton = document.getElementById('playButton');
+        const pauseButton = document.getElementById('pauseButton');
+        const stopButton = document.getElementById('stopButton');
+
+        playButton.addEventListener('click', () => {
+            audioElement.play();
+        });
+
+        pauseButton.addEventListener('click', () => {
+            audioElement.pause();
+        });
+
+        stopButton.addEventListener('click', () => {
+            audioElement.currentTime = 0;
+            audioElement.pause();
         });
     </script>
     <footer>
