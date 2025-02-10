@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title> Accessible Cybersecurity Knowledge</title>
-    
+    <title>Accessible Cybersecurity</title>
     <style>
         *, *::before, *::after {
             box-sizing: border-box;
@@ -51,11 +50,6 @@
         header.funcbar .search-bar button:hover {
             background: #3B255F;
         }
-
-        header.funcbar {
-            background-color: #4A2F83;
-        }
-        
         header.funcbar .search-bar {
             display: flex;
             align-items: center;
@@ -72,7 +66,7 @@
             text-align: center;
         }
         .light-mode {
-            background-color: #f2edc2;
+            background-color: #e6d897;
             color: #070336;
         }
         .dark-mode {
@@ -135,7 +129,6 @@
         #DarkModeButton {
             background-color: #3498DB;
         }
-        
     </style>
 </head>
 <body>
@@ -153,10 +146,10 @@
         </nav>
         <div class="accessibility-options">
             <button id="LightModeButton" aria-label="Toggle Light Mode">
-                <img src="Icons/sunicon.png" alt="Light Mode Icon" style="width: 20px; height: 20px;">
+                <img src="Icons/sunicon.png" alt="High Contrast Icon" style="width: 20px; height: 20px;">
             </button>
             <button id="DarkModeButton" aria-label="Toggle Dark Mode">
-                <img src="Icons/moonicon.png" alt="Dark Mode Icon" style="width: 20px; height: 20px;">
+                <img src="Icons/moonicon.png" alt="High Contrast Icon" style="width: 20px; height: 20px;">
             </button>
             <button id="IncreaseFontButton" aria-label="Increase Font Size" tabindex="0">
                 <span aria-hidden="true">A+</span>
@@ -167,7 +160,7 @@
                 <span class="sr-only">Decrease Font Size</span>
             </button>
             <button id="HighContrastButton" aria-label="Toggle High Contrast" class="color-picker-button">
-                <img src="Icons/TritIcon.png" alt="Background Color Picker Icon" style="width: 20px; height: 20px;">
+                <img src="Icons/TritIcon.png" alt="High Contrast Icon" style="width: 20px; height: 20px;">
                 <input type="color" id="backgroundColorPicker" value="#D6C9F1">
             </button>
             <form class="search-bar" id="site-search-form">
@@ -196,18 +189,20 @@
         <p>Explore accessibility features to enhance user experience.</p>
         <img src="https://i.imgur.com/rVlMF8D.png" alt="Six individuals are in the midst of a discussion with the text 'Cyber Quantum' above them with an electrified border" 
         style="max-width:40%;height:auto;">
-        <div class="info">
-            <h2>Click here for 
-                <a href="accessibility_files/auslan.html" aria-label="Auslan Page">Auslan</a>, 
-                <a href="accessibility_files/braille.html" aria-label="Braille Page">Braille</a>,
-                <a href="accessibility_files/audio.html" aria-label="Audio Page">Audio</a>
-            </h2>
+            <select id="color-picker" aria-label="Select Color Scheme">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+                <option value="custom">Custom</option>
+            </select>
+            <input type="color" id="custom-color" value="#ffffff" aria-label="Custom Color">
+            <a href="accessibility_files/auslan.html" aria-label="Auslan Page">Auslan</a>
+            <a href="accessibility_files/braille.html" aria-label="Braille Page">Braille</a>
+            <a href="accessibility_files/audio.html" aria-label="Audio Page">Audio</a>
         </div>
         <p>Welcome everyone to new CyberSecurity Knowledge Hub website designed for people with disabilities, to understand Cybersecurity in any format they like about complex topics.</p>
     </main>
 
     <script>
-
         let currentFontSize = 16;
         const minFontSize = 12;
         const maxFontSize = 24;
@@ -249,18 +244,6 @@
             document.body.classList.add('high-contrast');
         });
 
-        document.querySelector('.info a[href="audio.html"]').addEventListener('click', () => {
-            window.location.href = 'audio.html';
-        });
-        
-        document.querySelector('.info a[href="braille.html"]').addEventListener('click', () => {
-            window.location.href = 'braille.html';
-        });
-        
-        document.querySelector('.info a[href="auslan.html"]').addEventListener('click', () => {
-            window.location.href = 'auslan.html';
-        });
-        
         const backgroundColorPicker = document.getElementById('backgroundColorPicker');
         backgroundColorPicker.addEventListener('input', () => {
             document.body.style.backgroundColor = backgroundColorPicker.value;

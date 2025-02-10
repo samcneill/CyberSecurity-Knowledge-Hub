@@ -1,134 +1,154 @@
-/* Styling for All */
-html { 
-  box-sizing: border-box; 
-}
-*, *:before, *:after { 
-  box-sizing: inherit; 
-}
-img { 
-  box-sizing: content-box; 
-}
-
-a:focus {
-  outline: thin dotted;
-}
-
-.component {
-  box-sizing: content-box;
-}
-
-/* Nav Bar Styling */
-.navbar {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  font-size: 24px;
-  font-weight: bold;
-  border-radius: 10px;
-  height: 50px;
-  width: 80%;
-  margin-left: 1px;
-  margin-right: 1px;
-  text-align: center;
-  position: relative;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 10px;
-  background-color: #4A2F83; /* Dark purple background */
-  color: white; /* White text color for accessibility */
-}
-
-a.navbar {
-  color: #FFD700; /* Gold text color */
-  text-decoration: none;
-  margin: 0 5px;
-}
-
-.button {
-  transition-duration: 0.4s;
-}
-
-.button:hover {
-  background-color: #purple; /* Green */
-  color: white;
-}
-
-/* Large Text Mode */
-.large-text {
-  font-size: 1.5em; /* Adjust as necessary */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  line-height: 1.6;
 }
 
 .funcbar {
-  margin-top: 3px;
-  margin-bottom: 3px;
-  font-size: 34px;
-  font-weight: bold;
-  border-radius: 10px;
-  height: 70px;
-  width: 75%;
-  margin-left: 3px;
-  margin-right: 3px;
-  text-align: center;
-  position: relative;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  background-color: #4A2F83; /* Dark purple background */
-  color: white; /* White text color for accessibility */
+  padding: 20px 40px;
+  background-color: #4A2F83;
+  color: white;
+  position: relative;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-a.funcbar {
-  color: #FFD700; /* Gold text color */
+.navbar {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar a {
+  color: white;
   text-decoration: none;
-  margin: 0 5px;
+  margin-right: 20px;
+  transition: color 0.2s ease;
 }
 
-.funcbar img, .navbar img {
-  width: 20px;
-  height: 20px;
+.navbar a:hover {
+  color: #ccc;
+}
+
+.accessibility-options {
+  display: flex;
+  align-items: center;
+}
+
+.accessibility-options button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  color: white;
+}
+
+.accessibility-options button:hover {
+  color: #ccc;
+}
+
+.accessibility-options select {
+  margin-right: 10px;
+}
+
+.accessibility-options input[type="color"] {
+  margin-right: 10px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
 .info {
-  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 80%;
   margin-top: 20px;
 }
 
-/* Header Styling */
-h1 { 
-  display: block;
-  font-size: 3em;
-  margin-top: 0.67em;
-  margin-bottom: 0;
-  margin-left: 0;
-  margin-right: 0;
-  font-weight: bold;
-  color: #4A2F83; /* Dark purple heading color for contrast */
+.info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
-h2 {
-  font-size: 2em;
-  margin-top: 0.83em;
-  margin-bottom: 0.83em;
-  margin-left: 0;
-  margin-right: 0;
-  font-weight: bold;
-  color: #4A2F83; /* Dark purple heading color for contrast */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px; /* Space between text */
+
+.info li {
+  margin-bottom: 10px;
 }
-h3 { 
-  display: block;
-  font-size: 1.5em;
-  margin-top: 0;
-  margin-bottom: 1em;
-  margin-left: 0;
-  margin-right: 0;
-  font-weight: bold;
-  color: #4A2F83; /* Dark purple heading color for contrast */
+
+.info a {
+  text-decoration: none;
+  color: #337ab7;
 }
-.container {
+
+.info a:hover {
+  color: #23527c;
+}
+
+footer {
+  background-color: #4A2F83;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  clear: both;
+  position: relative;
+  bottom: 0;
   width: 100%;
-  max-width: 800px;
-  margin[_{{{CITATION{{{_1{](https://github.com/ProsperousHeart/TrainingUsingJupyter/tree/50401c47f3d835065a240ceeea0385b99623c323/JavaScript%2F02_JS_Basics.MD)[_{{{CITATION{{{_2{](https://github.com/panthayanjames/phpoops/tree/1b884742334e2c75911c4f0162a5feaa83bc0ec1/edit_records.php)[_{{{CITATION{{{_3{](https://github.com/aanchalmalviya22/BANKING-SYSTEM/tree/90ec89ab053b4cdf40631f1a38e9ac7b94af8bff/index.php)
+}
+
+/* High Contrast Mode */
+.high-contrast {
+  background-color: #000;
+  color: #fff;
+}
+
+.high-contrast a {
+  color: #fff;
+}
+
+.high-contrast .funcbar {
+  background-color: #000;
+}
+
+/* Increased Font Size */
+.increased-font-size {
+  font-size: 1.2rem;
+}
+
+/* Custom Color Scheme */
+.custom-color-scheme {
+  background-color: #ffffff;
+}
+
+.custom-color-scheme .funcbar {
+  background-color: #ffffff;
+}
+
+.custom-color-scheme .navbar a {
+  color: #000;
+}
+
+.custom-color-scheme .accessibility-options button {
+  color: #000;
+}
+
+.custom-color-scheme .accessibility-options select {
+  background-color: #ffffff;
+  color: #000;
+}
+
+.custom-color-scheme .accessibility-options input[type="color"] {
+  background-color: #ffffff;
+  color: #000;
+}
