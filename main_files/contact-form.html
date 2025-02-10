@@ -93,6 +93,11 @@
             gap: 20px;
             margin-left: 50px;
         }
+	    
+	h2 {
+	margin-left: 5px
+	}
+	    
         .navbar a {
             color: white;
             text-decoration: none;
@@ -208,10 +213,10 @@
 <main>
 <div class="contactcontainer">
   <form action="/action_page.php">
-    <label for="fname"><h1>Name</h1></label><br>
+    <label for="fname"><h2>Name</h2></label><br>
     <input type="text" id="fname" name="firstname" placeholder="Your name..">
 
-    <label for="enquiry"><h1>Enquiry Type</h1></label><br>
+    <label for="enquiry"><h2>Enquiry Type</h2></label><br>
 	<select id="enquiry" name="enquiry">
 		<option value="complaint">Suggestions/Improvements</option>
 		<option value="feedback"> Other Feedback</option>
@@ -219,7 +224,7 @@
 		<option value="issues"> Other issues </option>
 		</select>
 
-		<label for="country"><h1>Country</h1></label><br>
+		<label for="country"><h2>Country</h2></label><br>
 		<select id="country" name="country" class="form-control">
 			<option value="selected disabled">Select a country</option>
 			<option value="Afghanistan">Afghanistan</option>
@@ -469,7 +474,7 @@
 			<option value="Zimbabwe">Zimbabwe</option>
 			</select>
 
-    <label for="subject"><h1>Subject</h1></label><br>
+    <label for="subject"><h2>Subject</h2></label><br>
     <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
 
     <input type="submit" value="Submit">
