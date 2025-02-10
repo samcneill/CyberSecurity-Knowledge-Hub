@@ -1,7 +1,6 @@
-# Accessibility
+# Accessible Cybersecurity
+A website designed to provide accessible cybersecurity knowledge to people with disabilities, in Easy Read with pictures and in other formats including Auslan.
 
-This website is in Easy English and Plain English for people with disabilities with pictures to help guide the knowledge on cybersecurity. 
-Some of the website content in the process is for those with non-verbal communication, and using completely just pictures
 
 ## Button Audio Playback
 
@@ -58,10 +57,6 @@ You can test <ins>CyberSecurity Knowledge Hub</ins> as per below 👇<br>
 Contributions are always welcome!
 See `index.html` for ways to get started.
 Please adhere to this project's `code of conduct`.
-
-
-## Demo
-
 
 
 ## Lessons Learned
