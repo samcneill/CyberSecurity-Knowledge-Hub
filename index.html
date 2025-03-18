@@ -129,42 +129,37 @@
         #DarkModeButton {
             background-color: #3498DB;
         }
-
+        #IncreaseFontButton, #DecreaseFontButton {
+            font-size: 20px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #4A2F83;
+            color: white;
+        }
+        #IncreaseFontButton:hover, #DecreaseFontButton:hover {
+            background-color: #3B255F;
+        }
     </style>
 </head>
 <body>
     <header class="funcbar">
-        <nav class="navbar">
-            <a class="active home-icon" href="#" aria-label="Home link">
-                <i class="fa fa-fw fa-home"></i> 
-            </a>
-            <a href="main_files/about-us.html" aria-label="About Us link">About Us</a>
-            <a href="main_files/cybersecurity-knowledge-hub.html" aria-label="Cybersecurity Hub link">Cybersecurity Hub</a>
-            <a href="main_files/australian-newzealand-laws.html" aria-label="AU/NZ Laws link">AU/NZ Laws</a>
-            <a href="main_files/resources.html" aria-label="Resources link">Resources</a>
-            <a href="main_files/newsletter.html" aria-label="Newsletter link">Newsletter</a>
-            <a href="main_files/contact-form.html" aria-label="Contact Us link">Contact Us</a>
-        </nav>
-        <div class="accessibility-options">
+        <div class="accessibility-options" style="display: flex; align-items: center; gap: 10px;">
             <button id="LightModeButton" aria-label="Toggle Light Mode">
-                <img src="Icons/sunicon.png" alt="High Contrast Icon" style="width: 20px; height: 20px;">
+                <i class="fa fa-sun" aria-hidden="true"></i>
             </button>
             <button id="DarkModeButton" aria-label="Toggle Dark Mode">
-                <img src="Icons/moonicon.png" alt="High Contrast Icon" style="width: 20px; height: 20px;">
+                <i class="fa fa-moon" aria-hidden="true"></i>
             </button>
-            <button id="IncreaseFontButton" aria-label="Increase Font Size" tabindex="0">
-                <span aria-hidden="true" style="font-size: 20px;">A+</span>
-                <span class="sr-only">Increase Font Size</span>
+            <button id="IncreaseFontButton" aria-label="Increase Font Size">
+                <i class="fa fa-plus" aria-hidden="true"></i>
             </button>
-            <button id="DecreaseFontButton" aria-label="Decrease Font Size" tabindex="0">
-                <span aria-hidden="true" style="font-size: 20px;">A-</span>
-                <span class="sr-only">Decrease Font Size</span>
+            <button id="DecreaseFontButton" aria-label="Decrease Font Size">
+                <i class="fa fa-minus" aria-hidden="true"></i>
             </button>
-            
-            </button>
-            <button id="HighContrastButton" aria-label="Toggle High Contrast" class="color-picker-button">
-                <img src="Icons/TritIcon.png" alt="High Contrast Icon" style="width: 20px; height: 20px;">
-                <input type="color" id="backgroundColorPicker" value="#D6C9F1">
+            <button id="HighContrastButton" aria-label="Toggle High Contrast">
+                <i class="fa fa-adjust" aria-hidden="true"></i>
             </button>
             <form class="search-bar" id="site-search-form">
                 <label for="searchInput" style="position: absolute; left: -9999px;">Search this website</label>
@@ -183,8 +178,16 @@
                 >
                     <i class="fas fa-search"></i>
                 </button>
-                
             </form>
+            <a class="active home-icon" href="#" aria-label="Home link">
+                <i class="fa fa-fw fa-home"></i> 
+            </a>
+            <a href="main_files/about-us.html" aria-label="About Us link">About Us</a>
+            <a href="main_files/cybersecurity-knowledge-hub.html" aria-label="Cybersecurity Hub link">Cybersecurity Hub</a>
+            <a href="main_files/australian-newzealand-laws.html" aria-label="AU/NZ Laws link">AU/NZ Laws</a>
+            <a href="main_files/resources.html" aria-label="Resources link">Resources</a>
+            <a href="main_files/newsletter.html" aria-label="Newsletter link">Newsletter</a>
+            <a href="main_files/contact-form.html" aria-label="Contact Us link">Contact Us</a>
         </div>
     </header>
 
