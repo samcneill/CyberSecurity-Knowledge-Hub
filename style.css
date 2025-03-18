@@ -152,3 +152,17 @@ footer {
   background-color: #ffffff;
   color: #000;
 }
+
+#IncreaseFontButton, #DecreaseFontButton {
+  font-size: 20px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #4A2F83;
+  color: white;
+}
+
+#IncreaseFontButton:hover, #DecreaseFontButton:hover {
+  background-color: #3B255F;
+}

@@ -13,13 +13,13 @@ header.appendChild(accessibilityOptions);
 
 const lightModeButton = document.createElement('button');
 lightModeButton.id = 'LightModeButton';
-lightModeButton.textContent = 'Toggle Light Mode'; // Use text instead of image
+lightModeButton.innerHTML = '<i class="fa fa-sun" aria-hidden="true"></i>';
 lightModeButton.ariaLabel = 'Toggle Light Mode'; // Add aria-label attribute for accessibility
 accessibilityOptions.appendChild(lightModeButton);
 
 const darkModeButton = document.createElement('button');
 darkModeButton.id = 'DarkModeButton';
-darkModeButton.textContent = 'Toggle Dark Mode'; // Use text instead of image
+darkModeButton.innerHTML = '<i class="fa fa-moon" aria-hidden="true"></i>';
 darkModeButton.ariaLabel = 'Toggle Dark Mode'; // Add aria-label attribute for accessibility
 accessibilityOptions.appendChild(darkModeButton);
 
@@ -31,19 +31,19 @@ accessibilityOptions.appendChild(textSizeContainer);
 
 const decreaseTextSizeButton = document.createElement('button');
 decreaseTextSizeButton.id = 'DecreaseTextSizeButton';
-decreaseTextSizeButton.textContent = 'Decrease Text Size'; // Use text instead of image
+decreaseTextSizeButton.innerHTML = '<i class="fa fa-minus" aria-hidden="true"></i>';
 decreaseTextSizeButton.ariaLabel = 'Decrease Text Size'; // Add aria-label attribute for accessibility
 textSizeContainer.appendChild(decreaseTextSizeButton);
 
 const increaseTextSizeButton = document.createElement('button');
 increaseTextSizeButton.id = 'IncreaseTextSizeButton';
-increaseTextSizeButton.textContent = 'Increase Text Size'; // Use text instead of image
+increaseTextSizeButton.innerHTML = '<i class="fa fa-plus" aria-hidden="true"></i>';
 increaseTextSizeButton.ariaLabel = 'Increase Text Size'; // Add aria-label attribute for accessibility
 textSizeContainer.appendChild(increaseTextSizeButton);
 
 const highContrastButton = document.createElement('button');
 highContrastButton.id = 'HighContrastButton';
-highContrastButton.textContent = 'Toggle High Contrast'; // Use text instead of image
+highContrastButton.innerHTML = '<i class="fa fa-adjust" aria-hidden="true"></i>';
 highContrastButton.ariaLabel = 'Toggle High Contrast'; // Add aria-label attribute for accessibility
 accessibilityOptions.appendChild(highContrastButton);
 
@@ -63,7 +63,7 @@ searchBar.appendChild(searchInput);
 const searchIcon = document.createElement('button');
 searchIcon.type = 'submit';
 searchIcon.id = 'searchIcon';
-searchIcon.textContent = 'Search'; // Use text instead of image
+searchIcon.innerHTML = '<i class="fa fa-search" aria-hidden="true"></i>';
 searchIcon.ariaLabel = 'Search'; // Add aria-label attribute for accessibility
 searchBar.appendChild(searchIcon);
 
@@ -87,7 +87,7 @@ main.appendChild(nav);
 const homeLink = document.createElement('a');
 homeLink.className = 'active';
 homeLink.href = '#';
-homeLink.textContent = 'Home'; // Use text instead of image
+homeLink.innerHTML = '<i class="fa fa-home" aria-hidden="true"></i> Home';
 homeLink.ariaLabel = 'Home link'; // Add aria-label attribute for accessibility
 nav.appendChild(homeLink);
 
@@ -268,6 +268,19 @@ style.textContent = `
         position: relative;
         width: 100%;
         bottom: 0;
+    }
+    #DecreaseTextSizeButton, #IncreaseTextSizeButton {
+        font-size: 20px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #4A2F83;
+        color: white;
+    }
+
+    #DecreaseTextSizeButton:hover, #IncreaseTextSizeButton:hover {
+        background-color: #3B255F;
     }
 `;
 document.head.appendChild(style);
