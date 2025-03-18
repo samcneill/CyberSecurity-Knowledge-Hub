@@ -29,6 +29,7 @@
             color: white;
             position: relative;
             width: 100%;
+            border-bottom: 5px solid #4A2F83;
         }
         header.funcbar .accessibility-options {
             display: flex;
@@ -158,7 +159,8 @@
             <button id="DecreaseFontButton" aria-label="Decrease Font Size">
                 <i class="fa fa-minus" aria-hidden="true"></i>
             </button>
-            <button id="HighContrastButton" aria-label="Toggle High Contrast">
+            <button id="HighContrastButton" aria-label="Toggle High Contrast" class="color-picker-button">
+                <input type="color" id="backgroundColorPicker" value="#D6C9F1">
                 <i class="fa fa-adjust" aria-hidden="true"></i>
             </button>
             <form class="search-bar" id="site-search-form">
@@ -179,15 +181,15 @@
                     <i class="fas fa-search"></i>
                 </button>
             </form>
-            <a class="active home-icon" href="#" aria-label="Home link">
-                <i class="fa fa-fw fa-home"></i> 
+            <a class="active home-icon" href="#" aria-label="Home link" style="color: white;">
+                <i class="fa fa-fw fa-home"></i> Home
             </a>
-            <a href="main_files/about-us.html" aria-label="About Us link">About Us</a>
-            <a href="main_files/cybersecurity-knowledge-hub.html" aria-label="Cybersecurity Hub link">Cybersecurity Hub</a>
-            <a href="main_files/australian-newzealand-laws.html" aria-label="AU/NZ Laws link">AU/NZ Laws</a>
-            <a href="main_files/resources.html" aria-label="Resources link">Resources</a>
-            <a href="main_files/newsletter.html" aria-label="Newsletter link">Newsletter</a>
-            <a href="main_files/contact-form.html" aria-label="Contact Us link">Contact Us</a>
+            <a href="main_files/about-us.html" aria-label="About Us link" style="color: white;">About Us</a>
+            <a href="main_files/cybersecurity-knowledge-hub.html" aria-label="Cybersecurity Hub link" style="color: white;">Cybersecurity Hub</a>
+            <a href="main_files/australian-newzealand-laws.html" aria-label="AU/NZ Laws link" style="color: white;">AU/NZ Laws</a>
+            <a href="main_files/resources.html" aria-label="Resources link" style="color: white;">Resources</a>
+            <a href="main_files/newsletter.html" aria-label="Newsletter link" style="color: white;">Newsletter</a>
+            <a href="main_files/contact-form.html" aria-label="Contact Us link" style="color: white;">Contact Us</a>
         </div>
     </header>
 
