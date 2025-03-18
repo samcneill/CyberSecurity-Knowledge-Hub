@@ -20,18 +20,6 @@
             font-size: 16px;
         }
 
-        a:link {
-              color: #333;
-              background-color: transparent;
-              text-decoration: none;
-        }
-
-        a:visited {
-              color: #333;
-              background-color: transparent;
-              text-decoration: none;
-        }
-
         header.funcbar {
             display: flex;
             justify-content: space-between;
@@ -108,9 +96,10 @@
         .navbar a {
             color: white;
             text-decoration: none;
+            font-size: 16px;
         }
         .home-icon {
-            font-size: 24px;
+            font-size: 30px;
             margin-left: 10px;
         }
         .color-picker-button {
@@ -159,10 +148,12 @@
 <body>
     <header class="funcbar">
         <div class="accessibility-options" style="display: flex; align-items: center; gap: 10px;">
-            <button id="LightModeButton" aria-label="Toggle Light Mode">
+            <button id="LightModeButton" aria-label="Toggle Light Mode" class="color-picker-button">
+                <input type="color" id="lightColorPicker" value="#FFFFFF">
                 <i class="fa fa-sun" aria-hidden="true"></i>
             </button>
-            <button id="DarkModeButton" aria-label="Toggle Dark Mode">
+            <button id="DarkModeButton" aria-label="Toggle Dark Mode" class="color-picker-button">
+                <input type="color" id="darkColorPicker" value="#000000">
                 <i class="fa fa-moon" aria-hidden="true"></i>
             </button>
             <button id="IncreaseFontButton" aria-label="Increase Font Size">
@@ -171,9 +162,8 @@
             <button id="DecreaseFontButton" aria-label="Decrease Font Size">
                 <i class="fa fa-minus" aria-hidden="true"></i>
             </button>
-            <button id="HighContrastButton" aria-label="Toggle High Contrast" class="color-picker-button">
-                <input type="color" id="backgroundColorPicker" value="#D6C9F1">
-                <i class="fa fa-adjust" aria-hidden="true"></i>
+            <button id="HighContrastButton" aria-label="Toggle High Contrast">
+                <i class="typcn typcn-adjust-brightness" aria-hidden="true"></i>
             </button>
             <form class="search-bar" id="site-search-form">
                 <label for="searchInput" style="position: absolute; left: -9999px;">Search this website</label>
@@ -193,20 +183,20 @@
                     <i class="fas fa-search"></i>
                 </button>
             </form>
-            <a class="active home-icon" href="#" aria-label="Home link" style="color: white;">
-                <i class="fa fa-fw fa-home"></i> Home
+            <a class="active home-icon" href="#" aria-label="Home link" style="color: white; font-size: 16px;">
+                <i class="fa fa-fw fa-home" style="margin-right: 10px;"></i> Home
             </a>
-            <a href="main_files/about-us.html" aria-label="About Us link" style="color: white;">About Us</a>
-            <a href="main_files/cybersecurity-knowledge-hub.html" aria-label="Cybersecurity Hub link" style="color: white;">Cybersecurity Hub</a>
-            <a href="main_files/australian-newzealand-laws.html" aria-label="AU/NZ Laws link" style="color: white;">AU/NZ Laws</a>
-            <a href="main_files/resources.html" aria-label="Resources link" style="color: white;">Resources</a>
-            <a href="main_files/newsletter.html" aria-label="Newsletter link" style="color: white;">Newsletter</a>
-            <a href="main_files/contact-form.html" aria-label="Contact Us link" style="color: white;">Contact Us</a>
+            <a href="main_files/about-us.html" aria-label="About Us link" style="color: white; font-size: 16px;">About Us</a>
+            <a href="main_files/cybersecurity-knowledge-hub.html" aria-label="Cybersecurity Hub link" style="color: white; font-size: 16px;">Cybersecurity Hub</a>
+            <a href="main_files/australian-newzealand-laws.html" aria-label="AU/NZ Laws link" style="color: white; font-size: 16px;">AU/NZ Laws</a>
+            <a href="main_files/resources.html" aria-label="Resources link" style="color: white; font-size: 16px;">Resources</a>
+            <a href="main_files/newsletter.html" aria-label="Newsletter link" style="color: white; font-size: 16px;">Newsletter</a>
+            <a href="main_files/contact-form.html" aria-label="Contact Us link" style="color: white; font-size: 16px;">Contact Us</a>
         </div>
     </header>
 
     <main>
-        <h1 style="font-size: 36px;">Accessible Cybersecurity</h1>
+        <h1 id="heading" style="font-size: 36px;">Accessible Cybersecurity</h1>
         <p>Explore accessibility features to enhance user experience.</p>
         <img src="https://i.imgur.com/rVlMF8D.png" alt="Six individuals are in the midst of a discussion with the text 'Cyber Quantum' above them with an electrified border" 
         style="max-width:40%;height:auto;">
@@ -231,16 +221,19 @@
 
         function setFontSize(size) {
             document.body.style.fontSize = size + 'px';
+            document.getElementById('heading').style.fontSize = (size * 2.25) + 'px';
         }
 
         document.getElementById('LightModeButton').addEventListener('click', () => {
             clearModes();
             document.body.classList.add('light-mode');
+            document.body.style.backgroundColor = document.getElementById('lightColorPicker').value;
         });
 
         document.getElementById('DarkModeButton').addEventListener('click', () => {
             clearModes();
             document.body.classList.add('dark-mode');
+            document.body.style.backgroundColor = document.getElementById('darkColorPicker').value;
         });
 
         document.getElementById('IncreaseFontButton').addEventListener('click', () => {
@@ -262,9 +255,14 @@
             document.body.classList.add('high-contrast');
         });
 
-        const backgroundColorPicker = document.getElementById('backgroundColorPicker');
-        backgroundColorPicker.addEventListener('input', () => {
-            document.body.style.backgroundColor = backgroundColorPicker.value;
+        const lightColorPicker = document.getElementById('lightColorPicker');
+        lightColorPicker.addEventListener('input', () => {
+            document.body.style.backgroundColor = lightColorPicker.value;
+        });
+
+        const darkColorPicker = document.getElementById('darkColorPicker');
+        darkColorPicker.addEventListener('input', () => {
+            document.body.style.backgroundColor = darkColorPicker.value;
         });
 
         const siteSearchForm = document.getElementById('site-search-form');
