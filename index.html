@@ -99,7 +99,7 @@
             font-size: 16px;
         }
         .home-icon {
-            font-size: 30px;
+            font-size: 40px;
             margin-left: 10px;
         }
         .color-picker-button {
@@ -163,7 +163,7 @@
                 <i class="fa fa-minus" aria-hidden="true"></i>
             </button>
             <button id="HighContrastButton" aria-label="Toggle High Contrast">
-                <i class="typcn typcn-adjust-brightness" aria-hidden="true"></i>
+                <img src="TypIcon.png" alt="TypIcon" style="width: 20px; height: 20px;">
             </button>
             <form class="search-bar" id="site-search-form">
                 <label for="searchInput" style="position: absolute; left: -9999px;">Search this website</label>
@@ -183,15 +183,16 @@
                     <i class="fas fa-search"></i>
                 </button>
             </form>
-            <a class="active home-icon" href="#" aria-label="Home link" style="color: white; font-size: 16px;">
+            <a class="active home-icon" href="#" aria-label="Home link" style="color: white; font-size: 16px; text-decoration: none;">
                 <i class="fa fa-fw fa-home" style="margin-right: 10px;"></i> Home
             </a>
-            <a href="main_files/about-us.html" aria-label="About Us link" style="color: white; font-size: 16px;">About Us</a>
-            <a href="main_files/cybersecurity-knowledge-hub.html" aria-label="Cybersecurity Hub link" style="color: white; font-size: 16px;">Cybersecurity Hub</a>
-            <a href="main_files/australian-newzealand-laws.html" aria-label="AU/NZ Laws link" style="color: white; font-size: 16px;">AU/NZ Laws</a>
-            <a href="main_files/resources.html" aria-label="Resources link" style="color: white; font-size: 16px;">Resources</a>
-            <a href="main_files/newsletter.html" aria-label="Newsletter link" style="color: white; font-size: 16px;">Newsletter</a>
-            <a href="main_files/contact-form.html" aria-label="Contact Us link" style="color: white; font-size: 16px;">Contact Us</a>
+            <a href="main_files/about-us.html" aria-label="About Us link" style="color: white; font-size: 16px; text-decoration: none;">About Us</a>
+            <a href="main_files/cybersecurity-knowledge-hub.html" aria-label="Cybersecurity Hub link" style="color: white; font-size: 16px; text-decoration: none;">Cybersecurity Hub</a>
+            <a href="main_files/australian-newzealand-laws.html" aria-label="AU/NZ Laws link" style="color: white; font-size: 16px; text-decoration: none;">AU/NZ Laws</a>
+            <a href="main_files/resources.html" aria-label="Resources link" style="color: white; font-size: 16px; text-decoration: none;">Resources</a>
+            <a href="main_files/newsletter.html" aria-label="Newsletter link" style="color: white; font-size: 16px; text-decoration: none;">Newsletter</a>
+            <a href="main_files/contact-form.html" aria-label="Contact Us link" style="color: white; font-size: 16px; text-decoration: none;">Contact Us</a>
+            <a href="accessibility_files/auslan.html" aria-label="Auslan Page" style="color: white; font-size: 16px; text-decoration: none;">Auslan</a>
         </div>
     </header>
 
@@ -202,9 +203,9 @@
         style="max-width:40%;height:auto;">
         <div class="info">
             <h2>Click here for 
-                <a href="accessibility_files/auslan.html" aria-label="Auslan Page">Auslan</a>, 
-                <a href="accessibility_files/braille.html" aria-label="Braille Page">Braille</a>,
-                <a href="accessibility_files/audio.html" aria-label="Audio Page">Audio</a>
+                <a href="accessibility_files/auslan.html" aria-label="Auslan Page" style="color: black; text-decoration: none;">Auslan</a>, 
+                <a href="accessibility_files/braille.html" aria-label="Braille Page" style="color: black; text-decoration: none;">Braille</a>,
+                <a href="accessibility_files/audio.html" aria-label="Audio Page" style="color: black; text-decoration: none;">Audio</a>
             </h2>
         </div>
         <p>Welcome everyone to new CyberSecurity Knowledge Hub website designed for people with disabilities, to understand Cybersecurity in any format they like about complex topics.</p>
@@ -276,6 +277,13 @@
                 console.log(`Found ${searchQuery} in the page content`);
             } else {
                 console.log(`Did not find ${searchQuery} in the page content`);
+            }
+            if (searchQuery === "auslan") {
+                window.location.href = "accessibility_files/auslan.html";
+            } else if (searchQuery === "braille") {
+                window.location.href = "accessibility_files/braille.html";
+            } else if (searchQuery === "audio") {
+                window.location.href = "accessibility_files/audio.html";
             }
         });
     </script>
