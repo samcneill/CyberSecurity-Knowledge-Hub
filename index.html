@@ -113,6 +113,7 @@
             height: 100%;
             opacity: 0;
             cursor: pointer;
+            z-index: -1;
         }
         .accessibility-button {
             background-color: #4CAF50;
@@ -139,6 +140,7 @@
             cursor: pointer;
             background-color: #4A2F83;
             color: white;
+            z-index: 1;
         }
         #IncreaseFontButton:hover, #DecreaseFontButton:hover {
             background-color: #3B255F;
@@ -162,14 +164,11 @@
             <button id="DecreaseFontButton" aria-label="Decrease Font Size">
                 <i class="fa fa-minus" aria-hidden="true"></i>
             </button>
-            <button id="HighContrastButton" aria-label="Toggle High Contrast">
-<<<<<<< HEAD
-                <img src="TypIcon.png" alt="TypIcon" style="width: 20px; height: 20px;">
-=======
-                <i class="typcn typcn:adjust-contrast" aria-hidden="true"></i>
->>>>>>> 9657df5163bb885fb671622af550f714bb90ee39
+            <button id="HighContrastButton" aria-label="Toggle High Contrast" class="color-picker-button">
+                <input type="color" id="highContrastColorPicker" value="#000000">
+                <img src="Icons/TypIcon.png" alt="TypIcon" style="width: 20px; height: 20px;">
             </button>
-            <form class="search-bar" id="site-search-form">
+            <form class="search-bar" id="site-search-form" style="z-index: 1;">
                 <label for="searchInput" style="position: absolute; left: -9999px;">Search this website</label>
                 <input 
                     type="text" 
@@ -190,13 +189,13 @@
             <a class="active home-icon" href="#" aria-label="Home link" style="color: white; font-size: 16px; text-decoration: none;">
                 <i class="fa fa-fw fa-home" style="margin-right: 10px;"></i> Home
             </a>
-            <a href="main_files/about-us.html" aria-label="About Us link" style="color: white; font-size: 16px; text-decoration: none;">About Us</a>
+            <a href="Cyber Security Knowledge Hub/about-us.html" aria-label="About Us link" style="color: white; font-size: 16px; text-decoration: none;">About Us</a>
             <a href="main_files/cybersecurity-knowledge-hub.html" aria-label="Cybersecurity Hub link" style="color: white; font-size: 16px; text-decoration: none;">Cybersecurity Hub</a>
             <a href="main_files/australian-newzealand-laws.html" aria-label="AU/NZ Laws link" style="color: white; font-size: 16px; text-decoration: none;">AU/NZ Laws</a>
             <a href="main_files/resources.html" aria-label="Resources link" style="color: white; font-size: 16px; text-decoration: none;">Resources</a>
             <a href="main_files/newsletter.html" aria-label="Newsletter link" style="color: white; font-size: 16px; text-decoration: none;">Newsletter</a>
             <a href="main_files/contact-form.html" aria-label="Contact Us link" style="color: white; font-size: 16px; text-decoration: none;">Contact Us</a>
-            <a href="accessibility_files/auslan.html" aria-label="Auslan Page" style="color: white; font-size: 16px; text-decoration: none;">Auslan</a>
+
         </div>
     </header>
 
@@ -270,6 +269,11 @@
             document.body.style.backgroundColor = darkColorPicker.value;
         });
 
+        const highContrastColorPicker = document.getElementById('highContrastColorPicker');
+        highContrastColorPicker.addEventListener('input', () => {
+            document.body.style.backgroundColor = highContrastColorPicker.value;
+        });
+
         const siteSearchForm = document.getElementById('site-search-form');
         siteSearchForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -288,6 +292,15 @@
                 window.location.href = "accessibility_files/braille.html";
             } else if (searchQuery === "audio") {
                 window.location.href = "accessibility_files/audio.html";
+            }
+        });
+
+        // Add event listener to close color picker when clicking outside
+        document.addEventListener('click', (e) => {
+            if (e.target !== lightColorPicker && e.target !== darkColorPicker && e.target !== highContrastColorPicker) {
+                lightColorPicker.blur();
+                darkColorPicker.blur();
+                highContrastColorPicker.blur();
             }
         });
     </script>

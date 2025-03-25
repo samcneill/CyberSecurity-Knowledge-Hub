@@ -17,11 +17,25 @@ lightModeButton.innerHTML = '<i class="fa fa-sun" aria-hidden="true"></i>';
 lightModeButton.ariaLabel = 'Toggle Light Mode'; // Add aria-label attribute for accessibility
 accessibilityOptions.appendChild(lightModeButton);
 
+const lightModeColorPicker = document.createElement('input');
+lightModeColorPicker.type = 'color';
+lightModeColorPicker.id = 'lightModeColorPicker';
+lightModeColorPicker.value = '#FFFFFF';
+lightModeColorPicker.style.display = 'none';
+accessibilityOptions.appendChild(lightModeColorPicker);
+
 const darkModeButton = document.createElement('button');
 darkModeButton.id = 'DarkModeButton';
 darkModeButton.innerHTML = '<i class="fa fa-moon" aria-hidden="true"></i>';
 darkModeButton.ariaLabel = 'Toggle Dark Mode'; // Add aria-label attribute for accessibility
 accessibilityOptions.appendChild(darkModeButton);
+
+const darkModeColorPicker = document.createElement('input');
+darkModeColorPicker.type = 'color';
+darkModeColorPicker.id = 'darkModeColorPicker';
+darkModeColorPicker.value = '#000000';
+darkModeColorPicker.style.display = 'none';
+accessibilityOptions.appendChild(darkModeColorPicker);
 
 const textSizeContainer = document.createElement('div');
 textSizeContainer.style.display = 'flex';
@@ -43,9 +57,16 @@ textSizeContainer.appendChild(increaseTextSizeButton);
 
 const highContrastButton = document.createElement('button');
 highContrastButton.id = 'HighContrastButton';
-highContrastButton.innerHTML = '<i class="fa fa-adjust" aria-hidden="true"></i>';
+highContrastButton.innerHTML = '<img src="Icons/TypIcon.png" alt="TypIcon" style="width: 20px; height: 20px;">';
 highContrastButton.ariaLabel = 'Toggle High Contrast'; // Add aria-label attribute for accessibility
 accessibilityOptions.appendChild(highContrastButton);
+
+const highContrastColorPicker = document.createElement('input');
+highContrastColorPicker.type = 'color';
+highContrastColorPicker.id = 'highContrastColorPicker';
+highContrastColorPicker.value = '#000000';
+highContrastColorPicker.style.display = 'none';
+accessibilityOptions.appendChild(highContrastColorPicker);
 
 const searchBar = document.createElement('form');
 searchBar.className = 'search-bar';
@@ -73,10 +94,17 @@ body.appendChild(main);
 
 const h1 = document.createElement('h1');
 h1.textContent = 'Accessible Cybersecurity';
+h1.style.fontFamily = 'Arial, sans-serif';
+h1.style.fontSize = '36px';
+h1.style.fontWeight = 'bold';
+h1.style.color = '#333';
 main.appendChild(h1);
 
 const p = document.createElement('p');
 p.textContent = 'Explore accessibility features to enhance user experience.';
+p.style.fontFamily = 'Arial, sans-serif';
+p.style.fontSize = '16px';
+p.style.color = '#333';
 main.appendChild(p);
 
 const nav = document.createElement('nav');
@@ -140,6 +168,10 @@ main.appendChild(info);
 
 const h2 = document.createElement('h2');
 h2.textContent = 'Click here for <u>Audio</u> or <u>Braille</u> or <u>Auslan</u>';
+h2.style.fontFamily = 'Arial, sans-serif';
+h2.style.fontSize = '24px';
+h2.style.fontWeight = 'bold';
+h2.style.color = '#333';
 info.appendChild(h2);
 
 const footer = document.createElement('footer');
@@ -148,6 +180,9 @@ body.appendChild(footer);
 
 const copyright = document.createElement('p');
 copyright.textContent = '&copy; 2025 Accessible Cybersecurity. All rights reserved.';
+copyright.style.fontFamily = 'Arial, sans-serif';
+copyright.style.fontSize = '14px';
+copyright.style.color = '#333';
 footer.appendChild(copyright);
 
 // Add event listeners
@@ -180,7 +215,27 @@ document.getElementById('DecreaseTextSizeButton').addEventListener('click', () =
 document.getElementById('HighContrastButton').addEventListener('click', () => {
     clearModes();
     document.body.classList.add('high-contrast');
-    document.getElementById('HighContrastButton').focus(); // Move focus to the button
+});
+
+const highContrastColorPicker = document.getElementById('highContrastColorPicker');
+highContrastColorPicker.addEventListener('input', () => {
+    clearModes();
+    document.body.classList.add('high-contrast');
+    document.body.style.backgroundColor = highContrastColorPicker.value;
+});
+
+const lightModeColorPicker = document.getElementById('lightModeColorPicker');
+lightModeColorPicker.addEventListener('input', () => {
+    clearModes();
+    document.body.classList.add('light-mode');
+    document.body.style.backgroundColor = lightModeColorPicker.value;
+});
+
+const darkModeColorPicker = document.getElementById('darkModeColorPicker');
+darkModeColorPicker.addEventListener('input', () => {
+    clearModes();
+    document.body.classList.add('dark-mode');
+    document.body.style.backgroundColor = darkModeColorPicker.value;
 });
 
 // Function to clear all active modes
