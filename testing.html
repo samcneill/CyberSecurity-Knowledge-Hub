@@ -42,6 +42,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            position: relative;
         }
         #TypIconButton:hover {
             background-color: #3B255F;
@@ -59,6 +60,32 @@
         .color-picker-label {
             margin-left: 10px;
         }
+        .accessibility-links {
+            position: absolute;
+            background-color: #4A2F83;
+            padding: 10px;
+            border-radius: 5px;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .accessibility-links a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 5px;
+        }
+        .accessibility-links a:hover {
+            background-color: #3B255F;
+        }
+        .accessibility-button:hover .accessibility-links {
+            visibility: visible;
+            opacity: 1;
+        }
+        .accessibility-button:focus .accessibility-links {
+            visibility: visible;
+            opacity: 1;
+        }
     </style>
 </head>
 <body style="background-color: #D6C9F1;">
@@ -66,11 +93,11 @@
         <div class="accessibility-options" style="display: flex; align-items: center; gap: 10px;">
             <button id="LightModeButton" aria-label="Toggle Light Mode" class="color-picker-button">
                 <input type="color" id="lightColorPicker" value="#FFFFFF">
-                <i class="fas fa-sun" aria-hidden="true" style="font-size: 24px; color: #F2C464;"></i>
+                <i class="fa fa-sun" aria-hidden="true" style="font-size: 24px; color: #F2C464;"></i>
             </button>
             <button id="DarkModeButton" aria-label="Toggle Dark Mode" class="color-picker-button">
                 <input type="color" id="darkColorPicker" value="#000000">
-                <i class="fas fa-moon" aria-hidden="true" style="font-size: 24px; color: #3498DB;"></i>
+                <i class="fa fa-moon" aria-hidden="true" style="font-size: 24px; color: #3498DB;"></i>
             </button>
             <button id="TypIconButton" aria-label="TypIcon Color Picker" style="background-color: #4A2F83; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
                 <img src="Icons/TypIcon.png" alt="TypIcon" style="width: 20px; height: 20px;">
@@ -123,10 +150,15 @@
                 <a href="./resources.html" aria-label="Resources link" style="color: white; font-size: 16px; text-decoration: none;">Resources</a>
                 <a href="./newsletter.html" aria-label="Newsletter link" style="color: white; font-size: 16px; text-decoration: none;">Newsletter</a>
                 <a href="./contact-form.html" aria-label="Contact Us link" style="color: white; font-size: 16px; text-decoration: none;">Contact Us</a>
-                <a href="./accessibility_files/auslan.html" aria-label="Auslan Page" style="color: white; font-size: 16px; text-decoration: none;">Auslan</a>
-                <a href="./accessibility_files/braille.html" aria-label="Braille Page" style="color: white; font-size: 16px; text-decoration: none;">Braille</a>
-                <a href="./accessibility_files/audio.html" aria-label="Audio Page" style="color: white; font-size: 16px; text-decoration: none;">Audio</a>
             </div>
+            <button class="accessibility-button" aria-label="Accessibility Options" tabindex="0">
+                Accessibility Options
+                <div class="accessibility-links">
+                    <a href="./accessibility_files/auslan.html" aria-label="Auslan Page">Auslan</a>
+                    <a href="./accessibility_files/braille.html" aria-label="Braille Page">Braille</a>
+                    <a href="./accessibility_files/audio.html" aria-label="Audio Page">Audio</a>
+                </div>
+            </button>
         </div>
     </header>
 
@@ -201,6 +233,9 @@
         const fontColorPicker = document.getElementById('fontColorPicker');
         fontColorPicker.addEventListener('input', () => {
             document.body.style.color = fontColorPicker.value;
+            document.querySelectorAll('.navbar a').forEach((element) => {
+                element.style.color = fontColorPicker.value;
+            });
         });
 
         const siteSearchForm = document.getElementById('site-search-form');
