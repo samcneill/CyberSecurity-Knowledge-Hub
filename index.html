@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Accessible Cybersecurity</title>
+
+    
     <style>
         *, *::before, *::after {
             box-sizing: border-box;
@@ -31,14 +33,15 @@
             width: 100%;
             border-bottom: 5px solid #4A2F83;
         }
+
         header.funcbar .accessibility-options {
             display: flex;
             align-items: center;
             gap: 10px;
             position: relative;
         }
-        header.funcbar button,
-        header.funcbar .search-bar {
+
+        header.funcbar button {
             background: #4A2F83;
             border: none;
             padding: 10px 20px;
@@ -47,37 +50,48 @@
             border-radius: 5px;
             color: white;
         }
-        header.funcbar button:hover,
-        header.funcbar .search-bar button:hover {
+
+        header.funcbar button:hover {
             background: #3B255F;
         }
+
         header.funcbar .search-bar {
             display: flex;
             align-items: center;
             gap: 5px;
         }
+
         header.funcbar .search-bar input {
             padding: 5px;
             border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 14px;
         }
+
         main {
             padding: 20px;
             text-align: center;
         }
+
         .light-mode {
             background-color: #e6d897;
             color: #070336;
         }
+
         .dark-mode {
             background-color: #333333;
             color: #FFFFFF;
         }
+
+        .dark-mode * {
+            color: #FFFFFF !important;
+        }
+
         .high-contrast {
             background-color: #000000;
             color: #FFD700;
         }
+
         footer {
             background-color: #4A2F83;
             color: white;
@@ -87,34 +101,17 @@
             width: 100%;
             bottom: 0;
         }
-        .navbar {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-left: 50px;
-        }
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-        }
+
         .home-icon {
             font-size: 40px;
             margin-left: 10px;
         }
-        .color-picker-button {
-            position: relative;
-        }
+
         .color-picker-button input[type="color"] {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
+            margin-left: 5px;
             cursor: pointer;
-            z-index: -1;
         }
+
         .accessibility-button {
             background-color: #4CAF50;
             color: #fff;
@@ -123,15 +120,19 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         .accessibility-button:hover {
             background-color: #3e8e41;
         }
+
         #LightModeButton {
             background-color: #F7DC6F;
         }
+
         #DarkModeButton {
             background-color: #3498DB;
         }
+
         #IncreaseFontButton, #DecreaseFontButton {
             font-size: 20px;
             padding: 10px;
@@ -142,35 +143,34 @@
             color: white;
             z-index: 1;
         }
+
         #IncreaseFontButton:hover, #DecreaseFontButton:hover {
             background-color: #3B255F;
+
+            
         }
     </style>
 </head>
 <body>
     <header class="funcbar">
-        <div class="accessibility-options" style="display: flex; align-items: center; gap: 10px;">
-            <button id="LightModeButton" aria-label="Toggle Light Mode" class="color-picker-button">
-                <input type="color" id="lightColorPicker" value="#FFFFFF">
+        <div class="accessibility-options">
+            <button id="LightModeButton" aria-label="Toggle Light Mode">
                 <i class="fa fa-sun" aria-hidden="true"></i>
             </button>
-            <button id="DarkModeButton" aria-label="Toggle Dark Mode" class="color-picker-button">
-                <input type="color" id="darkColorPicker" value="#000000">
+            <input type="color" id="lightColorPicker" value="#FFFFFF" aria-label="Pick background color for light mode">
+
+            <button id="DarkModeButton" aria-label="Toggle Dark Mode">
                 <i class="fa fa-moon" aria-hidden="true"></i>
             </button>
+            <input type="color" id="darkColorPicker" value="#000000" aria-label="Pick background color for dark mode">
+
             <button id="IncreaseFontButton" aria-label="Increase Font Size">
                 <i class="fa fa-plus" aria-hidden="true"></i>
             </button>
             <button id="DecreaseFontButton" aria-label="Decrease Font Size">
                 <i class="fa fa-minus" aria-hidden="true"></i>
             </button>
-            <button id="HighContrastButton" aria-label="Toggle High Contrast" class="color-picker-button">
-                <input type="color" id="highContrastColorPicker" value="#000000">
-                <img src="Icons/TypIcon.png" alt="TypIcon" style="width: 20px; height: 20px;">
-            <button id="HighContrastButton" aria-label="Toggle High Contrast">
-                <img src="Icons/TypIcon.png" alt="TypIcon" style="width: 20px; height: 20px;">
-                <i class="typcn typcn:adjust-contrast" aria-hidden="true"></i>
-            </button>
+
             <form class="search-bar" id="site-search-form" style="z-index: 1;">
                 <label for="searchInput" style="position: absolute; left: -9999px;">Search this website</label>
                 <input 
@@ -181,24 +181,20 @@
                     aria-label="Enter search query" 
                     required 
                 />
-                <button 
-                    type="submit" 
-                    id="searchIcon" 
-                    aria-label="Search"
-                >
+                <button type="submit" id="searchIcon" aria-label="Search">
                     <i class="fas fa-search"></i>
                 </button>
             </form>
-            <a class="active home-icon" href="#" aria-label="Home link" style="color: white; font-size: 16px; text-decoration: none;">
+
+            <a class="active home-icon" href="#" aria-label="Home link">
                 <i class="fa fa-fw fa-home" style="margin-right: 10px;"></i> Home
             </a>
-            <a href="Cyber Security Knowledge Hub/about-us.html" aria-label="About Us link" style="color: white; font-size: 16px; text-decoration: none;">About Us</a>
-            <a href="main_files/cybersecurity-knowledge-hub.html" aria-label="Cybersecurity Hub link" style="color: white; font-size: 16px; text-decoration: none;">Cybersecurity Hub</a>
-            <a href="main_files/australian-newzealand-laws.html" aria-label="AU/NZ Laws link" style="color: white; font-size: 16px; text-decoration: none;">AU/NZ Laws</a>
-            <a href="main_files/resources.html" aria-label="Resources link" style="color: white; font-size: 16px; text-decoration: none;">Resources</a>
-            <a href="main_files/newsletter.html" aria-label="Newsletter link" style="color: white; font-size: 16px; text-decoration: none;">Newsletter</a>
-            <a href="main_files/contact-form.html" aria-label="Contact Us link" style="color: white; font-size: 16px; text-decoration: none;">Contact Us</a>
-
+            <a href="Cyber Security Knowledge Hub/about-us.html" aria-label="About Us link">About Us</a>
+            <a href="main_files/cybersecurity-knowledge-hub.html" aria-label="Cybersecurity Hub link">Cybersecurity Hub</a>
+            <a href="main_files/australian-newzealand-laws.html" aria-label="AU/NZ Laws link">AU/NZ Laws</a>
+            <a href="main_files/resources.html" aria-label="Resources link">Resources</a>
+            <a href="main_files/newsletter.html" aria-label="Newsletter link">Newsletter</a>
+            <a href="main_files/contact-form.html" aria-label="Contact Us link">Contact Us</a>
         </div>
     </header>
 
@@ -216,6 +212,10 @@
         </div>
         <p>Welcome everyone to new CyberSecurity Knowledge Hub website designed for people with disabilities, to understand Cybersecurity in any format they like about complex topics.</p>
     </main>
+
+    <footer>
+        <p>&copy; 2025 Accessible Cybersecurity. All rights reserved.</p>
+    </footer>
 
     <script>
         let currentFontSize = 16;
@@ -257,58 +257,38 @@
             }
         });
 
-        document.getElementById('HighContrastButton').addEventListener('click', () => {
-            clearModes();
-            document.body.classList.add('high-contrast');
+       /* document.getElementById('lightColorPicker').addEventListener('input', (e) => {
+            if (document.body.classList.contains('light-mode')) {
+                document.body.style.backgroundColor = e.target.value;
+            }
         });
 
-        const lightColorPicker = document.getElementById('lightColorPicker');
-        lightColorPicker.addEventListener('input', () => {
-            document.body.style.backgroundColor = lightColorPicker.value;
+        document.getElementById('darkColorPicker').addEventListener('input', (e) => {
+            if (document.body.classList.contains('dark-mode')) {
+                document.body.style.backgroundColor = e.target.value;
+            }
+        });
+        */
+        document.getElementById('LightModeButton').addEventListener('click', () => {
+            document.querySelector('.trit-icon').classList.remove('trit-icon-dark');
+            document.querySelector('.trit-icon').classList.add('trit-icon-light');
         });
 
-        const darkColorPicker = document.getElementById('darkColorPicker');
-        darkColorPicker.addEventListener('input', () => {
-            document.body.style.backgroundColor = darkColorPicker.value;
-        });
-
-        const highContrastColorPicker = document.getElementById('highContrastColorPicker');
-        highContrastColorPicker.addEventListener('input', () => {
-            document.body.style.backgroundColor = highContrastColorPicker.value;
+        document.getElementById('DarkModeButton').addEventListener('click', () => {
+            document.querySelector('.trit-icon').classList.remove('trit-icon-light');
+            document.querySelector('.trit-icon').classList.add('trit-icon-dark');
         });
 
         const siteSearchForm = document.getElementById('site-search-form');
         siteSearchForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const searchQuery = document.getElementById('searchInput').value;
-            console.log(`Searching for: ${searchQuery}`);
-            const pageContent = document.body.textContent.toLowerCase();
-            const searchResults = pageContent.includes(searchQuery.toLowerCase());
-            if (searchResults) {
-                console.log(`Found ${searchQuery} in the page content`);
+            if (["auslan", "braille", "audio"].includes(searchQuery.toLowerCase())) {
+                window.location.href = `accessibility_files/${searchQuery.toLowerCase()}.html`;
             } else {
-                console.log(`Did not find ${searchQuery} in the page content`);
-            }
-            if (searchQuery === "auslan") {
-                window.location.href = "accessibility_files/auslan.html";
-            } else if (searchQuery === "braille") {
-                window.location.href = "accessibility_files/braille.html";
-            } else if (searchQuery === "audio") {
-                window.location.href = "accessibility_files/audio.html";
-            }
-        });
-
-        // Add event listener to close color picker when clicking outside
-        document.addEventListener('click', (e) => {
-            if (e.target !== lightColorPicker && e.target !== darkColorPicker && e.target !== highContrastColorPicker) {
-                lightColorPicker.blur();
-                darkColorPicker.blur();
-                highContrastColorPicker.blur();
+                alert(`No results found for "${searchQuery}"`);
             }
         });
     </script>
-    <footer>
-        <p>&copy; 2025 Accessible Cybersecurity. All rights reserved.</p>
-    </footer>
 </body>
 </html>
