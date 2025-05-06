@@ -138,24 +138,28 @@
             bottom: 0;
         }
 
-        .navbar {
+      /*  .navbar {
             display: flex;
             align-items: center;
             gap: 20px;
             margin-left: 50px;
         }
+            */
 
         .navbar a {
             color: white;
             text-decoration: none;
             font-size: 16px;
         }
-
-        .home-icon {
+        
+        .navbar .home-icon {
             font-size: 16px;
-            margin-left: 10px;
-            color: white; /* Added white color for accessibility */
         }
+        
+        .navbar .home-icon .fa-fw {
+            font-size: 16px;
+        }
+        
 
         .color-picker-button input[type="color"] {
             margin-left: 5px;
@@ -237,7 +241,7 @@
                 </button>
             </form>
 
-                <a class="active home-icon" href="#" aria-label="Home link">
+                <a class="nav-link home-icon" href="#" aria-label="Home link">
                     <i class="fa fa-fw fa-home" aria-label="Home Icon" style="margin-right: 10px;"></i> 
                     <span>Home</span>
                 </a>
