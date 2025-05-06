@@ -28,6 +28,9 @@
   color: #ccc;
 }
 
+.nav-link, .nav-link:hover, .nav-link:focus {
+  text-decoration: none;
+}
 .accessibility-options {
   display: flex;
   align-items: center;
