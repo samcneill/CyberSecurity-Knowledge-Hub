@@ -9,6 +9,11 @@
         *, *::before, *::after {
             box-sizing: border-box;
         }
+
+        a {
+            color: #FFFFFF;
+        }
+        
         body {
             margin: 0;
             min-height: 100vh;
@@ -107,14 +112,6 @@
             color: #FFFFFF;
         }
 
-        .dark-mode * {
-            color: #FFFFFF !important;
-        }
-
-        .light-mode * {
-            color: #070336 !important;
-        }
-
         .light-mode a {
             color: #FFFFFF;
         }
@@ -211,13 +208,13 @@
                 <i class="fa fa-sun sun-icon" aria-hidden="true"></i>
                 Light
             </button>
-            <input type="color" id="lightColorPicker" value="#FFFFFF" aria-label="Pick background color for light mode">
+            <input type="color" id="lightColorPicker" value="#e6d897" aria-label="Pick background color for light mode">
 
             <button id="DarkModeButton" aria-label="Toggle Dark Mode">
                 <i class="fa fa-moon moon-icon" aria-hidden="true"></i>
                 Dark
             </button>
-            <input type="color" id="darkColorPicker" value="#000000" aria-label="Pick background color for dark mode">
+            <input type="color" id="darkColorPicker" value="#333333" aria-label="Pick background color for dark mode">
 
             <button id="IncreaseFontButton" aria-label="Increase Font Size">
                 <i class="fa fa-plus" aria-hidden="true"></i>
