@@ -306,9 +306,11 @@
             if (["auslan", "braille", "audio"].includes(searchQuery.toLowerCase())) {
                 window.location.href = `accessibility_files/${searchQuery.toLowerCase()}.html`;
             } else {
-                alert(`No results found for "${searchQuery}"`);
+                alert(`Searching for "${searchQuery}"... (Note: Currently, only "auslan", "braille", and "audio" are supported.)`);
+                // TO DO: Enhance search functionality
             }
         });
+    
     </script>
 </body>
 </html>
