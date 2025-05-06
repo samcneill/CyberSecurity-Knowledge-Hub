@@ -66,19 +66,32 @@
             padding: 5px;
             border-radius: 50%;
         }
-
-        header.funcbar .search-bar {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
         header.funcbar .search-bar input {
-            padding: 5px;
+            padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            font-size: 14px;
+            font-size: 18px;
+            color: #000; /* Changed text color to black for high contrast */
+            background-color: #FFFFFF; /* Added background color to improve contrast */
         }
+        
+        header.funcbar .search-bar input:focus {
+            outline: 2px solid #4A2F83; /* Added focus outline for better visibility */
+        }
+        
+        header.funcbar .search-bar input::placeholder {
+            color: #666; /* Changed placeholder text color to a darker gray */
+        }
+        
+        header.funcbar .search-bar button[type="submit"] {
+            background-color: #4A2F83;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #FFFFFF; /* Ensure high contrast */
+            border-radius: 5px;
+        }                
 
         main {
             padding: 20px;
@@ -180,6 +193,7 @@
     </style>
 </head>
 <body>
+    
     <header class="funcbar">
         <div class="accessibility-options">
             <button id="LightModeButton" aria-label="Toggle Light Mode">
@@ -216,9 +230,11 @@
                 </button>
             </form>
 
-            <a class="active home-icon" href="#" aria-label="Home link">
-                <i class="fa fa-fw fa-home" style="margin-right: 10px;"></i> 
-                <span>Home</span>
+                <a class="active home-icon" href="#" aria-label="Home link">
+                    <i class="fa fa-fw fa-home" aria-label="Home Icon" style="margin-right: 10px;"></i> 
+                    <span>Home</span>
+                </a>
+                
             </a>
             <a href="Cyber Security Knowledge Hub/about-us.html" aria-label="About Us link">About Us</a>
             <a href="main_files/cybersecurity-knowledge-hub.html" aria-label="Cybersecurity Hub link">Cybersecurity Hub</a>
@@ -307,7 +323,7 @@
             if (["auslan", "braille", "audio"].includes(searchQuery.toLowerCase())) {
                 window.location.href = `accessibility_files/${searchQuery.toLowerCase()}.html`;
             } else {
-                alert(`Searching for "${searchQuery}"... (Note: Currently, only "auslan", "braille", and "audio" are supported.)`);
+                alert(`Searching for "${searchQuery}"... `);
                 // TO DO: Enhance search functionality
             }
         });
