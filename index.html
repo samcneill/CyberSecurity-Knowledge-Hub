@@ -19,7 +19,7 @@
       font-family: Arial, sans-serif;
       font-size: 16px;
       color: #333;
-      background-color: #D6C9F1; /* Default background color */
+      background-color: #D6C9F1;
     }
 
     a {
@@ -66,6 +66,7 @@
 
     .right-tools {
       justify-content: flex-end;
+      align-items: center;
     }
 
     .center-nav {
@@ -76,6 +77,21 @@
     .center-nav a {
       font-size: 16px;
       color: white;
+    }
+
+    /* Font Size Controls */
+    .font-size-controls {
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+    }
+
+    .font-size-controls span {
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      margin: 0 10px;
+      user-select: none;
     }
 
     /* Button Styles */
@@ -116,6 +132,11 @@
       height: 30px;
     }
 
+    .search-bar {
+      display: flex;
+      align-items: center;
+    }
+
     .search-bar input[type="text"] {
       padding: 8px;
       border: 1px solid #ccc;
@@ -141,7 +162,7 @@
     }
 
     main img {
-      max-width: 700px; /* Increased image size */
+      max-width: 700px;
       height: auto;
       border: none;
       margin: 20px auto;
@@ -149,15 +170,33 @@
 
     /* Font Size Adjustment */
     .font-size-adjust {
-      font-size: 16px; /* Default font size */
+      transition: font-size 0.3s ease;
     }
 
     .font-size-adjust.small {
-      font-size: 12px; /* Small font size */
+      font-size: 14px !important;
     }
 
     .font-size-adjust.large {
-      font-size: 24px; /* Large font size */
+      font-size: 28px !important;
+    }
+
+    h1.font-size-adjust.small {
+      font-size: 24px !important;
+    }
+
+    h1.font-size-adjust.large {
+      font-size: 48px !important;
+    }
+
+    .info {
+      font-size: 24px;
+      margin: 20px 0;
+    }
+
+    .info a {
+      color: #4A2F83;
+      text-decoration: underline;
     }
 
     /* Mode Styles */
@@ -216,26 +255,28 @@
     </nav>
 
     <div class="right-tools">
+      <div class="font-size-controls">
+        <span onclick="adjustFontSize('small')" aria-label="Decrease font size">-</span>
+        <span onclick="adjustFontSize('large')" aria-label="Increase font size">+</span>
+      </div>
       <form class="search-bar" id="site-search-form">
         <label for="searchInput" class="sr-only">Search</label>
         <input type="text" id="searchInput" name="q" placeholder="Search..." required />
         <button type="submit" aria-label="Search"><i class="fas fa-search"></i></button>
       </form>
       <button onclick="speakText()" aria-label="Read aloud content">🔊 Read</button>
-      <span onclick="adjustFontSize('small')" style="cursor: pointer;">-</span>
-      <span onclick="adjustFontSize('large')" style="cursor: pointer;">+</span>
     </div>
   </header>
 
-  <main id="mainContent" role="main" class="font-size-adjust">
-    <h1 style="font-size: 36px; margin-bottom: 0.5em;" class="font-size-adjust">Accessible Cybersecurity</h1>
+  <main id="mainContent" role="main">
+    <h1 class="font-size-adjust">Accessible Cybersecurity</h1>
     <p class="font-size-adjust">Explore accessibility features to enhance user experience.</p>
     <img src="https://i.imgur.com/rVlMF8D.png" alt="Six individuals in discussion with electrified 'Cyber Quantum' logo above them" />
-    <div class="info" style="font-size: 24px;">
+    <div class="info font-size-adjust">
       <span>Click here for </span>
-      <a href="accessibility_files/auslan.html" style="font-size: 24px;">Auslan</a>,
-      <a href="accessibility_files/braille.html" style="font-size: 24px;">Braille</a>,
-      <a href="accessibility_files/audio.html" style="font-size: 24px;">Audio</a>
+      <a href="accessibility_files/auslan.html">Auslan</a>,
+      <a href="accessibility_files/braille.html">Braille</a>,
+      <a href="accessibility_files/audio.html">Audio</a>
     </div>
     <p class="font-size-adjust">
       Welcome to our CyberSecurity Knowledge Hub, designed for people with disabilities to understand cybersecurity in accessible formats.
@@ -247,25 +288,28 @@
   <script>
     // Function to adjust font size
     function adjustFontSize(mode) {
-      const mainContent = document.getElementById('mainContent');
-      mainContent.classList.remove('small', 'large');
-      
-      if (mode === 'small') {
-        mainContent.classList.add('small');
-      } else if (mode === 'large') {
-        mainContent.classList.add('large');
-      }
+      const elements = document.querySelectorAll('.font-size-adjust');
+      elements.forEach(element => {
+        element.classList.remove('small', 'large');
+        if (mode === 'small') {
+          element.classList.add('small');
+        } else if (mode === 'large') {
+          element.classList.add('large');
+        }
+      });
     }
 
     // Function to read aloud content with a woman's voice
     function speakText() {
       try {
         const msg = new SpeechSynthesisUtterance(document.body.innerText);
-        const voices = window.speechSynthesis.getVoices();
-        const femaleVoice = voices.find(voice => voice.name.includes('female'));
-        if (femaleVoice) {
-          msg.voice = femaleVoice;
-        }
+        window.speechSynthesis.getVoices().forEach(voice => {
+          if (voice.name.toLowerCase().includes('female')) {
+            msg.voice = voice;
+          }
+        });
+        msg.rate = 0.9;
+        msg.pitch = 1.1;
         window.speechSynthesis.cancel();
         window.speechSynthesis.speak(msg);
       } catch (error) {
