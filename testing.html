@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Accessible Cybersecurity</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.0/open-dyslexic.css" />
   <style>
+    /* Global Styles */
     *, *::before, *::after {
       box-sizing: border-box;
     }
@@ -16,16 +16,15 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      background-color: #D6C9F1;
       font-family: Arial, sans-serif;
       font-size: 16px;
       color: #333;
+      background-color: #D6C9F1; /* Default background color */
     }
 
     a {
-      color: #FFFFFF;
+      color: #000;
       text-decoration: none;
-      margin: 0 10px;
     }
 
     .skip-link {
@@ -41,12 +40,13 @@
       top: 0;
     }
 
+    /* Header Styles */
     header.funcbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       background-color: #4A2F83;
-      padding: 10px 20px;
+      padding: 18px 20px;
       flex-wrap: wrap;
       color: white;
     }
@@ -60,24 +60,40 @@
       gap: 10px;
     }
 
+    .left-tools {
+      justify-content: flex-start;
+    }
+
+    .right-tools {
+      justify-content: flex-end;
+    }
+
+    .center-nav {
+      flex: 1;
+      justify-content: center;
+    }
+
     .center-nav a {
       font-size: 16px;
       color: white;
     }
 
+    /* Button Styles */
     button {
       background: #4A2F83;
-      border: none;
+      border: 2px solid #fff;
       color: white;
       padding: 8px 12px;
       border-radius: 5px;
       cursor: pointer;
+      font-weight: bold;
     }
 
     button:hover {
       background-color: #3B255F;
     }
 
+    /* Icon Styles */
     .sun-icon {
       background-color: yellow;
       color: black;
@@ -92,6 +108,7 @@
       border-radius: 50%;
     }
 
+    /* Input and Search Styles */
     input[type="color"] {
       cursor: pointer;
       border: none;
@@ -111,22 +128,39 @@
     .search-bar button {
       padding: 8px;
       background-color: #4A2F83;
-      border: none;
+      border: 2px solid white;
       color: white;
       border-radius: 4px;
       font-size: 16px;
     }
 
+    /* Main Content Styles */
     main {
       padding: 20px;
       text-align: center;
     }
 
     main img {
-      max-width: 40%;
+      max-width: 700px; /* Increased image size */
       height: auto;
+      border: none;
+      margin: 20px auto;
     }
 
+    /* Font Size Adjustment */
+    .font-size-adjust {
+      font-size: 16px; /* Default font size */
+    }
+
+    .font-size-adjust.small {
+      font-size: 12px; /* Small font size */
+    }
+
+    .font-size-adjust.large {
+      font-size: 24px; /* Large font size */
+    }
+
+    /* Mode Styles */
     .light-mode {
       background-color: #F5F5DC;
       color: #000;
@@ -137,16 +171,22 @@
       color: #FFD700;
     }
 
-    footer {
-      background-color: #4A2F83;
-      color: white;
-      text-align: center;
-      padding: 10px;
-    }
-
+    /* Accessibility Focus Styles */
     *:focus {
       outline: 2px solid #4A2F83;
       outline-offset: 2px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
     }
   </style>
 </head>
@@ -155,21 +195,6 @@
 
   <header class="funcbar" role="banner">
     <div class="left-tools">
-      <button onclick="toggleDyslexicFont()" aria-label="Toggle dyslexia-friendly font">Dyslexia Font</button>
-      <button onclick="speakText()" aria-label="Read aloud content">🔊 Read</button>
-    </div>
-
-    <nav class="center-nav" role="navigation" aria-label="Main navigation">
-      <a class="nav-link" href="#" aria-label="Home link"><i class="fa fa-fw fa-home" aria-hidden="true"></i> Home</a>
-      <a href="#" aria-label="About Us link">About Us</a>
-      <a href="#" aria-label="Cybersecurity Hub link">Cybersecurity Hub</a>
-      <a href="#" aria-label="AU/NZ Laws link">AU/NZ Laws</a>
-      <a href="#" aria-label="Resources link">Resources</a>
-      <a href="#" aria-label="Newsletter link">Newsletter</a>
-      <a href="#" aria-label="Contact Us link">Contact Us</a>
-    </nav>
-
-    <div class="right-tools">
       <button id="LightModeButton" aria-label="Light Mode">
         <i class="fa fa-sun sun-icon" aria-hidden="true"></i>
       </button>
@@ -178,81 +203,142 @@
         <i class="fa fa-moon moon-icon" aria-hidden="true"></i>
       </button>
       <input type="color" id="darkColorPicker" value="#1e1e1e" aria-label="Dark mode background color" />
+    </div>
 
+    <nav class="center-nav" role="navigation" aria-label="Main navigation">
+      <a href="#">Home</a>
+      <a href="#">About Us</a>
+      <a href="#">Cybersecurity Hub</a>
+      <a href="#">AU/NZ Laws</a>
+      <a href="#">Resources</a>
+      <a href="#">Newsletter</a>
+      <a href="#">Contact Us</a>
+    </nav>
+
+    <div class="right-tools">
       <form class="search-bar" id="site-search-form">
         <label for="searchInput" class="sr-only">Search</label>
         <input type="text" id="searchInput" name="q" placeholder="Search..." required />
         <button type="submit" aria-label="Search"><i class="fas fa-search"></i></button>
       </form>
+      <button onclick="speakText()" aria-label="Read aloud content">🔊 Read</button>
+      <span onclick="adjustFontSize('small')" style="cursor: pointer;">-</span>
+      <span onclick="adjustFontSize('large')" style="cursor: pointer;">+</span>
     </div>
   </header>
 
-  <main id="mainContent" role="main">
-    <h1 id="heading" style="font-size: 36px;">Accessible Cybersecurity</h1>
-    <p>Explore accessibility features to enhance user experience.</p>
-    <img src="https://i.imgur.com/rVlMF8D.png" alt="Six individuals are in the midst of a discussion with the text 'Cyber Quantum' above them with an electrified border" />
-    <div class="info">
-      <h2>
-        Click here for
-        <a href="accessibility_files/auslan.html">Auslan</a>,
-        <a href="accessibility_files/braille.html">Braille</a>,
-        <a href="accessibility_files/audio.html">Audio</a>
-      </h2>
+  <main id="mainContent" role="main" class="font-size-adjust">
+    <h1 style="font-size: 36px; margin-bottom: 0.5em;" class="font-size-adjust">Accessible Cybersecurity</h1>
+    <p class="font-size-adjust">Explore accessibility features to enhance user experience.</p>
+    <img src="https://i.imgur.com/rVlMF8D.png" alt="Six individuals in discussion with electrified 'Cyber Quantum' logo above them" />
+    <div class="info" style="font-size: 24px;">
+      <span>Click here for </span>
+      <a href="accessibility_files/auslan.html" style="font-size: 24px;">Auslan</a>,
+      <a href="accessibility_files/braille.html" style="font-size: 24px;">Braille</a>,
+      <a href="accessibility_files/audio.html" style="font-size: 24px;">Audio</a>
     </div>
-    <p>
-      Welcome everyone to our new CyberSecurity Knowledge Hub website designed for people with disabilities to understand cybersecurity in formats accessible to them.
+    <p class="font-size-adjust">
+      Welcome to our CyberSecurity Knowledge Hub, designed for people with disabilities to understand cybersecurity in accessible formats.
     </p>
   </main>
 
   <div id="liveRegion" aria-live="polite" style="position:absolute;left:-9999px;"></div>
 
-  <footer role="contentinfo">
-    <p>&copy; 2025 Accessible Cybersecurity. All rights reserved.</p>
-  </footer>
-
   <script>
-    let currentFontSize = 16;
-    let dyslexicEnabled = false;
-
-    function clearModes() {
-      document.body.classList.remove('light-mode', 'dark-mode');
+    // Function to adjust font size
+    function adjustFontSize(mode) {
+      const mainContent = document.getElementById('mainContent');
+      mainContent.classList.remove('small', 'large');
+      
+      if (mode === 'small') {
+        mainContent.classList.add('small');
+      } else if (mode === 'large') {
+        mainContent.classList.add('large');
+      }
     }
 
-    function toggleDyslexicFont() {
-      document.body.style.fontFamily = dyslexicEnabled ? 'Arial, sans-serif' : '"OpenDyslexic", Arial, sans-serif';
-      dyslexicEnabled = !dyslexicEnabled;
-    }
-
+    // Function to read aloud content with a woman's voice
     function speakText() {
-      const msg = new SpeechSynthesisUtterance(document.body.innerText);
-      window.speechSynthesis.cancel();
-      window.speechSynthesis.speak(msg);
+      try {
+        const msg = new SpeechSynthesisUtterance(document.body.innerText);
+        const voices = window.speechSynthesis.getVoices();
+        const femaleVoice = voices.find(voice => voice.name.includes('female'));
+        if (femaleVoice) {
+          msg.voice = femaleVoice;
+        }
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(msg);
+      } catch (error) {
+        console.error('Error reading aloud content:', error);
+      }
     }
 
-    document.getElementById('LightModeButton').addEventListener('click', () => {
-      clearModes();
-      document.body.classList.add('light-mode');
-      document.body.style.backgroundColor = document.getElementById('lightColorPicker').value;
-    });
+    // Function to apply color theme with improved contrast
+    function applyColorTheme(mode) {
+      try {
+        const lightColor = document.getElementById('lightColorPicker').value;
+        const darkColor = document.getElementById('darkColorPicker').value;
+        document.body.classList.remove('light-mode', 'dark-mode');
 
-    document.getElementById('DarkModeButton').addEventListener('click', () => {
-      clearModes();
-      document.body.classList.add('dark-mode');
-      document.body.style.backgroundColor = document.getElementById('darkColorPicker').value;
-    });
+        if (mode === 'light') {
+          document.body.classList.add('light-mode');
+          document.body.style.backgroundColor = lightColor;
+          document.body.style.color = getContrastingColor(lightColor);
+        } else {
+          document.body.classList.add('dark-mode');
+          document.body.style.backgroundColor = darkColor;
+          document.body.style.color = getContrastingColor(darkColor);
+        }
+      } catch (error) {
+        console.error('Error applying color theme:', error);
+      }
+    }
 
-    document.getElementById('lightColorPicker').addEventListener('input', (e) => {
+    // Helper function to get a contrasting color
+    function getContrastingColor(hexColor) {
+      const luminance = relativeLuminance(hexToRgb(hexColor));
+      return luminance > 0.5 ? '#000' : '#FFF';
+    }
+
+    // Helper function to convert hex to RGB
+    function hexToRgb(hex) {
+      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+      } : null;
+    }
+
+    // Helper function to calculate relative luminance
+    function relativeLuminance(rgb) {
+      const R = rgb.r / 255;
+      const G = rgb.g / 255;
+      const B = rgb.b / 255;
+      const luminance = 0.2126 * R + 0.7152 * G + 0.0722 * B;
+      return luminance;
+    }
+
+    // Event listeners for mode buttons
+    document.getElementById('LightModeButton').addEventListener('click', () => applyColorTheme('light'));
+    document.getElementById('DarkModeButton').addEventListener('click', () => applyColorTheme('dark'));
+
+    // Event listeners for color pickers
+    document.getElementById('lightColorPicker').addEventListener('input', () => {
       if (document.body.classList.contains('light-mode')) {
-        document.body.style.backgroundColor = e.target.value;
+        document.body.style.backgroundColor = document.getElementById('lightColorPicker').value;
+        document.body.style.color = getContrastingColor(document.getElementById('lightColorPicker').value);
       }
     });
 
-    document.getElementById('darkColorPicker').addEventListener('input', (e) => {
+    document.getElementById('darkColorPicker').addEventListener('input', () => {
       if (document.body.classList.contains('dark-mode')) {
-        document.body.style.backgroundColor = e.target.value;
+        document.body.style.backgroundColor = document.getElementById('darkColorPicker').value;
+        document.body.style.color = getContrastingColor(document.getElementById('darkColorPicker').value);
       }
     });
 
+    // Event listener for search form
     document.getElementById('site-search-form').addEventListener('submit', (e) => {
       e.preventDefault();
       const query = document.getElementById('searchInput').value.toLowerCase();
