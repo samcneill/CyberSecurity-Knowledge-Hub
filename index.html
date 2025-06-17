@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Accessible Cybersecurity</title>
+  <title>Accessible Cybersecurity Knowledge Hub</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
     /* Global Styles */
@@ -72,11 +72,56 @@
     .center-nav {
       flex: 1;
       justify-content: center;
+      position: relative;
     }
 
     .center-nav a {
       font-size: 16px;
       color: white;
+      padding: 10px;
+      position: relative;
+    }
+
+    /* Dropdown Menu Styles */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #4A2F83;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 4px;
+      top: 100%;
+      left: 0;
+    }
+
+    .dropdown:hover .dropdown-content,
+    .dropdown:focus-within .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover,
+    .dropdown-content a:focus {
+      background-color: #3B255F;
+    }
+
+    .dropdown > a::after {
+      content: " ▼";
+      font-size: 0.7em;
+      vertical-align: middle;
     }
 
     /* Font Size Controls */
@@ -105,8 +150,10 @@
       font-weight: bold;
     }
 
-    button:hover {
+    button:hover,
+    button:focus {
       background-color: #3B255F;
+      outline: 2px solid white;
     }
 
     /* Icon Styles */
@@ -236,10 +283,12 @@
     <div class="left-tools">
       <button id="LightModeButton" aria-label="Light Mode">
         <i class="fa fa-sun sun-icon" aria-hidden="true"></i>
+        <span class="sr-only">Light Mode</span>
       </button>
       <input type="color" id="lightColorPicker" value="#f5f5dc" aria-label="Light mode background color" />
       <button id="DarkModeButton" aria-label="Dark Mode">
         <i class="fa fa-moon moon-icon" aria-hidden="true"></i>
+        <span class="sr-only">Dark Mode</span>
       </button>
       <input type="color" id="darkColorPicker" value="#1e1e1e" aria-label="Dark mode background color" />
     </div>
@@ -247,24 +296,41 @@
     <nav class="center-nav" role="navigation" aria-label="Main navigation">
       <a href="#">Home</a>
       <a href="#">About Us</a>
-      <a href="#">Cybersecurity Hub</a>
-      <a href="#">AU/NZ Laws</a>
+      
+      <div class="dropdown">
+        <a href="#" aria-haspopup="true" aria-expanded="false">Cybersecurity Hub</a>
+        <div class="dropdown-content" role="menu">
+          <a href="#" role="menuitem">Easy English</a>
+          <a href="#" role="menuitem">Plain English</a>
+          <a href="#" role="menuitem">Easy Read</a>
+        </div>
+      </div>
+      
+      <div class="dropdown">
+        <a href="#" aria-haspopup="true" aria-expanded="false">AU/NZ Laws</a>
+        <div class="dropdown-content" role="menu">
+          <a href="#" role="menuitem">Easy English</a>
+          <a href="#" role="menuitem">Plain English</a>
+          <a href="#" role="menuitem">Easy Read</a>
+        </div>
+      </div>
+      
       <a href="#">Resources</a>
       <a href="#">Newsletter</a>
       <a href="#">Contact Us</a>
     </nav>
 
     <div class="right-tools">
-      <div class="font-size-controls">
-        <span onclick="adjustFontSize('small')" aria-label="Decrease font size">-</span>
-        <span onclick="adjustFontSize('large')" aria-label="Increase font size">+</span>
+      <div class="font-size-controls" role="group" aria-label="Font size controls">
+        <span onclick="adjustFontSize('small')" tabindex="0" role="button" aria-label="Decrease font size">-</span>
+        <span onclick="adjustFontSize('large')" tabindex="0" role="button" aria-label="Increase font size">+</span>
       </div>
       <form class="search-bar" id="site-search-form">
         <label for="searchInput" class="sr-only">Search</label>
         <input type="text" id="searchInput" name="q" placeholder="Search..." required />
-        <button type="submit" aria-label="Search"><i class="fas fa-search"></i></button>
+        <button type="submit" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></button>
       </form>
-      <button onclick="speakText()" aria-label="Read aloud content">🔊 Read</button>
+      <button onclick="speakText()" aria-label="Read aloud content">🔊 <span class="sr-only">Read Aloud</span></button>
     </div>
   </header>
 
@@ -283,7 +349,7 @@
     </p>
   </main>
 
-  <div id="liveRegion" aria-live="polite" style="position:absolute;left:-9999px;"></div>
+  <div id="liveRegion" aria-live="polite" class="sr-only"></div>
 
   <script>
     // Function to adjust font size
@@ -293,8 +359,10 @@
         element.classList.remove('small', 'large');
         if (mode === 'small') {
           element.classList.add('small');
+          document.getElementById('liveRegion').textContent = "Font size decreased";
         } else if (mode === 'large') {
           element.classList.add('large');
+          document.getElementById('liveRegion').textContent = "Font size increased";
         }
       });
     }
@@ -302,18 +370,29 @@
     // Function to read aloud content with a woman's voice
     function speakText() {
       try {
-        const msg = new SpeechSynthesisUtterance(document.body.innerText);
-        window.speechSynthesis.getVoices().forEach(voice => {
-          if (voice.name.toLowerCase().includes('female')) {
-            msg.voice = voice;
-          }
-        });
+        const mainContent = document.getElementById('mainContent');
+        const textToRead = mainContent.textContent || mainContent.innerText;
+        const msg = new SpeechSynthesisUtterance(textToRead);
+        
+        // Try to find a female voice
+        const voices = window.speechSynthesis.getVoices();
+        const femaleVoice = voices.find(voice => 
+          voice.name.toLowerCase().includes('female') || 
+          voice.name.toLowerCase().includes('woman')
+        );
+        
+        if (femaleVoice) {
+          msg.voice = femaleVoice;
+        }
+        
         msg.rate = 0.9;
         msg.pitch = 1.1;
         window.speechSynthesis.cancel();
         window.speechSynthesis.speak(msg);
+        document.getElementById('liveRegion').textContent = "Reading content aloud";
       } catch (error) {
         console.error('Error reading aloud content:', error);
+        document.getElementById('liveRegion').textContent = "Error reading content aloud";
       }
     }
 
@@ -328,10 +407,12 @@
           document.body.classList.add('light-mode');
           document.body.style.backgroundColor = lightColor;
           document.body.style.color = getContrastingColor(lightColor);
+          document.getElementById('liveRegion').textContent = "Light mode applied";
         } else {
           document.body.classList.add('dark-mode');
           document.body.style.backgroundColor = darkColor;
           document.body.style.color = getContrastingColor(darkColor);
+          document.getElementById('liveRegion').textContent = "Dark mode applied";
         }
       } catch (error) {
         console.error('Error applying color theme:', error);
@@ -390,10 +471,53 @@
         window.location.href = `accessibility_files/${query}.html`;
       } else {
         const msg = `Searching for "${query}"...`;
-        alert(msg);
         document.getElementById('liveRegion').textContent = msg;
+        alert(msg);
       }
     });
+
+    // Make dropdown menu keyboard accessible
+    document.querySelectorAll('.dropdown > a').forEach(item => {
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const dropdownContent = item.nextElementSibling;
+          const isExpanded = item.getAttribute('aria-expanded') === 'true';
+          
+          if (isExpanded) {
+            dropdownContent.style.display = 'none';
+            item.setAttribute('aria-expanded', 'false');
+          } else {
+            dropdownContent.style.display = 'block';
+            item.setAttribute('aria-expanded', 'true');
+            // Focus the first item in the dropdown
+            const firstItem = dropdownContent.querySelector('a');
+            if (firstItem) firstItem.focus();
+          }
+        }
+      });
+    });
+
+    // Make font size controls keyboard accessible
+    document.querySelectorAll('.font-size-controls span').forEach(control => {
+      control.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (control.getAttribute('aria-label') === 'Decrease font size') {
+            adjustFontSize('small');
+          } else {
+            adjustFontSize('large');
+          }
+        }
+      });
+    });
+
+    // Initialize voices for speech synthesis
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = function() {
+        window.speechSynthesis.getVoices();
+      };
+    }
   </script>
 </body>
 </html>
