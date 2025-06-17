@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Accessible Cybersecurity Knowledge Hub</title>
+  <title>AU/NZ Laws | Accessible Cybersecurity Knowledge Hub</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
     /* Global Styles */
@@ -205,12 +205,14 @@
     /* Main Content Styles */
     main {
       padding: 20px;
-      text-align: center;
       flex: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
     }
 
     main img {
-      max-width: 700px;
+      max-width: 500px;
       height: auto;
       border: none;
       margin: 20px auto;
@@ -289,6 +291,62 @@
       color: white;
       text-decoration: underline;
     }
+
+    /* Format Options */
+    .format-options {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .format-card {
+      background-color: #f0e6ff;
+      border: 2px solid #4A2F83;
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .format-card:hover,
+    .format-card:focus-within {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .format-card h3 {
+      color: #4A2F83;
+      margin-top: 0;
+    }
+
+    .format-card p {
+      margin-bottom: 20px;
+    }
+
+    .format-card a {
+      display: inline-block;
+      background-color: #4A2F83;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .format-card a:hover,
+    .format-card a:focus {
+      background-color: #3B255F;
+      text-decoration: underline;
+    }
+
+    .format-icon {
+      font-size: 48px;
+      color: #4A2F83;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
@@ -350,18 +408,45 @@
   </header>
 
   <main id="mainContent" role="main">
-    <h1 class="font-size-adjust">Accessible Cybersecurity</h1>
-    <p class="font-size-adjust">Explore accessibility features to enhance user experience.</p>
-    <img src="https://i.imgur.com/rVlMF8D.png" alt="Six individuals in discussion with electrified 'Cyber Quantum' logo above them" />
+    <h1 class="font-size-adjust">Australia and New Zealand Cybersecurity Laws</h1>
+    <p class="font-size-adjust">Learn about the cybersecurity laws that protect you in Australia and New Zealand.</p>
+    
+    <img src="https://i.imgur.com/rVlMF8D.png" alt="Illustration showing cybersecurity concepts with people and digital elements" />
+    
+    <p class="font-size-adjust">
+      We provide information about cybersecurity laws in formats that are accessible to everyone. 
+      Choose the format that works best for you:
+    </p>
+    
+    <div class="format-options">
+      <div class="format-card">
+        <i class="fas fa-book-open format-icon" aria-hidden="true"></i>
+        <h3>Easy English</h3>
+        <p>Simple words and short sentences to make information easier to understand.</p>
+        <a href="laws/easy-english.html">View Easy English</a>
+      </div>
+      
+      <div class="format-card">
+        <i class="fas fa-file-alt format-icon" aria-hidden="true"></i>
+        <h3>Plain English</h3>
+        <p>Clear, straightforward language that avoids technical terms.</p>
+        <a href="laws/plain-english.html">View Plain English</a>
+      </div>
+      
+      <div class="format-card">
+        <i class="fas fa-images format-icon" aria-hidden="true"></i>
+        <h3>Easy Read</h3>
+        <p>Information with pictures to help understand the text.</p>
+        <a href="laws/easy-read.html">View Easy Read</a>
+      </div>
+    </div>
+    
     <div class="info font-size-adjust">
-      <span>Click here for </span>
+      <span>Also available in: </span>
       <a href="accessibility_files/auslan.html">Auslan</a>,
       <a href="accessibility_files/braille.html">Braille</a>,
       <a href="accessibility_files/audio.html">Audio</a>
     </div>
-    <p class="font-size-adjust">
-      Welcome to our CyberSecurity Knowledge Hub, designed for people with disabilities to understand cybersecurity in accessible formats.
-    </p>
   </main>
 
   <footer>
@@ -537,6 +622,18 @@
           } else {
             adjustFontSize('large');
           }
+        }
+      });
+    });
+
+    // Make format cards keyboard accessible
+    document.querySelectorAll('.format-card').forEach(card => {
+      card.setAttribute('tabindex', '0');
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const link = card.querySelector('a');
+          if (link) link.click();
         }
       });
     });

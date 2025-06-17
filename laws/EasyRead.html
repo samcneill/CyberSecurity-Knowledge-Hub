@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Accessible Cybersecurity Knowledge Hub</title>
+  <title>AU/NZ Laws - Easy Read | Accessible Cybersecurity Knowledge Hub</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
     /* Global Styles */
@@ -205,15 +205,17 @@
     /* Main Content Styles */
     main {
       padding: 20px;
-      text-align: center;
       flex: 1;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     main img {
-      max-width: 700px;
+      max-width: 300px;
       height: auto;
       border: none;
       margin: 20px auto;
+      display: block;
     }
 
     /* Font Size Adjustment */
@@ -289,6 +291,65 @@
       color: white;
       text-decoration: underline;
     }
+
+    /* Easy Read Specific Styles */
+    .easy-read-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+      line-height: 1.8;
+    }
+
+    .easy-read-content h2 {
+      color: #4A2F83;
+      margin-top: 30px;
+      font-size: 24px;
+    }
+
+    .easy-read-content p {
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    .law-box {
+      background-color: #f0e6ff;
+      border: 2px solid #4A2F83;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .law-box h3 {
+      margin-top: 0;
+      color: #4A2F83;
+    }
+
+    .law-icon {
+      font-size: 48px;
+      color: #4A2F83;
+      margin-bottom: 20px;
+    }
+
+    .page-title {
+      text-align: center;
+      color: #4A2F83;
+      margin-bottom: 10px;
+    }
+    
+    .page-subtitle {
+      text-align: center;
+      color: #4A2F83;
+      font-size: 24px;
+      margin-top: 0;
+      margin-bottom: 30px;
+    }
+
+    .law-image {
+      float: right;
+      margin: 0 0 20px 20px;
+      max-width: 200px;
+      border-radius: 10px;
+    }
   </style>
 </head>
 <body>
@@ -309,30 +370,30 @@
     </div>
 
     <nav class="center-nav" role="navigation" aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About Us</a>
       
       <div class="dropdown">
-        <a href="cybersecurity.html" aria-haspopup="true" aria-expanded="false">Cybersecurity Hub</a>
+        <a href="../cybersecurity.html" aria-haspopup="true" aria-expanded="false">Cybersecurity Hub</a>
         <div class="dropdown-content" role="menu">
-          <a href="cybersecurity/easy-english.html" role="menuitem">Easy English</a>
-          <a href="cybersecurity/plain-english.html" role="menuitem">Plain English</a>
-          <a href="cybersecurity/easy-read.html" role="menuitem">Easy Read</a>
+          <a href="../cybersecurity/easy-english.html" role="menuitem">Easy English</a>
+          <a href="../cybersecurity/plain-english.html" role="menuitem">Plain English</a>
+          <a href="../cybersecurity/easy-read.html" role="menuitem">Easy Read</a>
         </div>
       </div>
       
       <div class="dropdown">
-        <a href="laws.html" aria-haspopup="true" aria-expanded="false">AU/NZ Laws</a>
+        <a href="../laws.html" aria-haspopup="true" aria-expanded="false">AU/NZ Laws</a>
         <div class="dropdown-content" role="menu">
-          <a href="laws/easy-english.html" role="menuitem">Easy English</a>
-          <a href="laws/plain-english.html" role="menuitem">Plain English</a>
-          <a href="laws/easy-read.html" role="menuitem">Easy Read</a>
+          <a href="easy-english.html" role="menuitem">Easy English</a>
+          <a href="plain-english.html" role="menuitem">Plain English</a>
+          <a href="easy-read.html" role="menuitem">Easy Read</a>
         </div>
       </div>
       
-      <a href="resources.html">Resources</a>
-      <a href="newsletter.html">Newsletter</a>
-      <a href="contact.html">Contact Us</a>
+      <a href="../resources.html">Resources</a>
+      <a href="../newsletter.html">Newsletter</a>
+      <a href="../contact.html">Contact Us</a>
     </nav>
 
     <div class="right-tools">
@@ -350,23 +411,80 @@
   </header>
 
   <main id="mainContent" role="main">
-    <h1 class="font-size-adjust">Accessible Cybersecurity</h1>
-    <p class="font-size-adjust">Explore accessibility features to enhance user experience.</p>
-    <img src="https://i.imgur.com/rVlMF8D.png" alt="Six individuals in discussion with electrified 'Cyber Quantum' logo above them" />
-    <div class="info font-size-adjust">
-      <span>Click here for </span>
-      <a href="accessibility_files/auslan.html">Auslan</a>,
-      <a href="accessibility_files/braille.html">Braille</a>,
-      <a href="accessibility_files/audio.html">Audio</a>
+    <h1 class="page-title font-size-adjust">AU/NZ Cybersecurity Laws</h1>
+    <h2 class="page-subtitle font-size-adjust">Easy Read</h2>
+    
+    <div class="easy-read-content font-size-adjust">
+      <img src="https://i.imgur.com/rVlMF8D.png" alt="Cybersecurity illustration" class="law-image">
+      
+      <h2>What are cybersecurity laws?</h2>
+      <p>Cybersecurity laws are rules that help keep people safe online. These laws tell companies and people what they must do to protect information.</p>
+      
+      <div class="law-box">
+        <h3>Privacy Act</h3>
+        <i class="fas fa-lock law-icon" aria-hidden="true"></i>
+        <p>The Privacy Act is a law in Australia and New Zealand. This law says:</p>
+        <ul>
+          <li>Companies must keep your personal information safe</li>
+          <li>Companies must tell you if your information is stolen</li>
+          <li>You can ask to see what information companies have about you</li>
+        </ul>
+      </div>
+      
+      <h2>What happens if someone breaks these laws?</h2>
+      <p>If someone breaks these laws, they might:</p>
+      <ul>
+        <li>Have to pay money</li>
+        <li>Have to go to court</li>
+        <li>Have to fix the problem</li>
+      </ul>
+      
+      <div class="law-box">
+        <h3>Notifiable Data Breaches Scheme</h3>
+        <i class="fas fa-exclamation-triangle law-icon" aria-hidden="true"></i>
+        <p>This is a rule that says companies must tell you if your information has been stolen or lost. They must:</p>
+        <ul>
+          <li>Tell you what information was lost</li>
+          <li>Tell you what they are doing to fix it</li>
+          <li>Tell you what you can do to stay safe</li>
+        </ul>
+      </div>
+      
+      <h2>How to stay safe online</h2>
+      <p>Here are some easy ways to stay safe online:</p>
+      <ul>
+        <li>Use strong passwords with letters, numbers, and symbols</li>
+        <li>Do not share your passwords with other people</li>
+        <li>Be careful about what information you share online</li>
+        <li>Update your computer and phone regularly</li>
+      </ul>
+      
+      <div class="law-box">
+        <h3>Security of Critical Infrastructure Act</h3>
+        <i class="fas fa-shield-alt law-icon" aria-hidden="true"></i>
+        <p>This law helps protect important things like:</p>
+        <ul>
+          <li>Electricity</li>
+          <li>Water</li>
+          <li>Hospitals</li>
+          <li>Transport</li>
+        </ul>
+        <p>It makes sure these important services are protected from cyber attacks.</p>
+      </div>
+      
+      <h2>Where to get help</h2>
+      <p>If you think someone has broken cybersecurity laws or if you need help, you can:</p>
+      <ul>
+        <li>Call the Australian Cyber Security Centre: 1300 CYBER1 (1300 292 371)</li>
+        <li>Visit the CERT NZ website (New Zealand): <a href="https://www.cert.govt.nz">www.cert.govt.nz</a></li>
+        <li>Report scams to Scamwatch: <a href="https://www.scamwatch.gov.au">www.scamwatch.gov.au</a></li>
+      </ul>
     </div>
-    <p class="font-size-adjust">
-      Welcome to our CyberSecurity Knowledge Hub, designed for people with disabilities to understand cybersecurity in accessible formats.
-    </p>
   </main>
 
   <footer>
     <p>© 2023 Accessible Cybersecurity Knowledge Hub. All rights reserved.</p>
-    <p><a href="accessibility.html">Accessibility Statement</a> | <a href="privacy.html">Privacy Policy</a></p>
+    <p><a href="../accessibility.html">Accessibility Statement</a> | <a href="../privacy.html">Privacy Policy</a></p>
   </footer>
 
   <div id="liveRegion" aria-live="polite" class="sr-only"></div>
@@ -497,7 +615,7 @@
       e.preventDefault();
       const query = document.getElementById('searchInput').value.toLowerCase();
       if (["auslan", "braille", "audio"].includes(query)) {
-        window.location.href = `accessibility_files/${query}.html`;
+        window.location.href = `../accessibility_files/${query}.html`;
       } else {
         const msg = `Searching for "${query}"...`;
         document.getElementById('liveRegion').textContent = msg;
