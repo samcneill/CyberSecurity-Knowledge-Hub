@@ -17,7 +17,7 @@
       --focus-color: #FFD700;
       --border-radius: 6px;
       --transition: all 0.3s ease;
-      --font-size-base: 16px;
+      --font-size-base: 18px;
     }
 
     /* Global Styles */
@@ -261,7 +261,7 @@
       outline-offset: 2px;
     }
 
-    /* Enhanced Font Size Controls for Accessibility */
+    /* Font Size Controls */
     .font-size-controls {
       display: flex;
       align-items: center;
@@ -412,12 +412,10 @@
 
     /* Theme Styles */
     .light-mode {
-      --background-color: #F5F5DC;
       --text-color: #000;
     }
 
     .dark-mode {
-      --background-color: #1E1E1E;
       --text-color: #FFD700;
     }
 
@@ -503,7 +501,7 @@
   <header class="funcbar" role="banner">
     <div class="left-tools">
       <div class="background-color-section">
-        <div class="background-color-label">Background Color</div>
+        <div class="background-color-label"></div>
         <div class="color-mode-controls">
           <div class="mode-button-container">
             <label>Light</label>
@@ -555,9 +553,9 @@
     <div class="right-tools">
       <div class="font-size-controls" role="group" aria-label="Font size controls">
         <label for="fontSizeRange">Font Size:</label>
-        <input type="range" id="fontSizeRange" min="12" max="72" value="16" 
+        <input type="range" id="fontSizeRange" min="12" max="72" value="18" 
                aria-label="Adjust font size from 12 to 72 pixels" aria-describedby="fontSizeDisplay" />
-        <span id="fontSizeDisplay" class="font-size-display">16px</span>
+        <span id="fontSizeDisplay" class="font-size-display">18px</span>
       </div>
       
       <form class="search-bar" id="siteSearchForm" role="search">
@@ -621,7 +619,7 @@
       }
     };
 
-    // Font Size Control (12-72px range)
+    // Font Size Control
     const fontSizeRange = document.getElementById('fontSizeRange');
     const fontSizeDisplay = document.getElementById('fontSizeDisplay');
 
@@ -652,6 +650,7 @@
     const setLightMode = () => {
       document.body.className = 'light-mode';
       document.documentElement.style.setProperty('--background-color', lightBgPicker.value);
+      document.documentElement.style.setProperty('--text-color', '#000000');
       savePreference('theme', 'light-mode');
       savePreference('lightBgColor', lightBgPicker.value);
       announceToScreenReader('Light mode activated');
@@ -660,6 +659,7 @@
     const setDarkMode = () => {
       document.body.className = 'dark-mode';
       document.documentElement.style.setProperty('--background-color', darkBgPicker.value);
+      document.documentElement.style.setProperty('--text-color', '#FFD700');
       savePreference('theme', 'dark-mode');
       savePreference('darkBgColor', darkBgPicker.value);
       announceToScreenReader('Dark mode activated');
@@ -668,21 +668,27 @@
     lightModeButton.addEventListener('click', setLightMode);
     darkModeButton.addEventListener('click', setDarkMode);
 
-    // Color picker functionality
+    // Color picker functionality - NOW FULLY FUNCTIONAL
     lightBgPicker.addEventListener('change', (e) => {
-      if (document.body.classList.contains('light-mode')) {
-        document.documentElement.style.setProperty('--background-color', e.target.value);
+      const newColor = e.target.value;
+      savePreference('lightBgColor', newColor);
+      
+      // If currently in light mode, apply the change immediately
+      if (document.body.classList.contains('light-mode') || !document.body.className) {
+        document.documentElement.style.setProperty('--background-color', newColor);
+        announceToScreenReader('Light mode background color updated');
       }
-      savePreference('lightBgColor', e.target.value);
-      announceToScreenReader('Light mode background color updated');
     });
 
     darkBgPicker.addEventListener('change', (e) => {
+      const newColor = e.target.value;
+      savePreference('darkBgColor', newColor);
+      
+      // If currently in dark mode, apply the change immediately
       if (document.body.classList.contains('dark-mode')) {
-        document.documentElement.style.setProperty('--background-color', e.target.value);
+        document.documentElement.style.setProperty('--background-color', newColor);
+        announceToScreenReader('Dark mode background color updated');
       }
-      savePreference('darkBgColor', e.target.value);
-      announceToScreenReader('Dark mode background color updated');
     });
 
     // Text-to-Speech Functionality
@@ -765,7 +771,7 @@
     // Load Saved Preferences on Page Load
     document.addEventListener('DOMContentLoaded', () => {
       // Load font size
-      const savedFontSize = getPreference('fontSize', '16');
+      const savedFontSize = getPreference('fontSize', '18');
       updateFontSize(savedFontSize);
 
       // Load colors
@@ -775,12 +781,16 @@
       lightBgPicker.value = savedLightBgColor;
       darkBgPicker.value = savedDarkBgColor;
 
-      // Load theme
+      // Load theme and apply colors
       const savedTheme = getPreference('theme', '');
       if (savedTheme === 'light-mode') {
-        setLightMode();
+        document.body.className = 'light-mode';
+        document.documentElement.style.setProperty('--background-color', savedLightBgColor);
+        document.documentElement.style.setProperty('--text-color', '#000000');
       } else if (savedTheme === 'dark-mode') {
-        setDarkMode();
+        document.body.className = 'dark-mode';
+        document.documentElement.style.setProperty('--background-color', savedDarkBgColor);
+        document.documentElement.style.setProperty('--text-color', '#FFD700');
       }
     });
 
