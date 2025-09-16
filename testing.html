@@ -17,7 +17,7 @@
       --focus-color: #FFD700;
       --border-radius: 6px;
       --transition: all 0.3s ease;
-      --font-size-base: 18px;
+      --font-size-base: 16px;
     }
 
     /* Global Styles */
@@ -123,13 +123,6 @@
       flex-direction: column;
       align-items: center;
       gap: 10px;
-    }
-
-    .background-color-label {
-      font-size: 14px;
-      font-weight: bold;
-      color: var(--white);
-      text-align: center;
     }
 
     .color-mode-controls {
@@ -280,22 +273,43 @@
       transform: scale(0.95);
     }
 
-    /* Font Size Controls */
-    .font-size-controls {
+    /* Font Size and Text Color Controls */
+    .font-text-controls {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 15px;
       background: rgba(255,255,255,0.1);
       padding: 8px 12px;
       border-radius: var(--border-radius);
       border: 2px solid var(--white);
+      flex-wrap: wrap;
     }
 
-    .font-size-controls label {
+    .font-size-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .text-color-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .font-size-controls label,
+    .text-color-controls label {
       font-size: 14px;
       font-weight: bold;
       color: var(--white);
       min-width: 70px;
+    }
+
+    .text-color-controls label {
+      font-size: 12px;
+      min-width: auto;
+      text-align: center;
     }
 
     .font-size-controls input[type="range"] {
@@ -342,6 +356,14 @@
       padding: 4px 8px;
       border-radius: 4px;
       border: 1px solid var(--white);
+    }
+
+    /* Text Color Picker Specific Styles */
+    .text-color-controls input[type="color"] {
+      width: 30px;
+      height: 30px;
+      border: 2px solid var(--white);
+      border-radius: 50%;
     }
 
     /* Search Bar */
@@ -426,7 +448,7 @@
 
     /* Font Size Adjustment */
     .font-size-adjust {
-      transition: font-size 0.3s ease;
+      transition: font-size 0.3s ease, color 0.3s ease;
     }
 
     /* Theme Styles */
@@ -490,7 +512,7 @@
         justify-content: center;
       }
 
-      .font-size-controls {
+      .font-text-controls {
         flex-direction: column;
         gap: 8px;
       }
@@ -544,7 +566,6 @@
   <header class="funcbar" role="banner">
     <div class="left-tools">
       <div class="background-color-section">
-        <div class="background-color-label">Theme Controls</div>
         <div class="color-mode-controls">
           <div class="mode-button-container" id="lightModeContainer">
             <label>Light</label>
@@ -598,12 +619,21 @@
     </nav>
 
     <div class="right-tools">
-      <div class="font-size-controls" role="group" aria-label="Font size controls">
-        <label for="fontSizeRange">Font Size:</label>
-        <input type="range" id="fontSizeRange" min="12" max="72" value="18" step="2"
-               aria-label="Adjust font size from 12 to 72 pixels" 
-               aria-describedby="fontSizeDisplay" />
-        <span id="fontSizeDisplay" class="font-size-display" aria-live="polite">18px</span>
+      <div class="font-text-controls" role="group" aria-label="Font and text color controls">
+        <div class="font-size-controls">
+          <label for="fontSizeRange">Font Size:</label>
+          <input type="range" id="fontSizeRange" min="10" max="72" value="16" step="1"
+                 aria-label="Adjust font size from 10 to 72 pixels" 
+                 aria-describedby="fontSizeDisplay" />
+          <span id="fontSizeDisplay" class="font-size-display" aria-live="polite">16px</span>
+        </div>
+        
+        <div class="text-color-controls">
+          <label for="textColorPicker">Text Color</label>
+          <input type="color" id="textColorPicker" value="#333333" 
+                 aria-label="Choose text color"
+                 title="Click to select text color" />
+        </div>
       </div>
       
       <form class="search-bar" id="siteSearchForm" role="search">
@@ -691,7 +721,33 @@
       updateFontSize(e.target.value);
     });
 
-    // Theme and Color Controls - Enhanced
+    // Text Color Control
+    const textColorPicker = document.getElementById('textColorPicker');
+
+    const updateTextColor = (color) => {
+      const elements = document.querySelectorAll('.font-size-adjust');
+      elements.forEach(el => {
+        el.style.color = color;
+      });
+      
+      // Also update the CSS custom property for consistency
+      document.documentElement.style.setProperty('--text-color', color);
+      
+      announceToScreenReader('Text color updated');
+      savePreference('textColor', color);
+    };
+
+    // Text color picker functionality
+    textColorPicker.addEventListener('change', (e) => {
+      updateTextColor(e.target.value);
+    });
+
+    // Real-time preview while dragging text color picker
+    textColorPicker.addEventListener('input', (e) => {
+      updateTextColor(e.target.value);
+    });
+
+    // Theme and Color Controls - Simplified and Enhanced
     const lightModeButton = document.getElementById('lightModeButton');
     const darkModeButton = document.getElementById('darkModeButton');
     const lightBgPicker = document.getElementById('lightBgPicker');
@@ -722,69 +778,64 @@
       currentTheme = mode;
     };
 
-    const setLightMode = () => {
+    const applyLightMode = (color) => {
       document.body.className = 'light-mode';
-      document.documentElement.style.setProperty('--background-color', lightBgPicker.value);
-      document.documentElement.style.setProperty('--text-color', '#000000');
+      document.documentElement.style.setProperty('--background-color', color);
+      // Don't override custom text color when switching themes
       updateActiveMode('light');
       savePreference('theme', 'light-mode');
-      savePreference('lightBgColor', lightBgPicker.value);
-      announceToScreenReader('Light mode activated');
+      savePreference('lightBgColor', color);
     };
 
-    const setDarkMode = () => {
+    const applyDarkMode = (color) => {
       document.body.className = 'dark-mode';
-      document.documentElement.style.setProperty('--background-color', darkBgPicker.value);
-      document.documentElement.style.setProperty('--text-color', '#FFD700');
+      document.documentElement.style.setProperty('--background-color', color);
+      // Don't override custom text color when switching themes
       updateActiveMode('dark');
       savePreference('theme', 'dark-mode');
-      savePreference('darkBgColor', darkBgPicker.value);
-      announceToScreenReader('Dark mode activated');
+      savePreference('darkBgColor', color);
     };
 
-    lightModeButton.addEventListener('click', setLightMode);
-    darkModeButton.addEventListener('click', setDarkMode);
-
-    // Enhanced Color picker functionality with immediate visual feedback
-    lightBgPicker.addEventListener('input', (e) => {
-      const newColor = e.target.value;
-      // Immediate preview while dragging
-      if (currentTheme === 'light' || (!document.body.className && currentTheme !== 'dark')) {
-        document.documentElement.style.setProperty('--background-color', newColor);
-      }
+    // Light mode button - switches to light mode with current color
+    lightModeButton.addEventListener('click', () => {
+      applyLightMode(lightBgPicker.value);
+      announceToScreenReader('Light mode activated');
     });
 
+    // Dark mode button - switches to dark mode with current color
+    darkModeButton.addEventListener('click', () => {
+      applyDarkMode(darkBgPicker.value);
+      announceToScreenReader('Dark mode activated');
+    });
+
+    // Light color picker - automatically switches to light mode when changed
     lightBgPicker.addEventListener('change', (e) => {
       const newColor = e.target.value;
-      savePreference('lightBgColor', newColor);
-      
-      // Apply the change if currently in light mode
-      if (currentTheme === 'light' || (!document.body.className && currentTheme !== 'dark')) {
-        document.documentElement.style.setProperty('--background-color', newColor);
-        announceToScreenReader('Light mode background color updated');
+      applyLightMode(newColor);
+      announceToScreenReader('Light mode activated with new background color');
+    });
+
+    // Dark color picker - automatically switches to dark mode when changed
+    darkBgPicker.addEventListener('change', (e) => {
+      const newColor = e.target.value;
+      applyDarkMode(newColor);
+      announceToScreenReader('Dark mode activated with new background color');
+    });
+
+    // Real-time preview while dragging color picker
+    lightBgPicker.addEventListener('input', (e) => {
+      if (currentTheme === 'light') {
+        document.documentElement.style.setProperty('--background-color', e.target.value);
       }
     });
 
     darkBgPicker.addEventListener('input', (e) => {
-      const newColor = e.target.value;
-      // Immediate preview while dragging
       if (currentTheme === 'dark') {
-        document.documentElement.style.setProperty('--background-color', newColor);
+        document.documentElement.style.setProperty('--background-color', e.target.value);
       }
     });
 
-    darkBgPicker.addEventListener('change', (e) => {
-      const newColor = e.target.value;
-      savePreference('darkBgColor', newColor);
-      
-      // Apply the change if currently in dark mode
-      if (currentTheme === 'dark') {
-        document.documentElement.style.setProperty('--background-color', newColor);
-        announceToScreenReader('Dark mode background color updated');
-      }
-    });
-
-    // Text-to-Speech Functionality - Enhanced
+    // Text-to-Speech Functionality
     const speakButton = document.getElementById('speakButton');
     let isReading = false;
 
@@ -835,7 +886,7 @@
 
     speakButton.addEventListener('click', speakText);
 
-    // Search Functionality - Enhanced
+    // Search Functionality
     const searchForm = document.getElementById('siteSearchForm');
     const searchInput = document.getElementById('searchInput');
 
@@ -865,40 +916,12 @@
         window.location.href = routes[query];
       } else {
         announceToScreenReader(`Searching for "${query}"`);
-        // In a real implementation, this would perform actual search
         alert(`Search results for: "${query}"`);
       }
     });
 
-    // Load Saved Preferences on Page Load - Enhanced
-    document.addEventListener('DOMContentLoaded', () => {
-      // Load font size
-      const savedFontSize = getPreference('fontSize', '18');
-      updateFontSize(savedFontSize);
+    // Load Save
 
-      // Load colors
-      const savedLightBgColor = getPreference('lightBgColor', '#F5F5DC');
-      const savedDarkBgColor = getPreference('darkBgColor', '#1E1E1E');
-      
-      lightBgPicker.value = savedLightBgColor;
-      darkBgPicker.value = savedDarkBgColor;
-
-      // Load theme and apply colors
-      const savedTheme = getPreference('theme', '');
-      if (savedTheme === 'light-mode') {
-        document.body.className = 'light-mode';
-        document.documentElement.style.setProperty('--background-color', savedLightBgColor);
-        document.documentElement.style.setProperty('--text-color', '#000000');
-        updateActiveMode('light');
-      } else if (savedTheme === 'dark-mode') {
-        document.body.className = 'dark-mode';
-        document.documentElement.style.setProperty('--background-color', savedDarkBgColor);
-        document.documentElement.style.setProperty('--text-color', '#FFD700');
-          updateActiveMode('dark');
-
-          }
-    });
-
-          </script>
+  </script>
 </body>
 </html>
