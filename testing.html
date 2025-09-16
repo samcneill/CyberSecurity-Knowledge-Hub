@@ -85,6 +85,9 @@
 
     .left-tools {
       justify-content: flex-start;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
     }
 
     .right-tools {
@@ -112,6 +115,51 @@
     .center-nav a:focus {
       background-color: var(--secondary-color);
       outline: 2px solid var(--focus-color);
+    }
+
+    /* Background Color Section */
+    .background-color-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .background-color-label {
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--white);
+      text-align: center;
+    }
+
+    .color-mode-controls {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .mode-button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mode-button-container label {
+      font-size: 12px;
+      font-weight: bold;
+      color: var(--white);
+      text-align: center;
+    }
+
+    .mode-button-with-picker {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.1);
+      padding: 8px;
+      border-radius: var(--border-radius);
+      border: 2px solid var(--white);
     }
 
     /* Dropdown Menu Styles */
@@ -180,42 +228,6 @@
       transform: translateY(-1px);
     }
 
-    /* Color Picker Styles */
-    .color-controls {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .color-picker-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .color-picker-item label {
-      font-size: 12px;
-      font-weight: bold;
-      color: var(--white);
-      text-align: center;
-    }
-
-    .color-picker-item input[type="color"] {
-      width: 35px;
-      height: 35px;
-      border: 2px solid var(--white);
-      border-radius: 50%;
-      cursor: pointer;
-      background: none;
-      padding: 0;
-    }
-
-    .color-picker-item input[type="color"]:focus {
-      outline: 3px solid var(--focus-color);
-      outline-offset: 2px;
-    }
-
     /* Mode Toggle Buttons */
     .sun-icon {
       background-color: #FFD700;
@@ -231,6 +243,22 @@
       padding: 4px;
       border-radius: 50%;
       font-size: 14px;
+    }
+
+    /* Color Picker Styles */
+    input[type="color"] {
+      width: 35px;
+      height: 35px;
+      border: 2px solid var(--white);
+      border-radius: 50%;
+      cursor: pointer;
+      background: none;
+      padding: 0;
+    }
+
+    input[type="color"]:focus {
+      outline: 3px solid var(--focus-color);
+      outline-offset: 2px;
     }
 
     /* Enhanced Font Size Controls for Accessibility */
@@ -295,36 +323,6 @@
       padding: 4px 8px;
       border-radius: 4px;
       border: 1px solid var(--white);
-    }
-
-    /* Font Size Buttons for Better Accessibility */
-    .font-size-buttons {
-      display: flex;
-      gap: 5px;
-    }
-
-    .font-btn {
-      background: rgba(255,255,255,0.2);
-      border: 1px solid var(--white);
-      color: var(--white);
-      padding: 6px 10px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 12px;
-      transition: var(--transition);
-    }
-
-    .font-btn:hover,
-    .font-btn:focus {
-      background: var(--focus-color);
-      color: var(--black);
-      outline: 2px solid var(--white);
-    }
-
-    .font-btn.active {
-      background: var(--focus-color);
-      color: var(--black);
     }
 
     /* Search Bar */
@@ -480,7 +478,7 @@
         gap: 8px;
       }
 
-      .color-controls {
+      .color-mode-controls {
         flex-direction: column;
         gap: 10px;
       }
@@ -504,23 +502,28 @@
 
   <header class="funcbar" role="banner">
     <div class="left-tools">
-      <button id="lightModeButton" aria-label="Switch to light mode">
-        <i class="fa fa-sun sun-icon" aria-hidden="true"></i>
-        <span class="sr-only">Light Mode</span>
-      </button>
-      <button id="darkModeButton" aria-label="Switch to dark mode">
-        <i class="fa fa-moon moon-icon" aria-hidden="true"></i>
-        <span class="sr-only">Dark Mode</span>
-      </button>
-      
-      <div class="color-controls">
-        <div class="color-picker-item">
-          <label for="pageBgPicker">Background</label>
-          <input type="color" id="pageBgPicker" value="#D6C9F1" aria-label="Change page background color" />
-        </div>
-        <div class="color-picker-item">
-          <label for="pageTextPicker">Text</label>
-          <input type="color" id="pageTextPicker" value="#333333" aria-label="Change page text color" />
+      <div class="background-color-section">
+        <div class="background-color-label">Background Color</div>
+        <div class="color-mode-controls">
+          <div class="mode-button-container">
+            <label>Light</label>
+            <div class="mode-button-with-picker">
+              <button id="lightModeButton" aria-label="Switch to light mode">
+                <i class="fa fa-sun sun-icon" aria-hidden="true"></i>
+              </button>
+              <input type="color" id="lightBgPicker" value="#F5F5DC" aria-label="Light mode background color" />
+            </div>
+          </div>
+          
+          <div class="mode-button-container">
+            <label>Dark</label>
+            <div class="mode-button-with-picker">
+              <button id="darkModeButton" aria-label="Switch to dark mode">
+                <i class="fa fa-moon moon-icon" aria-hidden="true"></i>
+              </button>
+              <input type="color" id="darkBgPicker" value="#1E1E1E" aria-label="Dark mode background color" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -552,14 +555,8 @@
     <div class="right-tools">
       <div class="font-size-controls" role="group" aria-label="Font size controls">
         <label for="fontSizeRange">Font Size:</label>
-        <div class="font-size-buttons">
-          <button class="font-btn" data-size="14" aria-label="Small font size">A</button>
-          <button class="font-btn active" data-size="16" aria-label="Medium font size">A</button>
-          <button class="font-btn" data-size="20" aria-label="Large font size">A</button>
-          <button class="font-btn" data-size="24" aria-label="Extra large font size">A</button>
-        </div>
-        <input type="range" id="fontSizeRange" min="10" max="32" value="16" 
-               aria-label="Adjust font size" aria-describedby="fontSizeDisplay" />
+        <input type="range" id="fontSizeRange" min="12" max="72" value="16" 
+               aria-label="Adjust font size from 12 to 72 pixels" aria-describedby="fontSizeDisplay" />
         <span id="fontSizeDisplay" class="font-size-display">16px</span>
       </div>
       
@@ -624,10 +621,9 @@
       }
     };
 
-    // Enhanced Font Size Control for Accessibility
+    // Font Size Control (12-72px range)
     const fontSizeRange = document.getElementById('fontSizeRange');
     const fontSizeDisplay = document.getElementById('fontSizeDisplay');
-    const fontButtons = document.querySelectorAll('.font-btn');
 
     const updateFontSize = (size) => {
       const elements = document.querySelectorAll('.font-size-adjust');
@@ -638,14 +634,6 @@
       fontSizeDisplay.textContent = size + 'px';
       fontSizeRange.value = size;
       
-      // Update button states
-      fontButtons.forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.size == size) {
-          btn.classList.add('active');
-        }
-      });
-      
       announceToScreenReader(`Font size changed to ${size} pixels`);
       savePreference('fontSize', size);
     };
@@ -655,50 +643,47 @@
       updateFontSize(e.target.value);
     });
 
-    // Font size button functionality
-    fontButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const size = btn.dataset.size;
-        updateFontSize(size);
-      });
-    });
-
-    // Color Customization
-    const pageBgPicker = document.getElementById('pageBgPicker');
-    const pageTextPicker = document.getElementById('pageTextPicker');
-
-    const updateBackgroundColor = (color) => {
-      document.documentElement.style.setProperty('--background-color', color);
-      savePreference('bgColor', color);
-      announceToScreenReader('Background color updated');
-    };
-
-    const updateTextColor = (color) => {
-      document.documentElement.style.setProperty('--text-color', color);
-      savePreference('textColor', color);
-      announceToScreenReader('Text color updated');
-    };
-
-    pageBgPicker.addEventListener('change', (e) => {
-      updateBackgroundColor(e.target.value);
-    });
-
-    pageTextPicker.addEventListener('change', (e) => {
-      updateTextColor(e.target.value);
-    });
-
-    // Theme Controls
+    // Theme and Color Controls
     const lightModeButton = document.getElementById('lightModeButton');
     const darkModeButton = document.getElementById('darkModeButton');
+    const lightBgPicker = document.getElementById('lightBgPicker');
+    const darkBgPicker = document.getElementById('darkBgPicker');
 
-    const setTheme = (theme) => {
-      document.body.className = theme;
-      savePreference('theme', theme);
-      announceToScreenReader(`${theme.replace('-', ' ')} activated`);
+    const setLightMode = () => {
+      document.body.className = 'light-mode';
+      document.documentElement.style.setProperty('--background-color', lightBgPicker.value);
+      savePreference('theme', 'light-mode');
+      savePreference('lightBgColor', lightBgPicker.value);
+      announceToScreenReader('Light mode activated');
     };
 
-    lightModeButton.addEventListener('click', () => setTheme('light-mode'));
-    darkModeButton.addEventListener('click', () => setTheme('dark-mode'));
+    const setDarkMode = () => {
+      document.body.className = 'dark-mode';
+      document.documentElement.style.setProperty('--background-color', darkBgPicker.value);
+      savePreference('theme', 'dark-mode');
+      savePreference('darkBgColor', darkBgPicker.value);
+      announceToScreenReader('Dark mode activated');
+    };
+
+    lightModeButton.addEventListener('click', setLightMode);
+    darkModeButton.addEventListener('click', setDarkMode);
+
+    // Color picker functionality
+    lightBgPicker.addEventListener('change', (e) => {
+      if (document.body.classList.contains('light-mode')) {
+        document.documentElement.style.setProperty('--background-color', e.target.value);
+      }
+      savePreference('lightBgColor', e.target.value);
+      announceToScreenReader('Light mode background color updated');
+    });
+
+    darkBgPicker.addEventListener('change', (e) => {
+      if (document.body.classList.contains('dark-mode')) {
+        document.documentElement.style.setProperty('--background-color', e.target.value);
+      }
+      savePreference('darkBgColor', e.target.value);
+      announceToScreenReader('Dark mode background color updated');
+    });
 
     // Text-to-Speech Functionality
     const speakButton = document.getElementById('speakButton');
@@ -784,33 +769,18 @@
       updateFontSize(savedFontSize);
 
       // Load colors
-      const savedBgColor = getPreference('bgColor');
-      const savedTextColor = getPreference('textColor');
-
-      if (savedBgColor) {
-        pageBgPicker.value = savedBgColor;
-        updateBackgroundColor(savedBgColor);
-      }
+      const savedLightBgColor = getPreference('lightBgColor', '#F5F5DC');
+      const savedDarkBgColor = getPreference('darkBgColor', '#1E1E1E');
       
-      if (savedTextColor) {
-        pageTextPicker.value = savedTextColor;
-        updateTextColor(savedTextColor);
-      }
+      lightBgPicker.value = savedLightBgColor;
+      darkBgPicker.value = savedDarkBgColor;
 
       // Load theme
-      const savedTheme = getPreference('theme');
-      if (savedTheme) {
-        document.body.className = savedTheme;
-      }
-    });
-
-    // Keyboard Navigation for Dropdowns
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        // Close any open dropdowns
-        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-          dropdown.style.display = 'none';
-        });
+      const savedTheme = getPreference('theme', '');
+      if (savedTheme === 'light-mode') {
+        setLightMode();
+      } else if (savedTheme === 'dark-mode') {
+        setDarkMode();
       }
     });
 
