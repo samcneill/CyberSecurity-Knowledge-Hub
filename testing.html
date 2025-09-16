@@ -162,6 +162,13 @@
       border: 2px solid var(--white);
     }
 
+    /* Active mode styling */
+    .mode-button-container.active .mode-button-with-picker {
+      background: rgba(255,215,0,0.2);
+      border-color: var(--focus-color);
+      box-shadow: 0 0 8px rgba(255,215,0,0.3);
+    }
+
     /* Dropdown Menu Styles */
     .dropdown {
       position: relative;
@@ -245,7 +252,7 @@
       font-size: 14px;
     }
 
-    /* Color Picker Styles */
+    /* Color Picker Styles - Enhanced */
     input[type="color"] {
       width: 35px;
       height: 35px;
@@ -254,11 +261,23 @@
       cursor: pointer;
       background: none;
       padding: 0;
+      transition: var(--transition);
+    }
+
+    input[type="color"]:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 8px rgba(255,255,255,0.5);
     }
 
     input[type="color"]:focus {
       outline: 3px solid var(--focus-color);
       outline-offset: 2px;
+      transform: scale(1.1);
+    }
+
+    /* Color picker active state */
+    input[type="color"]:active {
+      transform: scale(0.95);
     }
 
     /* Font Size Controls */
@@ -493,6 +512,30 @@
         font-size: 20px;
       }
     }
+
+    /* High contrast mode support */
+    @media (prefers-contrast: high) {
+      :root {
+        --focus-color: #FFFF00;
+      }
+      
+      button, input[type="color"] {
+        border-width: 3px;
+      }
+    }
+
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      
+      html {
+        scroll-behavior: auto;
+      }
+    }
   </style>
 </head>
 <body>
@@ -501,25 +544,29 @@
   <header class="funcbar" role="banner">
     <div class="left-tools">
       <div class="background-color-section">
-        <div class="background-color-label"></div>
+        <div class="background-color-label">Theme Controls</div>
         <div class="color-mode-controls">
-          <div class="mode-button-container">
+          <div class="mode-button-container" id="lightModeContainer">
             <label>Light</label>
             <div class="mode-button-with-picker">
-              <button id="lightModeButton" aria-label="Switch to light mode">
+              <button id="lightModeButton" aria-label="Switch to light mode" aria-pressed="false">
                 <i class="fa fa-sun sun-icon" aria-hidden="true"></i>
               </button>
-              <input type="color" id="lightBgPicker" value="#F5F5DC" aria-label="Light mode background color" />
+              <input type="color" id="lightBgPicker" value="#F5F5DC" 
+                     aria-label="Choose light mode background color" 
+                     title="Click to select light mode background color" />
             </div>
           </div>
           
-          <div class="mode-button-container">
+          <div class="mode-button-container" id="darkModeContainer">
             <label>Dark</label>
             <div class="mode-button-with-picker">
-              <button id="darkModeButton" aria-label="Switch to dark mode">
+              <button id="darkModeButton" aria-label="Switch to dark mode" aria-pressed="false">
                 <i class="fa fa-moon moon-icon" aria-hidden="true"></i>
               </button>
-              <input type="color" id="darkBgPicker" value="#1E1E1E" aria-label="Dark mode background color" />
+              <input type="color" id="darkBgPicker" value="#1E1E1E" 
+                     aria-label="Choose dark mode background color"
+                     title="Click to select dark mode background color" />
             </div>
           </div>
         </div>
@@ -553,20 +600,23 @@
     <div class="right-tools">
       <div class="font-size-controls" role="group" aria-label="Font size controls">
         <label for="fontSizeRange">Font Size:</label>
-        <input type="range" id="fontSizeRange" min="12" max="72" value="18" 
-               aria-label="Adjust font size from 12 to 72 pixels" aria-describedby="fontSizeDisplay" />
-        <span id="fontSizeDisplay" class="font-size-display">18px</span>
+        <input type="range" id="fontSizeRange" min="12" max="72" value="18" step="2"
+               aria-label="Adjust font size from 12 to 72 pixels" 
+               aria-describedby="fontSizeDisplay" />
+        <span id="fontSizeDisplay" class="font-size-display" aria-live="polite">18px</span>
       </div>
       
       <form class="search-bar" id="siteSearchForm" role="search">
         <label for="searchInput" class="sr-only">Search</label>
-        <input type="text" id="searchInput" name="q" placeholder="Search..." required />
+        <input type="text" id="searchInput" name="q" placeholder="Search..." 
+               aria-describedby="searchHelp" />
+        <div id="searchHelp" class="sr-only">Enter keywords to search the site</div>
         <button type="submit" aria-label="Search">
           <i class="fas fa-search" aria-hidden="true"></i>
         </button>
       </form>
       
-      <button id="speakButton" aria-label="Read page content aloud">
+      <button id="speakButton" aria-label="Read page content aloud" aria-pressed="false">
         🔊 <span class="sr-only">Read Aloud</span>
       </button>
     </div>
@@ -641,16 +691,42 @@
       updateFontSize(e.target.value);
     });
 
-    // Theme and Color Controls
+    // Theme and Color Controls - Enhanced
     const lightModeButton = document.getElementById('lightModeButton');
     const darkModeButton = document.getElementById('darkModeButton');
     const lightBgPicker = document.getElementById('lightBgPicker');
     const darkBgPicker = document.getElementById('darkBgPicker');
+    const lightModeContainer = document.getElementById('lightModeContainer');
+    const darkModeContainer = document.getElementById('darkModeContainer');
+
+    let currentTheme = 'default';
+
+    const updateActiveMode = (mode) => {
+      // Remove active class from both containers
+      lightModeContainer.classList.remove('active');
+      darkModeContainer.classList.remove('active');
+      
+      // Update button states
+      lightModeButton.setAttribute('aria-pressed', 'false');
+      darkModeButton.setAttribute('aria-pressed', 'false');
+      
+      // Add active class and update button state for current mode
+      if (mode === 'light') {
+        lightModeContainer.classList.add('active');
+        lightModeButton.setAttribute('aria-pressed', 'true');
+      } else if (mode === 'dark') {
+        darkModeContainer.classList.add('active');
+        darkModeButton.setAttribute('aria-pressed', 'true');
+      }
+      
+      currentTheme = mode;
+    };
 
     const setLightMode = () => {
       document.body.className = 'light-mode';
       document.documentElement.style.setProperty('--background-color', lightBgPicker.value);
       document.documentElement.style.setProperty('--text-color', '#000000');
+      updateActiveMode('light');
       savePreference('theme', 'light-mode');
       savePreference('lightBgColor', lightBgPicker.value);
       announceToScreenReader('Light mode activated');
@@ -660,6 +736,7 @@
       document.body.className = 'dark-mode';
       document.documentElement.style.setProperty('--background-color', darkBgPicker.value);
       document.documentElement.style.setProperty('--text-color', '#FFD700');
+      updateActiveMode('dark');
       savePreference('theme', 'dark-mode');
       savePreference('darkBgColor', darkBgPicker.value);
       announceToScreenReader('Dark mode activated');
@@ -668,15 +745,31 @@
     lightModeButton.addEventListener('click', setLightMode);
     darkModeButton.addEventListener('click', setDarkMode);
 
-    // Color picker functionality - NOW FULLY FUNCTIONAL
+    // Enhanced Color picker functionality with immediate visual feedback
+    lightBgPicker.addEventListener('input', (e) => {
+      const newColor = e.target.value;
+      // Immediate preview while dragging
+      if (currentTheme === 'light' || (!document.body.className && currentTheme !== 'dark')) {
+        document.documentElement.style.setProperty('--background-color', newColor);
+      }
+    });
+
     lightBgPicker.addEventListener('change', (e) => {
       const newColor = e.target.value;
       savePreference('lightBgColor', newColor);
       
-      // If currently in light mode, apply the change immediately
-      if (document.body.classList.contains('light-mode') || !document.body.className) {
+      // Apply the change if currently in light mode
+      if (currentTheme === 'light' || (!document.body.className && currentTheme !== 'dark')) {
         document.documentElement.style.setProperty('--background-color', newColor);
         announceToScreenReader('Light mode background color updated');
+      }
+    });
+
+    darkBgPicker.addEventListener('input', (e) => {
+      const newColor = e.target.value;
+      // Immediate preview while dragging
+      if (currentTheme === 'dark') {
+        document.documentElement.style.setProperty('--background-color', newColor);
       }
     });
 
@@ -684,14 +777,14 @@
       const newColor = e.target.value;
       savePreference('darkBgColor', newColor);
       
-      // If currently in dark mode, apply the change immediately
-      if (document.body.classList.contains('dark-mode')) {
+      // Apply the change if currently in dark mode
+      if (currentTheme === 'dark') {
         document.documentElement.style.setProperty('--background-color', newColor);
         announceToScreenReader('Dark mode background color updated');
       }
     });
 
-    // Text-to-Speech Functionality
+    // Text-to-Speech Functionality - Enhanced
     const speakButton = document.getElementById('speakButton');
     let isReading = false;
 
@@ -700,6 +793,7 @@
         window.speechSynthesis.cancel();
         isReading = false;
         speakButton.textContent = '🔊';
+        speakButton.setAttribute('aria-pressed', 'false');
         announceToScreenReader('Reading stopped');
         return;
       }
@@ -716,17 +810,20 @@
         utterance.onstart = () => {
           isReading = true;
           speakButton.textContent = '⏹️';
+          speakButton.setAttribute('aria-pressed', 'true');
           announceToScreenReader('Reading content aloud');
         };
         
         utterance.onend = () => {
           isReading = false;
           speakButton.textContent = '🔊';
+          speakButton.setAttribute('aria-pressed', 'false');
         };
         
         utterance.onerror = () => {
           isReading = false;
           speakButton.textContent = '🔊';
+          speakButton.setAttribute('aria-pressed', 'false');
           announceToScreenReader('Error reading content aloud');
         };
         
@@ -738,7 +835,7 @@
 
     speakButton.addEventListener('click', speakText);
 
-    // Search Functionality
+    // Search Functionality - Enhanced
     const searchForm = document.getElementById('siteSearchForm');
     const searchInput = document.getElementById('searchInput');
 
@@ -756,7 +853,11 @@
       const routes = {
         'auslan': 'accessibility_files/auslan.html',
         'braille': 'accessibility_files/braille.html',
-        'audio': 'accessibility_files/audio.html'
+        'audio': 'accessibility_files/audio.html',
+        'cybersecurity': 'main_files/cybersecurity/cybersecurity.html',
+        'laws': 'main_files/laws/laws.html',
+        'about': 'main_files/about.html',
+        'contact': 'main_files/contact-form.html'
       };
 
       if (routes[query]) {
@@ -764,11 +865,12 @@
         window.location.href = routes[query];
       } else {
         announceToScreenReader(`Searching for "${query}"`);
+        // In a real implementation, this would perform actual search
         alert(`Search results for: "${query}"`);
       }
     });
 
-    // Load Saved Preferences on Page Load
+    // Load Saved Preferences on Page Load - Enhanced
     document.addEventListener('DOMContentLoaded', () => {
       // Load font size
       const savedFontSize = getPreference('fontSize', '18');
@@ -787,27 +889,16 @@
         document.body.className = 'light-mode';
         document.documentElement.style.setProperty('--background-color', savedLightBgColor);
         document.documentElement.style.setProperty('--text-color', '#000000');
+        updateActiveMode('light');
       } else if (savedTheme === 'dark-mode') {
         document.body.className = 'dark-mode';
         document.documentElement.style.setProperty('--background-color', savedDarkBgColor);
         document.documentElement.style.setProperty('--text-color', '#FFD700');
-      }
+          updateActiveMode('dark');
+
+          }
     });
 
-    // Enhanced keyboard support for font size controls
-    fontSizeRange.addEventListener('keydown', (e) => {
-      let newValue = parseInt(fontSizeRange.value);
-      
-      if (e.key === 'ArrowUp' || e.key === 'ArrowRight') {
-        newValue = Math.min(72, newValue + 2);
-        updateFontSize(newValue);
-        e.preventDefault();
-      } else if (e.key === 'ArrowDown' || e.key === 'ArrowLeft') {
-        newValue = Math.max(12, newValue - 2);
-        updateFontSize(newValue);
-        e.preventDefault();
-      }
-    });
-  </script>
+          </script>
 </body>
 </html>
