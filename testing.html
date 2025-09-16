@@ -6,9 +6,27 @@
   <title>Accessible Cybersecurity Knowledge Hub</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
+    /* CSS Custom Properties */
+    :root {
+      --primary-color: #4A2F83;
+      --secondary-color: #3B255F;
+      --background-color: #D6C9F1;
+      --text-color: #333;
+      --white: #ffffff;
+      --black: #000000;
+      --focus-color: #FFD700;
+      --border-radius: 6px;
+      --transition: all 0.3s ease;
+      --font-size-base: 16px;
+    }
+
     /* Global Styles */
     *, *::before, *::after {
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -16,28 +34,32 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      color: #333;
-      background-color: #D6C9F1;
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: var(--font-size-base);
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--background-color);
+      transition: var(--transition);
     }
 
-    a {
-      color: #000;
-      text-decoration: none;
-    }
-
+    /* Skip Link */
     .skip-link {
       position: absolute;
-      top: -40px;
-      left: 0;
-      background: #000;
-      color: #fff;
-      padding: 8px;
-      z-index: 100;
+      top: -50px;
+      left: 10px;
+      background: var(--black);
+      color: var(--white);
+      padding: 12px 16px;
+      border-radius: var(--border-radius);
+      font-weight: bold;
+      z-index: 1000;
+      text-decoration: none;
+      transition: var(--transition);
     }
+
     .skip-link:focus {
-      top: 0;
+      top: 10px;
+      outline: 3px solid var(--focus-color);
     }
 
     /* Header Styles */
@@ -45,10 +67,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background-color: #4A2F83;
+      background-color: var(--primary-color);
       padding: 18px 20px;
       flex-wrap: wrap;
-      color: white;
+      color: var(--white);
+      gap: 15px;
     }
 
     .left-tools,
@@ -77,9 +100,18 @@
 
     .center-nav a {
       font-size: 16px;
-      color: white;
+      color: var(--white);
       padding: 10px;
       position: relative;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+
+    .center-nav a:hover,
+    .center-nav a:focus {
+      background-color: var(--secondary-color);
+      outline: 2px solid var(--focus-color);
     }
 
     /* Dropdown Menu Styles */
@@ -91,7 +123,7 @@
     .dropdown-content {
       display: none;
       position: absolute;
-      background-color: #4A2F83;
+      background-color: var(--primary-color);
       min-width: 160px;
       box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
       z-index: 1;
@@ -106,16 +138,18 @@
     }
 
     .dropdown-content a {
-      color: white;
+      color: var(--white);
       padding: 12px 16px;
       text-decoration: none;
       display: block;
       text-align: left;
+      transition: var(--transition);
     }
 
     .dropdown-content a:hover,
     .dropdown-content a:focus {
-      background-color: #3B255F;
+      background-color: var(--secondary-color);
+      outline: 2px solid var(--focus-color);
     }
 
     .dropdown > a::after {
@@ -124,86 +158,219 @@
       vertical-align: middle;
     }
 
-    /* Font Size Controls */
-    .font-size-controls {
-      display: flex;
-      align-items: center;
-      margin-right: 20px;
-    }
-
-    .font-size-controls input[type="range"] {
-      width: 120px;
-      cursor: pointer;
-    }
-
     /* Button Styles */
     button {
-      background: #4A2F83;
-      border: 2px solid #fff;
-      color: white;
+      background: var(--primary-color);
+      border: 2px solid var(--white);
+      color: var(--white);
       padding: 8px 12px;
       border-radius: 5px;
       cursor: pointer;
       font-weight: bold;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
 
     button:hover,
     button:focus {
-      background-color: #3B255F;
-      outline: 2px solid white;
+      background-color: var(--secondary-color);
+      outline: 2px solid var(--focus-color);
+      transform: translateY(-1px);
     }
 
-    /* Icon Styles */
+    /* Color Picker Styles */
+    .color-controls {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .color-picker-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .color-picker-item label {
+      font-size: 12px;
+      font-weight: bold;
+      color: var(--white);
+      text-align: center;
+    }
+
+    .color-picker-item input[type="color"] {
+      width: 35px;
+      height: 35px;
+      border: 2px solid var(--white);
+      border-radius: 50%;
+      cursor: pointer;
+      background: none;
+      padding: 0;
+    }
+
+    .color-picker-item input[type="color"]:focus {
+      outline: 3px solid var(--focus-color);
+      outline-offset: 2px;
+    }
+
+    /* Mode Toggle Buttons */
     .sun-icon {
-      background-color: yellow;
-      color: black;
+      background-color: #FFD700;
+      color: var(--black);
       padding: 4px;
       border-radius: 50%;
+      font-size: 14px;
     }
 
     .moon-icon {
-      background-color: black;
-      color: white;
+      background-color: var(--black);
+      color: var(--white);
       padding: 4px;
       border-radius: 50%;
+      font-size: 14px;
     }
 
-    /* Input and Search Styles */
-    input[type="color"] {
+    /* Enhanced Font Size Controls for Accessibility */
+    .font-size-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.1);
+      padding: 8px 12px;
+      border-radius: var(--border-radius);
+      border: 2px solid var(--white);
+    }
+
+    .font-size-controls label {
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--white);
+      min-width: 70px;
+    }
+
+    .font-size-controls input[type="range"] {
+      width: 120px;
+      height: 8px;
       cursor: pointer;
-      border: none;
-      width: 30px;
-      height: 30px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 4px;
+      outline: none;
+      -webkit-appearance: none;
     }
 
+    .font-size-controls input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      background: var(--focus-color);
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid var(--white);
+    }
+
+    .font-size-controls input[type="range"]::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      background: var(--focus-color);
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid var(--white);
+    }
+
+    .font-size-controls input[type="range"]:focus {
+      outline: 3px solid var(--focus-color);
+      outline-offset: 2px;
+    }
+
+    .font-size-display {
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--white);
+      min-width: 45px;
+      text-align: center;
+      background: rgba(255,255,255,0.2);
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--white);
+    }
+
+    /* Font Size Buttons for Better Accessibility */
+    .font-size-buttons {
+      display: flex;
+      gap: 5px;
+    }
+
+    .font-btn {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid var(--white);
+      color: var(--white);
+      padding: 6px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 12px;
+      transition: var(--transition);
+    }
+
+    .font-btn:hover,
+    .font-btn:focus {
+      background: var(--focus-color);
+      color: var(--black);
+      outline: 2px solid var(--white);
+    }
+
+    .font-btn.active {
+      background: var(--focus-color);
+      color: var(--black);
+    }
+
+    /* Search Bar */
     .search-bar {
       display: flex;
       align-items: center;
+      background: var(--white);
+      border-radius: var(--border-radius);
+      overflow: hidden;
     }
 
     .search-bar input[type="text"] {
       padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      border: none;
       font-size: 16px;
-      background-color: #fff;
-      color: #000;
+      background: transparent;
+      color: var(--text-color);
+      min-width: 150px;
+    }
+
+    .search-bar input[type="text"]:focus {
+      outline: 2px solid var(--primary-color);
+      outline-offset: -2px;
     }
 
     .search-bar button {
+      background-color: var(--primary-color);
+      border: none;
       padding: 8px;
-      background-color: #4A2F83;
-      border: 2px solid white;
-      color: white;
-      border-radius: 4px;
-      font-size: 16px;
+      margin: 0;
+      border-radius: 0;
     }
 
-    /* Main Content Styles */
+    /* Main Content */
     main {
       padding: 20px;
       text-align: center;
       flex: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    main h1 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
     }
 
     main img {
@@ -211,6 +378,33 @@
       height: auto;
       border: none;
       margin: 20px auto;
+      border-radius: var(--border-radius);
+    }
+
+    .info {
+      font-size: 24px;
+      margin: 20px 0;
+      border: 2px solid var(--primary-color);
+      padding: 15px;
+      border-radius: var(--border-radius);
+      background: rgba(74, 47, 131, 0.05);
+    }
+
+    .info a {
+      color: var(--primary-color);
+      text-decoration: underline;
+      font-weight: bold;
+      padding: 2px 4px;
+      border-radius: 3px;
+      transition: var(--transition);
+    }
+
+    .info a:hover,
+    .info a:focus {
+      background-color: var(--primary-color);
+      color: var(--white);
+      text-decoration: none;
+      outline: 2px solid var(--focus-color);
     }
 
     /* Font Size Adjustment */
@@ -218,33 +412,20 @@
       transition: font-size 0.3s ease;
     }
 
-    .info {
-      font-size: 24px;
-      margin: 20px 0;
-      border: 2px solid #4A2F83; /* Only Accessibility Options keeps border */
-      padding: 15px;
-      border-radius: 6px;
-    }
-
-    .info a {
-      color: #4A2F83;
-      text-decoration: underline;
-    }
-
-    /* Mode Styles */
+    /* Theme Styles */
     .light-mode {
-      background-color: #F5F5DC;
-      color: #000;
+      --background-color: #F5F5DC;
+      --text-color: #000;
     }
 
     .dark-mode {
-      background-color: #1E1E1E;
-      color: #FFD700;
+      --background-color: #1E1E1E;
+      --text-color: #FFD700;
     }
 
     /* Accessibility Focus Styles */
     *:focus {
-      outline: 2px solid #4A2F83;
+      outline: 3px solid var(--focus-color);
       outline-offset: 2px;
     }
 
@@ -260,47 +441,88 @@
       border: 0;
     }
 
-    /* Footer Styles */
+    /* Footer */
     footer {
-      background-color: #4A2F83;
-      color: white;
+      background-color: var(--primary-color);
+      color: var(--white);
       text-align: center;
       padding: 20px;
       margin-top: auto;
     }
 
     footer a {
-      color: white;
+      color: var(--white);
       text-decoration: underline;
+      transition: var(--transition);
+    }
+
+    footer a:hover,
+    footer a:focus {
+      color: var(--focus-color);
+      outline: 2px solid var(--focus-color);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header.funcbar {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .center-nav {
+        order: -1;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .font-size-controls {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .color-controls {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .search-bar input[type="text"] {
+        min-width: 120px;
+      }
+
+      main {
+        padding: 15px;
+      }
+
+      .info {
+        font-size: 20px;
+      }
     }
   </style>
 </head>
 <body>
   <a href="#mainContent" class="skip-link">Skip to main content</a>
 
-  <div class="color-picker-group">
-  <div class="color-picker-item">
-    <label for="pageBgPicker">Background</label>
-    <input type="color" id="pageBgPicker" value="#ffffff" aria-label="Page background color" />
-  </div>
-  
-  <div class="color-picker-item">
-    <label for="pageTextPicker">Text</label>
-    <input type="color" id="pageTextPicker" value="#000000" aria-label="Page text color" />
-  </div>
-</div>
-
   <header class="funcbar" role="banner">
     <div class="left-tools">
-      <button id="LightModeButton" aria-label="Light Mode">
+      <button id="lightModeButton" aria-label="Switch to light mode">
         <i class="fa fa-sun sun-icon" aria-hidden="true"></i>
         <span class="sr-only">Light Mode</span>
       </button>
-      <button id="DarkModeButton" aria-label="Dark Mode">
+      <button id="darkModeButton" aria-label="Switch to dark mode">
         <i class="fa fa-moon moon-icon" aria-hidden="true"></i>
         <span class="sr-only">Dark Mode</span>
       </button>
-      <input type="color" id="contrastColorPicker" value="#000000" aria-label="Contrast color picker" />
+      
+      <div class="color-controls">
+        <div class="color-picker-item">
+          <label for="pageBgPicker">Background</label>
+          <input type="color" id="pageBgPicker" value="#D6C9F1" aria-label="Change page background color" />
+        </div>
+        <div class="color-picker-item">
+          <label for="pageTextPicker">Text</label>
+          <input type="color" id="pageTextPicker" value="#333333" aria-label="Change page text color" />
+        </div>
+      </div>
     </div>
 
     <nav class="center-nav" role="navigation" aria-label="Main navigation">
@@ -329,15 +551,29 @@
 
     <div class="right-tools">
       <div class="font-size-controls" role="group" aria-label="Font size controls">
-        <label for="fontSizeRange" class="sr-only">Font Size</label>
-        <input type="range" id="fontSizeRange" min="10" max="70" value="16" />
+        <label for="fontSizeRange">Font Size:</label>
+        <div class="font-size-buttons">
+          <button class="font-btn" data-size="14" aria-label="Small font size">A</button>
+          <button class="font-btn active" data-size="16" aria-label="Medium font size">A</button>
+          <button class="font-btn" data-size="20" aria-label="Large font size">A</button>
+          <button class="font-btn" data-size="24" aria-label="Extra large font size">A</button>
+        </div>
+        <input type="range" id="fontSizeRange" min="10" max="32" value="16" 
+               aria-label="Adjust font size" aria-describedby="fontSizeDisplay" />
+        <span id="fontSizeDisplay" class="font-size-display">16px</span>
       </div>
-      <form class="search-bar" id="site-search-form">
+      
+      <form class="search-bar" id="siteSearchForm" role="search">
         <label for="searchInput" class="sr-only">Search</label>
         <input type="text" id="searchInput" name="q" placeholder="Search..." required />
-        <button type="submit" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></button>
+        <button type="submit" aria-label="Search">
+          <i class="fas fa-search" aria-hidden="true"></i>
+        </button>
       </form>
-      <button onclick="speakText()" aria-label="Read aloud content">🔊 <span class="sr-only">Read Aloud</span></button>
+      
+      <button id="speakButton" aria-label="Read page content aloud">
+        🔊 <span class="sr-only">Read Aloud</span>
+      </button>
     </div>
   </header>
 
@@ -357,75 +593,239 @@
   </main>
 
   <footer>
-    <p>© 2023 Accessible Cybersecurity Knowledge Hub. All rights reserved.</p>
+    <p>© 2024 Accessible Cybersecurity Knowledge Hub. All rights reserved.</p>
     <p><a href="accessibility.html">Accessibility Statement</a> | <a href="privacy.html">Privacy Policy</a></p>
   </footer>
 
   <div id="liveRegion" aria-live="polite" class="sr-only"></div>
 
   <script>
-    // Font size control with range
-    const fontSizeRange = document.getElementById('fontSizeRange');
-    fontSizeRange.addEventListener('input', function() {
-      const size = this.value + 'px';
-      document.querySelectorAll('.font-size-adjust').forEach(el => {
-        el.style.fontSize = size;
-      });
-      document.getElementById('liveRegion').textContent = "Font size set to " + this.value + " pixels";
-      localStorage.setItem('preferredFontSize', this.value);
-    });
+    // Utility Functions
+    const announceToScreenReader = (message) => {
+      const liveRegion = document.getElementById('liveRegion');
+      liveRegion.textContent = message;
+      setTimeout(() => liveRegion.textContent = '', 3000);
+    };
 
-    // Load saved font size
-    document.addEventListener('DOMContentLoaded', function() {
-      const savedSize = localStorage.getItem('preferredFontSize');
-      if (savedSize) {
-        fontSizeRange.value = savedSize;
-        fontSizeRange.dispatchEvent(new Event('input'));
-      }
-    });
-
-    // Function to read aloud content
-    function speakText() {
+    const savePreference = (key, value) => {
       try {
-        const mainContent = document.getElementById('mainContent');
-        const textToRead = mainContent.textContent || mainContent.innerText;
-        const msg = new SpeechSynthesisUtterance(textToRead);
-        msg.rate = 0.9;
-        msg.pitch = 1.1;
+        localStorage.setItem(key, value);
+      } catch (e) {
+        console.warn('Could not save preference:', e);
+      }
+    };
+
+    const getPreference = (key, defaultValue = null) => {
+      try {
+        return localStorage.getItem(key) || defaultValue;
+      } catch (e) {
+        console.warn('Could not get preference:', e);
+        return defaultValue;
+      }
+    };
+
+    // Enhanced Font Size Control for Accessibility
+    const fontSizeRange = document.getElementById('fontSizeRange');
+    const fontSizeDisplay = document.getElementById('fontSizeDisplay');
+    const fontButtons = document.querySelectorAll('.font-btn');
+
+    const updateFontSize = (size) => {
+      const elements = document.querySelectorAll('.font-size-adjust');
+      elements.forEach(el => {
+        el.style.fontSize = size + 'px';
+      });
+      
+      fontSizeDisplay.textContent = size + 'px';
+      fontSizeRange.value = size;
+      
+      // Update button states
+      fontButtons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.size == size) {
+          btn.classList.add('active');
+        }
+      });
+      
+      announceToScreenReader(`Font size changed to ${size} pixels`);
+      savePreference('fontSize', size);
+    };
+
+    // Range slider functionality
+    fontSizeRange.addEventListener('input', (e) => {
+      updateFontSize(e.target.value);
+    });
+
+    // Font size button functionality
+    fontButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const size = btn.dataset.size;
+        updateFontSize(size);
+      });
+    });
+
+    // Color Customization
+    const pageBgPicker = document.getElementById('pageBgPicker');
+    const pageTextPicker = document.getElementById('pageTextPicker');
+
+    const updateBackgroundColor = (color) => {
+      document.documentElement.style.setProperty('--background-color', color);
+      savePreference('bgColor', color);
+      announceToScreenReader('Background color updated');
+    };
+
+    const updateTextColor = (color) => {
+      document.documentElement.style.setProperty('--text-color', color);
+      savePreference('textColor', color);
+      announceToScreenReader('Text color updated');
+    };
+
+    pageBgPicker.addEventListener('change', (e) => {
+      updateBackgroundColor(e.target.value);
+    });
+
+    pageTextPicker.addEventListener('change', (e) => {
+      updateTextColor(e.target.value);
+    });
+
+    // Theme Controls
+    const lightModeButton = document.getElementById('lightModeButton');
+    const darkModeButton = document.getElementById('darkModeButton');
+
+    const setTheme = (theme) => {
+      document.body.className = theme;
+      savePreference('theme', theme);
+      announceToScreenReader(`${theme.replace('-', ' ')} activated`);
+    };
+
+    lightModeButton.addEventListener('click', () => setTheme('light-mode'));
+    darkModeButton.addEventListener('click', () => setTheme('dark-mode'));
+
+    // Text-to-Speech Functionality
+    const speakButton = document.getElementById('speakButton');
+    let isReading = false;
+
+    const speakText = () => {
+      if (isReading) {
         window.speechSynthesis.cancel();
-        window.speechSynthesis.speak(msg);
-        document.getElementById('liveRegion').textContent = "Reading content aloud";
-      } catch (error) {
-        console.error('Error reading aloud content:', error);
-        document.getElementById('liveRegion').textContent = "Error reading content aloud";
+        isReading = false;
+        speakButton.textContent = '🔊';
+        announceToScreenReader('Reading stopped');
+        return;
       }
-    }
 
-    // Contrast picker functionality
-    document.getElementById('contrastColorPicker').addEventListener('input', function() {
-      document.body.style.color = this.value;
-      localStorage.setItem('contrastColor', this.value);
-    });
-
-    // Load saved contrast
-    document.addEventListener('DOMContentLoaded', function() {
-      const savedContrast = localStorage.getItem('contrastColor');
-      if (savedContrast) {
-        document.getElementById('contrastColorPicker').value = savedContrast;
-        document.body.style.color = savedContrast;
-      }
-    });
-
-    // Search form
-    document.getElementById('site-search-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const query = document.getElementById('searchInput').value.toLowerCase();
-      if (["auslan", "braille", "audio"].includes(query)) {
-        window.location.href = `accessibility_files/${query}.html`;
+      const mainContent = document.getElementById('mainContent');
+      const textToRead = mainContent.textContent || mainContent.innerText;
+      
+      if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(textToRead);
+        utterance.rate = 0.8;
+        utterance.pitch = 1.0;
+        utterance.volume = 1.0;
+        
+        utterance.onstart = () => {
+          isReading = true;
+          speakButton.textContent = '⏹️';
+          announceToScreenReader('Reading content aloud');
+        };
+        
+        utterance.onend = () => {
+          isReading = false;
+          speakButton.textContent = '🔊';
+        };
+        
+        utterance.onerror = () => {
+          isReading = false;
+          speakButton.textContent = '🔊';
+          announceToScreenReader('Error reading content aloud');
+        };
+        
+        window.speechSynthesis.speak(utterance);
       } else {
-        const msg = `Searching for "${query}"...`;
-        document.getElementById('liveRegion').textContent = msg;
-        alert(msg);
+        announceToScreenReader('Text-to-speech not supported in this browser');
+      }
+    };
+
+    speakButton.addEventListener('click', speakText);
+
+    // Search Functionality
+    const searchForm = document.getElementById('siteSearchForm');
+    const searchInput = document.getElementById('searchInput');
+
+    searchForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const query = searchInput.value.trim().toLowerCase();
+      
+      if (!query) {
+        announceToScreenReader('Please enter a search term');
+        searchInput.focus();
+        return;
+      }
+
+      // Simple search routing
+      const routes = {
+        'auslan': 'accessibility_files/auslan.html',
+        'braille': 'accessibility_files/braille.html',
+        'audio': 'accessibility_files/audio.html'
+      };
+
+      if (routes[query]) {
+        announceToScreenReader(`Navigating to ${query} page`);
+        window.location.href = routes[query];
+      } else {
+        announceToScreenReader(`Searching for "${query}"`);
+        alert(`Search results for: "${query}"`);
+      }
+    });
+
+    // Load Saved Preferences on Page Load
+    document.addEventListener('DOMContentLoaded', () => {
+      // Load font size
+      const savedFontSize = getPreference('fontSize', '16');
+      updateFontSize(savedFontSize);
+
+      // Load colors
+      const savedBgColor = getPreference('bgColor');
+      const savedTextColor = getPreference('textColor');
+
+      if (savedBgColor) {
+        pageBgPicker.value = savedBgColor;
+        updateBackgroundColor(savedBgColor);
+      }
+      
+      if (savedTextColor) {
+        pageTextPicker.value = savedTextColor;
+        updateTextColor(savedTextColor);
+      }
+
+      // Load theme
+      const savedTheme = getPreference('theme');
+      if (savedTheme) {
+        document.body.className = savedTheme;
+      }
+    });
+
+    // Keyboard Navigation for Dropdowns
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        // Close any open dropdowns
+        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+          dropdown.style.display = 'none';
+        });
+      }
+    });
+
+    // Enhanced keyboard support for font size controls
+    fontSizeRange.addEventListener('keydown', (e) => {
+      let newValue = parseInt(fontSizeRange.value);
+      
+      if (e.key === 'ArrowUp' || e.key === 'ArrowRight') {
+        newValue = Math.min(72, newValue + 2);
+        updateFontSize(newValue);
+        e.preventDefault();
+      } else if (e.key === 'ArrowDown' || e.key === 'ArrowLeft') {
+        newValue = Math.max(12, newValue - 2);
+        updateFontSize(newValue);
+        e.preventDefault();
       }
     });
   </script>
