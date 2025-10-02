@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Accessible Cybersecurity Knowledge Hub</title>
+    <meta name="description" content="Accessible cybersecurity knowledge hub with customizable display options, text-to-speech, and multiple format support including Auslan, Braille, and audio.">
+    <meta name="keywords" content="cybersecurity, accessibility, disability, Auslan, Braille, audio, easy read">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    
+    <style>
+        /* CSS Custom Properties */
+        :root {
+            --primary-color: #4A2F83;
+            --secondary-color: #3B255F;
+            --background-color: #D6C9F1;
+            --text-color: #333;
+            --white: #ffffff;
+            --black: #000000;
+            --focus-color: #FFD700;
+            --border-radius: 6px;
+            --transition: all 0.3s ease;
+            --font-size-base: 16px;
+        }
+
+        /* Global Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            transition: var(--transition);
+        }
+
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -50px;
+            left: 10px;
+            background: var(--black);
+            color: var(--white);
+            padding: 12px 16px;
+            border-radius: var(--border-radius);
+            font-weight: bold;
+            z-index: 1000;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .skip-link:focus {
+            top: 10px;
+            outline: 3px solid var(--focus-color);
+        }
+
+        /* Header Styles - Simplified */
+        header.funcbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--primary-color);
+            padding: 18px 20px;
+            flex-wrap: wrap;
+            color: var(--white);
+            gap: 15px;
+        }
+
+        .left-tools, .center-nav, .right-tools {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .center-nav {
+            flex: 1;
+            justify-content: center;
+        }
+
+        .center-nav a {
+            font-size: 16px;
+            color: var(--white);
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .center-nav a:hover, .center-nav a:focus {
+            background-color: var(--secondary-color);
+            outline: 2px solid var(--focus-color);
+        }
+
+        /* Simplified Controls Container */
+        .accessibility-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
+            border: 2px solid var(--white);
+            flex-wrap: wrap;
+        }
+
+        /* Theme Controls - Compact */
+        .theme-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .theme-button {
+            background: var(--primary-color);
+            border: 2px solid var(--white);
+            color: var(--white);
+            padding: 6px 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .theme-button:hover, .theme-button:focus {
+            background-color: var(--secondary-color);
+            outline: 2px solid var(--focus-color);
+        }
+
+        .theme-button.active {
+            background: var(--focus-color);
+            color: var(--black);
+        }
+
+        /* Dropdown Menu Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--primary-color);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown:hover .dropdown-content,
+        .dropdown:focus-within .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: var(--white);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            transition: var(--transition);
+        }
+
+        .dropdown-content a:hover, .dropdown-content a:focus {
+            background-color: var(--secondary-color);
+            outline: 2px solid var(--focus-color);
+        }
+
+        .dropdown > a::after {
+            content: " ▼";
+            font-size: 0.7em;
+            vertical-align: middle;
+        }
+
+        /* Font Size Controls */
+        .font-size-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .font-size-controls label {
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--white);
+            min-width: 70px;
+        }
+
+        .font-size-controls input[type="range"] {
+            width: 100px;
+            height: 6px;
+            cursor: pointer;
+            background: rgba(255,255,255,0.3);
+            border-radius: 4px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .font-size-controls input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: var(--focus-color);
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid var(--white);
+        }
+
+        .font-size-controls input[type="range"]:focus {
+            outline: 3px solid var(--focus-color);
+            outline-offset: 2px;
+        }
+
+        .font-size-display {
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--white);
+            min-width: 35px;
+            text-align: center;
+            background: rgba(255,255,255,0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* Color Picker Styles */
+        input[type="color"] {
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--white);
+            border-radius: 50%;
+            cursor: pointer;
+            background: none;
+            padding: 0;
+            transition: var(--transition);
+        }
+
+        input[type="color"]:hover {
+            transform: scale(1.1);
+        }
+
+        input[type="color"]:focus {
+            outline: 3px solid var(--focus-color);
+            outline-offset: 2px;
+        }
+
+        /* Search Bar */
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 8px;
+            border: none;
+            font-size: 16px;
+            background: transparent;
+            color: var(--text-color);
+            min-width: 120px;
+        }
+
+        .search-bar input[type="text"]:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: -2px;
+        }
+
+        .search-bar button {
+            background-color: var(--primary-color);
+            border: none;
+            padding: 8px;
+            margin: 0;
+            border-radius: 0;
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        /* Speak Button */
+        .speak-button {
+            background: var(--primary-color);
+            border: 2px solid var(--white);
+            color: var(--white);
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .speak-button:hover, .speak-button:focus {
+            background-color: var(--secondary-color);
+            outline: 2px solid var(--focus-color);
+        }
+
+        /* Main Content with White Background */
+        main {
+            padding: 20px;
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .content-container {
+            background-color: var(--white);
+            padding: 30px;
+            margin: 20px auto;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 1000px;
+            border: 1px solid rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .content-container .font-size-adjust {
+            color: #333;
+        }
+
+        .content-container h1 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .content-container img {
+            max-width: 700px;
+            height: auto;
+            border: none;
+            margin: 20px auto;
+            border-radius: var(--border-radius);
+        }
+
+        .info {
+            font-size: 24px;
+            margin: 20px 0;
+            border: 2px solid var(--primary-color);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            background: rgba(74, 47, 131, 0.05);
+        }
+
+        .info a {
+            color: var(--primary-color);
+            text-decoration: underline;
+            font-weight: bold;
+            padding: 2px 4px;
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .info a:hover, .info a:focus {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+            outline: 2px solid var(--focus-color);
+        }
+
+        /* NalScribe Video Container */
+        .video-container {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(74, 47, 131, 0.05);
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+        }
+
+        .video-container h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background: #000;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #4A2F83, #3B255F);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 18px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Font Size Adjustment */
+        .font-size-adjust {
+            transition: font-size 0.3s ease, color 0.3s ease;
+        }
+
+        /* Theme Styles */
+        .light-mode {
+            --text-color: #000;
+        }
+
+        .dark-mode {
+            --text-color: #FFD700;
+        }
+
+        /* Accessibility Focus Styles */
+        *:focus {
+            outline: 3px solid var(--focus-color);
+            outline-offset: 2px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: var(--white);
+            text-decoration: underline;
+            transition: var(--transition);
+        }
+
+        footer a:hover, footer a:focus {
+            color: var(--focus-color);
+            outline: 2px solid var(--focus-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header.funcbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .center-nav {
+                order: -1;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .accessibility-controls {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .content-container {
+                margin: 10px;
+                padding: 20px;
+            }
+
+            .info {
+                font-size: 20px;
+            }
+
+            .video-placeholder {
+                height: 200px;
+                font-size: 16px;
+            }
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            :root {
+                --focus-color: #FFFF00;
+            }
+            button, input[type="color"] {
+                border-width: 3px;
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            html {
+                scroll-behavior: auto;
+            }
+        }
+    </style>
+
+    <!-- Structured Data for Accessibility -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Accessible Cybersecurity Knowledge Hub",
+      "description": "Cybersecurity education designed for people with disabilities",
+      "accessibilityFeature": ["alternativeText", "audioDescription", "signLanguage", "braille"],
+      "accessibilityHazard": "none"
+    }
+    </script>
+</head>
+
+<body>
+    <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+    <header class="funcbar" role="banner">
+        <div class="left-tools">
+            <div class="accessibility-controls" role="group" aria-label="Accessibility controls">
+                <div class="theme-controls">
+                    <button id="lightModeButton" class="theme-button" aria-label="Switch to light mode" aria-pressed="false">
+                        <i class="fa fa-sun" aria-hidden="true"></i> Light
+                    </button>
+                    <input type="color" id="lightBgPicker" value="#F5F5DC" aria-label="Choose light mode background color" title="Light mode color" />
+                    
+                    <button id="darkModeButton" class="theme-button" aria-label="Switch to dark mode" aria-pressed="false">
+                        <i class="fa fa-moon" aria-hidden="true"></i> Dark
+                    </button>
+                    <input type="color" id="darkBgPicker" value="#1E1E1E" aria-label="Choose dark mode background color" title="Dark mode color" />
+                </div>
+
+                <div class="font-size-controls">
+                    <label for="fontSizeRange">Font:</label>
+                    <input type="range" id="fontSizeRange" min="10" max="72" value="16" step="1" aria-label="Adjust font size" />
+                    <span id="fontSizeDisplay" class="font-size-display" aria-live="polite">16px</span>
+                </div>
+
+                <div>
+                    <label for="textColorPicker" class="sr-only">Text Color</label>
+                    <input type="color" id="textColorPicker" value="#333333" aria-label="Choose text color" title="Text color" />
+                </div>
+            </div>
+        </div>
+
+        <nav class="center-nav" role="navigation" aria-label="Main navigation">
+            <a href="main_files/subindex.html">Home</a>
+            <a href="main_files/about.html">About Us</a>
+            <div class="dropdown">
+                <a href="main_files/cybersecurity/cybersecurity.html" aria-haspopup="true" aria-expanded="false">Cybersecurity Hub</a>
+                <div class="dropdown-content" role="menu">
+                    <a href="main_files/cybersecurity/cybersecurity-easy-english.html" role="menuitem">Easy English</a>
+                    <a href="main_files/cybersecurity/cybersecurity.html" role="menuitem">Plain English</a>
+                    <a href="main_files/cybersecurity/cybersecurity-easy-read.html" role="menuitem">Easy Read</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="main_files/laws/laws.html" aria-haspopup="true" aria-expanded="false">AU/NZ Laws</a>
+                <div class="dropdown-content" role="menu">
+                    <a href="main_files/laws/laws-easy-english.html" role="menuitem">Easy English</a>
+                    <a href="main_files/laws/laws.html" role="menuitem">Plain English</a>
+                    <a href="main_files/laws/laws-easy-read.html" role="menuitem">Easy Read</a>
+                </div>
+            </div>
+            <a href="main_files/resources.html">Resources</a>
+            <a href="main_files/newsletter.html">Newsletter</a>
+            <a href="main_files/contact-form.html">Contact Us</a>
+        </nav>
+
+        <div class="right-tools">
+            <form class="search-bar" id="siteSearchForm" role="search">
+                <label for="searchInput" class="sr-only">Search</label>
+                <input type="text" id="searchInput" name="q" placeholder="Search..." />
+                <button type="submit" aria-label="Search">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                </button>
+            </form>
+
+            <button id="speakButton" class="speak-button" aria-label="Read page content aloud" aria-pressed="false">
+                🔊 <span class="sr-only">Read Aloud</span>
+            </button>
+        </div>
+    </header>
+
+    <main id="mainContent" role="main">
+        <div class="content-container">
+            <h1 class="font-size-adjust">Accessible Cybersecurity</h1>
+            <p class="font-size-adjust">Explore accessibility features to enhance user experience.</p>
+            
+            <img src="https://i.imgur.com/rVlMF8D.png" alt="Six individuals in discussion with electrified 'Cyber Quantum' logo above them" />
+            
+            <div class="info font-size-adjust">
+                <span>Click here for </span>
+                <a href="accessibility_files/auslan.html">Auslan</a>, 
+                <a href="accessibility_files/braille.html">Braille</a>, 
+                <a href="accessibility_files/audio.html">Audio</a>
+            </div>
+
+            <!-- NalScribe Video Section -->
+            <div class="video-container">
+                <h3 class="font-size-adjust">NalScribe Video Content</h3>
+                <div class="video-wrapper">
+                    <div class="video-placeholder">
+                        <div>
+                            <i class="fas fa-video" style="font-size: 48px; margin-bottom: 15px;"></i>
+                            <p>NalScribe Video Player<br>
+                            <small>Accessible video content with real-time transcription</small></p>
+                        </div>
+                    </div>
+                </div>
+                <p class="font-size-adjust" style="margin-top: 15px;">
+                    <small>Videos will include real-time transcription and sign language interpretation for enhanced accessibility.</small>
+                </p>
+            </div>
+
+            <p class="font-size-adjust">
+                Welcome to our CyberSecurity Knowledge Hub, designed for people with disabilities to understand cybersecurity in accessible formats.
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 Accessible Cybersecurity Knowledge Hub. All rights reserved.</p>
+        <p><a href="accessibility.html">Accessibility Statement</a> | <a href="privacy.html">Privacy Policy</a></p>
+    </footer>
+
+    <div id="liveRegion" aria-live="polite" class="sr-only"></div>
+
+    <script>
+        // Utility Functions
+        const announceToScreenReader = (message) => {
+            const liveRegion = document.getElementById('liveRegion');
+            liveRegion.textContent = message;
+            setTimeout(() => liveRegion.textContent = '', 3000);
+        };
+
+        const savePreference = (key, value) => {
+            try {
+                localStorage.setItem(key, value);
+            } catch (e) {
+                console.warn('Could not save preference:', e);
+            }
+        };
+
+        const getPreference = (key, defaultValue = null) => {
+            try {
+                return localStorage.getItem(key) || defaultValue;
+            } catch (e) {
+                console.warn('Could not get preference:', e);
+                return defaultValue;
+            }
+        };
+
+        // Font Size Control
+        const fontSizeRange = document.getElementById('fontSizeRange');
+        const fontSizeDisplay = document.getElementById('fontSizeDisplay');
+
+        const updateFontSize = (size) => {
+            const elements = document.querySelectorAll('.font-size-adjust');
+            elements.forEach(el => {
+                el.style.fontSize = size + 'px';
+            });
+            fontSizeDisplay.textContent = size + 'px';
+            fontSizeRange.value = size;
+            announceToScreenReader(`Font size changed to ${size} pixels`);
+            savePreference('fontSize', size);
+        };
+
+        fontSizeRange.addEventListener('input', (e) => {
+            updateFontSize(e.target.value);
+        });
+
+        // Text Color Control
+        const textColorPicker = document.getElementById('textColorPicker');
+
+        const updateTextColor = (color) => {
+            const elements = document.querySelectorAll('.font-size-adjust');
+            elements.forEach(el => {
+                el.style.color = color;
+            });
+            document.documentElement.style.setProperty('--text-color', color);
+            announceToScreenReader('Text color updated');
+            savePreference('textColor', color);
+        };
+
+        textColorPicker.addEventListener('change', (e) => {
+            updateTextColor(e.target.value);
+        });
+
+        // Theme Controls
+        const lightModeButton = document.getElementById('lightModeButton');
+        const darkModeButton = document.getElementById('darkModeButton');
+        const lightBgPicker = document.getElementById('lightBgPicker');
+        const darkBgPicker = document.getElementById('darkBgPicker');
+
+        let currentTheme = 'default';
+
+        const updateActiveTheme = (theme) => {
+            lightModeButton.classList.remove('active');
+            darkModeButton.classList.remove('active');
+            lightModeButton.setAttribute('aria-pressed', 'false');
+            darkModeButton.setAttribute('aria-pressed', 'false');
+
+            if (theme === 'light') {
+                lightModeButton.classList.add('active');
+                lightModeButton.setAttribute('aria-pressed', 'true');
+            } else if (theme === 'dark') {
+                darkModeButton.classList.add('active');
+                darkModeButton.setAttribute('aria-pressed', 'true');
+            }
+            currentTheme = theme;
+        };
+
+        const applyLightMode = (color) => {
+            document.body.className = 'light-mode';
+            document.documentElement.style.setProperty('--background-color', color);
+            updateActiveTheme('light');
+            savePreference('theme', 'light-mode');
+            savePreference('lightBgColor', color);
+        };
+
+        const applyDarkMode = (color) => {
+            document.body.className = 'dark-mode';
+            document.documentElement.style.setProperty('--background-color', color);
+            updateActiveTheme('dark');
+            savePreference('theme', 'dark-mode');
+            savePreference('darkBgColor', color);
+        };
+
+        lightModeButton.addEventListener('click', () => {
+            applyLightMode(lightBgPicker.value);
+            announceToScreenReader('Light mode activated');
+        });
+
+        darkModeButton.addEventListener('click', () => {
+            applyDarkMode(darkBgPicker.value);
+            announceToScreenReader('Dark mode activated');
+        });
+
+        lightBgPicker.addEventListener('change', (e) => {
+            applyLightMode(e.target.value);
+            announceToScreenReader('Light mode activated with new background color');
+        });
+
+        darkBgPicker.addEventListener('change', (e) => {
+            applyDarkMode(e.target.value);
+            announceToScreenReader('Dark mode activated with new background color');
+        });
+
+        // Text-to-Speech
+        const speakButton = document.getElementById('speakButton');
+        let isReading = false;
+
+        const speakText = () => {
+            if (isReading) {
+                window.speechSynthesis.cancel();
+                isReading = false;
+                speakButton.textContent = '🔊';
+                speakButton.setAttribute('aria-pressed', 'false');
+                announceToScreenReader('Reading stopped');
+                return;
+            }
+
+            const mainContent = document.getElementById('mainContent');
+            const textToRead = mainContent.textContent || mainContent.innerText;
+
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(textToRead);
+                utterance.rate = 0.8;
+                utterance.pitch = 1.0;
+                utterance.volume = 1.0;
+
+                utterance.onstart = () => {
+                    isReading = true;
+                    speakButton.textContent = '⏹️';
+                    speakButton.setAttribute('aria-pressed', 'true');
+                    announceToScreenReader('Reading content aloud');
+                };
+
+                utterance.onend = () => {
+                    isReading = false;
+                    speakButton.textContent = '🔊';
+                    speakButton.setAttribute('aria-pressed', 'false');
+                };
+
+                utterance.onerror = () => {
+                    isReading = false;
+                    speakButton.textContent = '🔊';
+                    speakButton.setAttribute('aria-pressed', 'false');
+                    announceToScreenReader('Error occurred while reading');
+                };
+
+                window.speechSynthesis.speak(utterance);
+            } else {
+                announceToScreenReader('Text-to-speech not supported in this browser');
+            }
+        };
+
+        speakButton.addEventListener('click', speakText);
+
+        // Search Functionality
+        const searchForm = document.getElementById('siteSearchForm');
+        const searchInput = document.getElementById('searchInput');
+
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const query = searchInput.value.trim();
+            if (query) {
+                announceToScreenReader(`Searching for: ${query}`);
+                console.log('Search query:', query);
+            }
+        });
+
+        // Load saved preferences
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedFontSize = getPreference('fontSize', '16');
+            updateFontSize(savedFontSize);
+            
+            const savedTextColor = getPreference('textColor', '#333333');
+            textColorPicker.value = savedTextColor;
+            updateTextColor(savedTextColor);
+            
+            const savedTheme = getPreference('theme', 'default');
+            const savedLightBg = getPreference('lightBgColor', '#F5F5DC');
+            const savedDarkBg = getPreference('darkBgColor', '#1E1E1E');
+            
+            lightBgPicker.value = savedLightBg;
+            darkBgPicker.value = savedDarkBg;
+            
+            if (savedTheme === 'light-mode') {
+                applyLightMode(savedLightBg);
+            } else if (savedTheme === 'dark-mode') {
+                applyDarkMode(savedDarkBg);
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.altKey && e.key === 'r') {
+                e.preventDefault();
+                speakText();
+            }
+            
+            if (e.altKey && e.key === 's') {
+                e.preventDefault();
+                searchInput.focus();
+            }
+        });
+
+        // Error handling
+        window.addEventListener('error', (e) => {
+            console.error('JavaScript error:', e.error);
+            announceToScreenReader('An error occurred. Please refresh the page if problems persist.');
+        });
+    </script>
+</body>
+</html>
